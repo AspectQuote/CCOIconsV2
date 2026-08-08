@@ -8,8 +8,9 @@ import { customSeededCubeDefinition, customSeededCubeID, customSeededCubes } fro
 import { constructCubePatternDefinition, cubePatternDefinition, cubePatternImage, patternedCubeID, patternedCubeSchema } from "./schematics/patterneditems";
 import seedrandom from 'seedrandom';
 import { hash } from "crypto";
-import { aggregatePrefixTags, constructPrefixRenderer, filterOtherPrefixesForNeeded, prefixRendererDefinition, prefixRenderers, prefixRendererTags, prefixRenderSteps } from "./schematics/prefixrenderers";
+import { constructPrefixRenderer, filterOtherPrefixesForNeeded, prefixRendererDefinition, prefixRenderers } from "./schematics/prefixrenderers";
 import { PrefixID } from "./schematics/importedschematics/prefixes";
+import { aggregatePrefixTags, prefixRendererTags, prefixRenderSteps, shorthandIconDataSchema } from "./schematics/importedschematics/ccoiconsschema";
 
 export type cubeHead = {
     x: number,
@@ -353,9 +354,9 @@ export async function loadStaticCubeParts(cubeID: CubeID, cubeSeed: number): Pro
     return await parseCubePartImagesIntoCubeParts(iconFrames, headFrames, mouthFrames, eyesFrames, accentFrames, 'seededIcon' in cubeSchema[cubeID]);
 }
 
-export function turnPrefixRenderInputsIntoHashableString(mainPrefix: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherPrefixSteps: prefixRenderSteps[], prefixSeed: number, cubeParts: cubePartDefinition) {
-    const usingOtherPrefixes = filterOtherPrefixesForNeeded(mainPrefix, mainPrefixStep, otherPrefixes, otherPrefixSteps);
-    const allPrefixTags = aggregatePrefixTags(mainPrefix, usingOtherPrefixes, mainPrefixStep, otherPrefixSteps);
+export function turnPrefixRenderInputsIntoHashableString(mainPrefix: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherPrefixSteps: prefixRenderSteps[], prefixSeed: number, cubeParts: cubePartDefinition, shorthandSchema: shorthandIconDataSchema, ignoreMain: boolean = false) {
+    const usingOtherPrefixes = filterOtherPrefixesForNeeded(mainPrefix, mainPrefixStep, otherPrefixes, otherPrefixSteps, ignoreMain);
+    const allPrefixTags = aggregatePrefixTags(mainPrefix, usingOtherPrefixes, mainPrefixStep, otherPrefixSteps, shorthandSchema, ignoreMain);
     let partString = ``;
 
     if (allPrefixTags.includes(prefixRendererTags.needsHeads)) partString = `${partString},Heads:${JSON.stringify(cubeParts.heads)}`;
@@ -377,6 +378,6 @@ export function turnPrefixRenderInputsIntoHashableString(mainPrefix: PrefixID, m
 
     return {
         tags: allPrefixTags,
-        string: `Main:${mainPrefix},Other:${otherPrefixes.join('|')},Tags:${allPrefixTags.join('|')},Seed:${allPrefixTags.includes(prefixRendererTags.isSeeded) ? prefixSeed : 0},Parts:${partString}`
+        string: `${ignoreMain ? `` : `Main:${mainPrefix},`}Other:${otherPrefixes.join('|')},Tags:${allPrefixTags.join('|')},Seed:${allPrefixTags.includes(prefixRendererTags.isSeeded) ? prefixSeed : 0},Parts:${partString}`
     }
 }

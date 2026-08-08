@@ -272,7 +272,7 @@ export const elementSchema = {
     }
 };
 export const allElements = Object.keys(elementSchema);
-export const elementSpriteSheetSize = 6;
+export const elementSpriteSheetSize = 10;
 const elementSpriteSheetLayout = [
     "Ancient",
     "Bouncy",

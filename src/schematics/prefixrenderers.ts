@@ -5,8 +5,9 @@ import { JimpImage, JimpImgMod, loadAnimatedCubeIcon, saveAnimatedCubeIcon } fro
 import { PrefixID } from "./importedschematics/prefixes"
 import * as fs from 'fs-extra'
 import { defaultStrokeMatrix, fillRect, strokeImage, strokeMatrix } from "../imageutils";
-import { leastCommonMultiple } from "./importedschematics/ccoiconsschema";
+import { getNeededFramesForPrefix, leastCommonMultiple, prefixRendererTags, prefixRenderSteps, shorthandIconDataSchema } from "./importedschematics/ccoiconsschema";
 import seedrandom from "seedrandom";
+import { CubeID } from "./importedschematics/cubes";
 
 function compositeHeadsToAllFrames(targetFrames: JimpImage[], cubeIconFrame: JimpImage, heads: cubeHead[][], animation: JimpImage[], expectedHeadData: cubeHead) {
     const usingHeads = heads.map(heads => {
@@ -84,24 +85,6 @@ export type seededOutlineRenderer = ((seed: number) => renderablePrefixOutline) 
 
 export type seededLayerModifier = ((frame: JimpImage) => JimpImage) | false;
 
-export enum prefixRenderSteps {
-    // Where a prefix will render its foreground/background
-    background,
-    foreground,
-    // Modifiers that affect already-generated frames
-    applyToBackground,
-    applyToCube,
-    applyToForeground,
-}
-
-export enum prefixRendererTags {
-    isSeeded,
-    needsHeads,
-    needsEyes,
-    needsMouths,
-    needsAccents,
-}
-
 export type prefixRendererDefinition = {
     canvasScale: number,
     renderSteps: { [key in prefixRenderSteps]?: prefixRendererStepDefinition }
@@ -149,10 +132,12 @@ function generateBlankFrames(resolution: number, frameCount: number) {
     return blankFrames;
 }
 
-export function filterOtherPrefixesForNeeded(mainPrefix: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherSteps: prefixRenderSteps[]): PrefixID[] {
-    const mainRenderer = prefixRenderers[mainPrefix];
-    if (!mainRenderer) return [];
-    if (!mainRenderer.renderSteps[mainPrefixStep]) return [];
+export function filterOtherPrefixesForNeeded(mainPrefix: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherSteps: prefixRenderSteps[], all: boolean = false): PrefixID[] {
+    if (!all) {
+        const mainRenderer = prefixRenderers[mainPrefix];
+        if (!mainRenderer) return [];
+        if (!mainRenderer.renderSteps[mainPrefixStep]) return [];
+    }
     return otherPrefixes.filter(prefixID => {
         const otherRenderer = prefixRenderers[prefixID];
         return otherRenderer && prefixID !== mainPrefix && otherSteps.every(otherStep => {
@@ -171,54 +156,18 @@ export function somePrefixInListHasTag(prefixList: PrefixID[], steps: prefixRend
     })
 }
 
-export function aggregatePrefixTags(mainPrefix: PrefixID, otherPrefixes: PrefixID[], mainStep: prefixRenderSteps, otherSteps: prefixRenderSteps[]) {
-    const mainRenderer = prefixRenderers[mainPrefix];
-    if (!mainRenderer) return [];
-    if (!mainRenderer.renderSteps[mainStep]) return [];
-    const flags = [ ...mainRenderer.renderSteps[mainStep].tags ];
-    
-    for (let otherPrefixIndex = 0; otherPrefixIndex < otherPrefixes.length; otherPrefixIndex++) {
-        const otherPrefix = otherPrefixes[otherPrefixIndex];
-        const otherPrefixRenderer = prefixRenderers[otherPrefix];
-        if (otherPrefixRenderer) {
-            for (let otherStepIndex = 0; otherStepIndex < otherSteps.length; otherStepIndex++) {
-                const otherStep = otherSteps[otherStepIndex];
-                if (otherPrefixRenderer.renderSteps[otherStep]) {
-                    for (let tagIndex = 0; tagIndex < otherPrefixRenderer.renderSteps[otherStep].tags.length; tagIndex++) {
-                        const tag = otherPrefixRenderer.renderSteps[otherStep].tags[tagIndex];
-                        if (!flags.includes(tag)) flags.push(tag);
-                    }
-                }
-            }
-        }
-    }
-
-    return flags.sort();
-}
-
-function frameCountFromPrefixesInList(prefixList: PrefixID[], steps: prefixRenderSteps[]): number[] {
-    return prefixList.map(otherPrefix => {
-        const otherRenderer = prefixRenderers[otherPrefix];
-        if (!otherRenderer) return [1];
-        return steps.map(renderStep => {
-            return otherRenderer.renderSteps[renderStep] ? otherRenderer.renderSteps[renderStep].frames : 1;
-        })
-    }).flat(1)
-}
-
-export async function renderPrefixSteps(mainPrefix: PrefixID, otherPrefixes: PrefixID[], mainStep: prefixRenderSteps, otherSteps: prefixRenderSteps[], cubeParts: cubePartDefinition, prefixSeed: number, inputFrames?: JimpImage[]): Promise<JimpImage[]> {
+export async function renderPrefixSteps(mainPrefix: PrefixID, otherPrefixes: PrefixID[], mainStep: prefixRenderSteps, otherSteps: prefixRenderSteps[], cubeID: CubeID, cubeParts: cubePartDefinition, prefixSeed: number, shorthandSchema: shorthandIconDataSchema, inputFrames?: JimpImage[]): Promise<JimpImage[]> {
     const mainRenderer = prefixRenderers[mainPrefix] ?? constructPrefixRenderer({});
-    if (!mainRenderer.renderSteps[mainStep]) return [];
-    const usingOtherPrefixes = filterOtherPrefixesForNeeded(mainPrefix, mainStep, otherPrefixes, otherSteps);
-    const requiredFrames = [
-        mainRenderer.renderSteps[mainStep].frames,
-        ...frameCountFromPrefixesInList(otherPrefixes, otherSteps)
-    ].reduce((prev, curr) => {
-        return leastCommonMultiple(prev, curr);
-    }, 1);
-    const prefixFrames = inputFrames ?? generateBlankFrames(config.baseCubeResolution * mainRenderer.canvasScale, requiredFrames);
-
-    await mainRenderer.renderSteps[mainStep].render(cubeParts, prefixFrames, prefixSeed);
+    let prefixFrames: JimpImage[];
+    const usingOtherPrefixes = filterOtherPrefixesForNeeded(mainPrefix, mainStep, otherPrefixes, otherSteps, !!inputFrames);
+    if (!inputFrames) {
+        if (!mainRenderer.renderSteps[mainStep]) return [];
+        const requiredFrames = getNeededFramesForPrefix(mainPrefix, mainStep, otherPrefixes, otherSteps, cubeID, shorthandSchema);
+        prefixFrames = generateBlankFrames(config.baseCubeResolution * mainRenderer.canvasScale, requiredFrames);
+        await mainRenderer.renderSteps[mainStep].render(cubeParts, prefixFrames, prefixSeed);
+    } else {
+        prefixFrames = inputFrames.map(frame => frame.clone());
+    }
 
     for (let otherPrefixIndex = 0; otherPrefixIndex < usingOtherPrefixes.length; otherPrefixIndex++) {
         const otherPrefixID = usingOtherPrefixes[otherPrefixIndex];

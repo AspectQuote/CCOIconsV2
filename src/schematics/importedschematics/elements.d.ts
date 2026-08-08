@@ -172,7 +172,7 @@ export declare const elementSchema: {
 };
 export declare const allElements: CubeElementID[];
 export type CubeElementID = keyof typeof elementSchema;
-export declare const elementSpriteSheetSize = 6;
+export declare const elementSpriteSheetSize = 10;
 export declare function getElementSpriteSheetPosition(elementID: string): {
     x: number;
     y: number;
