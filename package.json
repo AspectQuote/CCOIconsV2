@@ -1,0 +1,30 @@
+{
+  "name": "CCOIconsV2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "prod": "tsx src/index.ts --max-old-space-size=1536",
+    "dev": "tsx watch src/index.ts --dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "fs-extra": "^11.4.0",
+    "jimp": "^1.6.1",
+    "seedrandom": "^3.0.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^26.1.2",
+    "@types/seedrandom": "^3.0.8",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
+  }
+}
