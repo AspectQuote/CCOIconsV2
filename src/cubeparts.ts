@@ -359,6 +359,7 @@ export function turnPrefixRenderInputsIntoHashableString(mainPrefix: PrefixID, m
     const allPrefixTags = aggregatePrefixTags(mainPrefix, usingOtherPrefixes, mainPrefixStep, otherPrefixSteps, shorthandSchema, ignoreMain);
     let partString = ``;
 
+    if (allPrefixTags.includes(prefixRendererTags.needsIconDimensions)) partString = `${partString},Dimensions:${cubeParts.icon[0]?.bitmap?.width ?? 0}x${cubeParts.icon[0]?.bitmap?.height ?? 0}`
     if (allPrefixTags.includes(prefixRendererTags.needsHeads)) partString = `${partString},Heads:${JSON.stringify(cubeParts.heads)}`;
     if (allPrefixTags.includes(prefixRendererTags.needsEyes)) partString = `${partString},Eyes:${JSON.stringify(cubeParts.eyes)}`;
     if (allPrefixTags.includes(prefixRendererTags.needsMouths)) partString = `${partString},Mouths:${JSON.stringify(cubeParts.mouths)}`;

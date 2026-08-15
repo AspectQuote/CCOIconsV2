@@ -21,6 +21,8 @@ export var prefixRendererTags;
     prefixRendererTags[prefixRendererTags["needsEyes"] = 2] = "needsEyes";
     prefixRendererTags[prefixRendererTags["needsMouths"] = 3] = "needsMouths";
     prefixRendererTags[prefixRendererTags["needsAccents"] = 4] = "needsAccents";
+    prefixRendererTags[prefixRendererTags["needsIconDimensions"] = 5] = "needsIconDimensions";
+    prefixRendererTags[prefixRendererTags["needsIcon"] = 6] = "needsIcon";
 })(prefixRendererTags || (prefixRendererTags = {}));
 export const prefixRenderStepSchema = {
     foreground: {
@@ -46,15 +48,15 @@ export function frameCountFromPrefixesInList(prefixList, steps, shorthandSchema)
         });
     }).flat(1);
 }
+const tagsThatMeanCubeFramesAreNeeded = [prefixRendererTags.needsHeads, prefixRendererTags.needsEyes, prefixRendererTags.needsMouths, prefixRendererTags.needsAccents, prefixRendererTags.needsIcon];
 export function getNeededFramesForPrefix(prefixID, mainPrefixStep, otherPrefixes, otherSteps, cubeID, shorthandSchema) {
     const prefixTags = aggregatePrefixTags(prefixID, otherPrefixes, mainPrefixStep, otherSteps, shorthandSchema);
-    const cubeFrames = [prefixRendererTags.needsHeads, prefixRendererTags.needsEyes, prefixRendererTags.needsMouths, prefixRendererTags.needsAccents].some(tag => prefixTags.includes(tag)) ? (shorthandSchema.cubes[cubeID]?.frames ?? 1) : 1;
+    const cubeFrames = tagsThatMeanCubeFramesAreNeeded.some(tag => prefixTags.includes(tag)) ? (shorthandSchema.cubes[cubeID]?.frames ?? 1) : 1;
+    console.log("CubeFrames: ", cubeFrames);
     const mainPrefixDefinition = shorthandSchema.prefixes[prefixID];
-    if (!mainPrefixDefinition?.renderSteps?.[mainPrefixStep])
-        return 1;
     return [
         cubeFrames,
-        mainPrefixDefinition.renderSteps[mainPrefixStep].frames,
+        mainPrefixDefinition?.renderSteps?.[mainPrefixStep]?.frames ?? 1,
         ...frameCountFromPrefixesInList(otherPrefixes, otherSteps, shorthandSchema)
     ].reduce((prev, curr) => {
         return leastCommonMultiple(prev, curr);

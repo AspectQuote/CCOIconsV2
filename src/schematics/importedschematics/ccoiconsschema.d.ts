@@ -12,7 +12,9 @@ export declare enum prefixRendererTags {
     needsHeads = 1,
     needsEyes = 2,
     needsMouths = 3,
-    needsAccents = 4
+    needsAccents = 4,
+    needsIconDimensions = 5,
+    needsIcon = 6
 }
 export declare const prefixRenderStepSchema: {
     readonly foreground: {

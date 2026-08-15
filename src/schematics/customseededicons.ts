@@ -21,7 +21,7 @@ const conwayLivingChance = 0.2;
 const customSeededOutputPath = `${config.outputDirectory}/customseeded`
 const conwayOuputPath = `${customSeededOutputPath}/conway`;
 const badassOutputDirectory = `${customSeededOutputPath}/badass`;
-const badassFrames = 30;
+const badassFrames = 60;
 async function generateBadassPart(seed: number, part: keyof Awaited<ReturnType<typeof getRawCubePartPaths>>) {
     const outputFrames: JimpImage[] = [];
     const RNG = seedrandom(`${seed}badass`)

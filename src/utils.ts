@@ -35,6 +35,19 @@ export async function loadAnimatedCubeIcon(iconPath: string): Promise<JimpImage[
     return cubeFrames;
 }
 
+export function parseHorizontalSpriteSheet(image: JimpImage, frameCount: number): JimpImage[] {
+    let parsedFrames: JimpImage[] = [];
+
+    const frameWidth = Math.floor(image.bitmap.width / frameCount);
+    for (let frameIndex = 0; frameIndex < frameCount; frameIndex++) {
+        const newImage = image.clone();
+        newImage.crop({x: frameWidth * frameIndex, y: 0, w: frameWidth, h: image.bitmap.height});
+        parsedFrames.push(newImage);
+    }
+
+    return parsedFrames;
+}
+
 export async function saveAnimatedCubeIcon(frames: JimpImage[], iconFileName: string, iconPath: string): Promise<string> {
     if (!fs.existsSync(iconPath)) fs.mkdirSync(iconPath, { recursive: true });
     return new Promise(async (res, rej) => {
