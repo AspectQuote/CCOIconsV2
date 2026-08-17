@@ -9,12 +9,13 @@ export declare enum prefixRenderSteps {
 }
 export declare enum prefixRendererTags {
     isSeeded = 0,
-    needsHeads = 1,
-    needsEyes = 2,
-    needsMouths = 3,
-    needsAccents = 4,
-    needsIconDimensions = 5,
-    needsIcon = 6
+    granularSeed = 1,
+    needsHeads = 2,
+    needsEyes = 3,
+    needsMouths = 4,
+    needsAccents = 5,
+    needsIconDimensions = 6,
+    needsIcon = 7
 }
 export declare const prefixRenderStepSchema: {
     readonly foreground: {
@@ -40,11 +41,13 @@ export type shorthandIconCubeData = {
 };
 export declare function constructShorthandIconCubeData(data?: Partial<shorthandIconCubeData>): shorthandIconCubeData;
 export type shorthandIconPrefixData = {
-    canvasScalar: number;
     renderSteps: {
         [key in prefixRenderSteps]?: {
+            canvasScalar: number;
+            flatCanvasPadding: number;
             frames: number;
             tags: prefixRendererTags[];
+            dontRenderWithPrefixesPresent: PrefixID[];
         };
     };
 };

@@ -1,5 +1,8 @@
 import { Jimp } from "jimp";
 import { JimpImage } from "./utils";
+import path from "path";
+import * as fs from 'fs-extra';
+import { config } from "./config";
 
 export function fillRect(image: JimpImage, rectX: number, rectY: number, width: number, height: number, color: number) {
     image.scan(rectX, rectY, width, height, function (x, y, index) {
@@ -231,4 +234,178 @@ export function strokeImage(image: JimpImage, color: number, thickness: number, 
     }
 
     return newImage;
+}
+
+export function strokeImageWithResize(image: JimpImage, strokes: { color: number, thickness: number, matrix?: strokeMatrix }[]): JimpImage {
+    const totalWidth = strokes.reduce((prev, curr) => {
+        return curr.thickness + prev;
+    }, 0);
+    
+    const newImage = new Jimp({ width: image.bitmap.width + (totalWidth * 2), height: image.bitmap.height + (totalWidth * 2), color: 0x00000000 });
+    newImage.composite(image, totalWidth, totalWidth);
+    image = newImage;
+    for (let strokeIndex = 0; strokeIndex < strokes.length; strokeIndex++) {
+        const newStroke = strokes[strokeIndex];
+        strokeImage(image, newStroke.color, newStroke.thickness, false, newStroke.matrix, true);
+    }
+    return image;
+}
+
+/**
+ * Load an icon spritesheet
+ * @param iconPath Path to the icon you want to load
+ * @returns An array of Jimp images
+ */
+export async function loadAnimatedCubeIcon(iconPath: string): Promise<JimpImage[]> {
+    let cubeFrames: JimpImage[] = [];
+    if (!fs.existsSync(iconPath)) {
+        console.log(`Cube Icon Path not found!\n${path.resolve(iconPath)}`);
+        return cubeFrames;
+    }
+    let rawImageFile: JimpImage = await Jimp.read(iconPath);
+    if (rawImageFile.bitmap.height % rawImageFile.bitmap.width === 0) {
+        let framesInAnimation = rawImageFile.bitmap.height / rawImageFile.bitmap.width;
+        for (let frameIndex = 0; frameIndex < framesInAnimation; frameIndex++) {
+            let newImage = rawImageFile.clone();
+            newImage.crop({
+                x: 0,
+                y: rawImageFile.bitmap.width * frameIndex,
+                w: rawImageFile.bitmap.width,
+                h: rawImageFile.bitmap.width
+            })
+            cubeFrames.push(newImage)
+        }
+    } else {
+        cubeFrames.push(rawImageFile);
+    }
+    return cubeFrames;
+}
+
+export function parseHorizontalSpriteSheet(image: JimpImage, frameCount: number): JimpImage[] {
+    let parsedFrames: JimpImage[] = [];
+
+    const frameWidth = Math.floor(image.bitmap.width / frameCount);
+    for (let frameIndex = 0; frameIndex < frameCount; frameIndex++) {
+        const newImage = image.clone();
+        newImage.crop({ x: frameWidth * frameIndex, y: 0, w: frameWidth, h: image.bitmap.height });
+        parsedFrames.push(newImage);
+    }
+
+    return parsedFrames;
+}
+
+export async function generateSmallWordImage(word: string, background: number, color: number, padding: number): Promise<JimpImage> {
+    const alphabetLetters = parseHorizontalSpriteSheet(await Jimp.read(`${config.sourceImagesDirectory}/misc/smallalphabet.png`), 38);
+    return await assembleWordImage(word, alphabetLetters, background, color, padding);
+}
+
+const lowerCaseCharCodeOffset = 97;
+const upperCaseCharCodeOffset = 65;
+const spaceCharCode = 32;
+const singleQuoteCharCode = 39;
+const doubleQuoteCharCode = 34;
+const exclamationCharCode = 33;
+const questionMarkCharCode = 63;
+const periodCharCode = 46;
+const dashCharCode = 45;
+const underscoreCharCode = 95;
+const equalsCharCode = 61;
+const plusCharCode = 43;
+const openParenthesisCharCode = 40;
+const closedParenthesisCharCode = 41;
+export async function assembleWordImage(word: string, alphabetLetters: JimpImage[], background: number, color: number, padding: number): Promise<JimpImage> {
+    const imageWidth = alphabetLetters[0].bitmap.width * word.length;
+    const imageHeight = alphabetLetters[0].bitmap.height / 2;
+    const image = new Jimp({ width: imageWidth, height: imageHeight, color: 0x000000});
+
+    const letterArray = word.split('');
+
+    let writeXPosition = 0;
+    for (let letterArrayIndex = 0; letterArrayIndex < letterArray.length; letterArrayIndex++) {
+        const character = letterArray[letterArrayIndex];
+        let letterImageIndex = character.charCodeAt(0);
+        let cropYOffset = 0;
+        if (!Number.isNaN(parseInt(character))) { // Character is a number
+            letterImageIndex = 26 + parseInt(character);
+        } else if (letterImageIndex === spaceCharCode) { // Character is a space
+            letterImageIndex = 26;
+            cropYOffset += imageHeight;
+        } else if (letterImageIndex === singleQuoteCharCode) { // Character is a single quote
+            letterImageIndex = 27;
+            cropYOffset += imageHeight;
+        } else if (letterImageIndex === doubleQuoteCharCode) { // Character is a double quote
+            letterImageIndex = 28;
+            cropYOffset += imageHeight;
+        } else if (letterImageIndex === exclamationCharCode) { // Character is an exclamation point
+            letterImageIndex = 29;
+            cropYOffset += imageHeight;
+        } else if (letterImageIndex === questionMarkCharCode) { // Character is a question mark
+            letterImageIndex = 30;
+            cropYOffset += imageHeight;
+        } else if (letterImageIndex === periodCharCode) { // Character is a period
+            letterImageIndex = 31;
+            cropYOffset += imageHeight;
+        } else if (letterImageIndex === dashCharCode) { // Character is a dash
+            letterImageIndex = 32;
+            cropYOffset += imageHeight;
+        } else if (letterImageIndex === underscoreCharCode) { // Character is an underscore
+            letterImageIndex = 33;
+            cropYOffset += imageHeight;
+        } else if (letterImageIndex === equalsCharCode) { // Character is a equals sign
+            letterImageIndex = 34;
+            cropYOffset += imageHeight;
+        } else if (letterImageIndex === plusCharCode) { // Character is a plus sign
+            letterImageIndex = 35;
+            cropYOffset += imageHeight;
+        } else if (letterImageIndex === openParenthesisCharCode) { // Character is an open parenthesis
+            letterImageIndex = 36;
+            cropYOffset += imageHeight;
+        } else if (letterImageIndex === closedParenthesisCharCode) { // Character is a closed parenthesis
+            letterImageIndex = 36;
+        } else if (character.toUpperCase() === character) { // Character is uppercase
+            letterImageIndex -= upperCaseCharCodeOffset;
+        } else { // Character is lowercase
+            letterImageIndex -= lowerCaseCharCodeOffset;
+            cropYOffset += imageHeight;
+        }
+        if (letterImageIndex < 0 || letterImageIndex >= alphabetLetters.length) {
+            letterImageIndex = alphabetLetters.length - 1;
+        }
+
+        const characterImage = alphabetLetters[letterImageIndex].clone().crop({ x: 0, y: cropYOffset, w: alphabetLetters[0].bitmap.width, h: imageHeight + cropYOffset });
+
+        characterImage.scan(function (x, y, idx) {
+            if (characterImage.bitmap.data[idx + 3] > 0) {
+                image.setPixelColor(color, (x + writeXPosition) % image.bitmap.width, y % image.bitmap.height);
+            }
+        })
+
+        writeXPosition += characterImage.bitmap.width;
+    }
+
+    const outputImage = new Jimp({ width: image.bitmap.width + (padding * 2), height: image.bitmap.height + (padding * 2), color: background });
+    outputImage.composite(image, padding, padding);
+    return outputImage;
+}
+
+export async function saveAnimatedCubeIcon(frames: JimpImage[], iconFileName: string, iconPath: string): Promise<string> {
+    if (!fs.existsSync(iconPath)) fs.mkdirSync(iconPath, { recursive: true });
+    return new Promise(async (res, rej) => {
+        const imagePath = `${iconPath}/${iconFileName}.png` as `${string}.${string}`;
+        if (frames.length > 1) {
+            let imageSpriteSheet = new Jimp({
+                width: frames[0].bitmap.width,
+                height: frames[0].bitmap.height * frames.length,
+                color: 0x00000000
+            });
+            frames.forEach((frame, idx) => {
+                imageSpriteSheet.composite(frame, 0, idx * frames[0].bitmap.height)
+            });
+            await imageSpriteSheet.write(imagePath);
+        } else {
+            // @ts-ignore. Something wrong with Jimp types.
+            await frames[0].write(imagePath);
+        }
+        res(imagePath);
+    })
 }

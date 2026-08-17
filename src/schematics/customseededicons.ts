@@ -1,9 +1,10 @@
 import { Jimp, ResizeStrategy } from "jimp";
 import { config } from "../config";
-import { JimpImage, loadAnimatedCubeIcon, saveAnimatedCubeIcon } from "../utils";
+import { JimpImage } from "../utils";
 import { allCubeIDs, CubeID, cubeSchema } from "./importedschematics/cubes";
 import seedrandom from "seedrandom";
 import { generatePatternedCubeParts, getRawCubePartPaths, loadStaticCubeParts } from "../cubeparts";
+import { loadAnimatedCubeIcon, saveAnimatedCubeIcon } from "../imageutils";
 
 
 export type customSeededCubeIconPath = ((seed: number) => Promise<string>) | string;

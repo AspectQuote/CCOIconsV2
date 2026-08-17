@@ -13,13 +13,15 @@ export function turnCubePartsIntoShorthandData(parts: cubePartDefinition): short
 
 export function turnPrefixRendererIntoShorthandData(renderer: prefixRendererDefinition): shorthandIconPrefixData {
     return constructShorthandIconPrefixData({
-        canvasScalar: renderer.canvasScale,
         renderSteps: (Object.keys(renderer.renderSteps) as unknown as prefixRenderSteps[]).reduce((prev, step) => {
             prev[step] = {
                 frames: renderer.renderSteps[step]?.frames ?? 1,
-                tags: renderer.renderSteps[step]?.tags ?? []
+                tags: renderer.renderSteps[step]?.tags ?? [],
+                canvasScalar: renderer.renderSteps[step]?.canvasScale ?? 1,
+                flatCanvasPadding: renderer.renderSteps[step]?.flatCanvasPadding ?? 0,
+                dontRenderWithPrefixesPresent: renderer.renderSteps[step]?.dontRenderWithPrefixesPresent ?? []
             }
             return prev;
-        }, {} as {[key in prefixRenderSteps]?: {frames: number, tags: prefixRendererTags[]}})
+        }, {} as shorthandIconPrefixData["renderSteps"])
     })
 }

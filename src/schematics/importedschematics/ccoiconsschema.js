@@ -17,12 +17,13 @@ export var prefixRenderSteps;
 export var prefixRendererTags;
 (function (prefixRendererTags) {
     prefixRendererTags[prefixRendererTags["isSeeded"] = 0] = "isSeeded";
-    prefixRendererTags[prefixRendererTags["needsHeads"] = 1] = "needsHeads";
-    prefixRendererTags[prefixRendererTags["needsEyes"] = 2] = "needsEyes";
-    prefixRendererTags[prefixRendererTags["needsMouths"] = 3] = "needsMouths";
-    prefixRendererTags[prefixRendererTags["needsAccents"] = 4] = "needsAccents";
-    prefixRendererTags[prefixRendererTags["needsIconDimensions"] = 5] = "needsIconDimensions";
-    prefixRendererTags[prefixRendererTags["needsIcon"] = 6] = "needsIcon";
+    prefixRendererTags[prefixRendererTags["granularSeed"] = 1] = "granularSeed";
+    prefixRendererTags[prefixRendererTags["needsHeads"] = 2] = "needsHeads";
+    prefixRendererTags[prefixRendererTags["needsEyes"] = 3] = "needsEyes";
+    prefixRendererTags[prefixRendererTags["needsMouths"] = 4] = "needsMouths";
+    prefixRendererTags[prefixRendererTags["needsAccents"] = 5] = "needsAccents";
+    prefixRendererTags[prefixRendererTags["needsIconDimensions"] = 6] = "needsIconDimensions";
+    prefixRendererTags[prefixRendererTags["needsIcon"] = 7] = "needsIcon";
 })(prefixRendererTags || (prefixRendererTags = {}));
 export const prefixRenderStepSchema = {
     foreground: {
@@ -52,7 +53,6 @@ const tagsThatMeanCubeFramesAreNeeded = [prefixRendererTags.needsHeads, prefixRe
 export function getNeededFramesForPrefix(prefixID, mainPrefixStep, otherPrefixes, otherSteps, cubeID, shorthandSchema) {
     const prefixTags = aggregatePrefixTags(prefixID, otherPrefixes, mainPrefixStep, otherSteps, shorthandSchema);
     const cubeFrames = tagsThatMeanCubeFramesAreNeeded.some(tag => prefixTags.includes(tag)) ? (shorthandSchema.cubes[cubeID]?.frames ?? 1) : 1;
-    console.log("CubeFrames: ", cubeFrames);
     const mainPrefixDefinition = shorthandSchema.prefixes[prefixID];
     return [
         cubeFrames,
@@ -97,7 +97,6 @@ export function constructShorthandIconCubeData(data = {}) {
 }
 export function constructShorthandIconPrefixData(data = {}) {
     return {
-        canvasScalar: data.canvasScalar ?? 1,
         renderSteps: data.renderSteps ?? {}
     };
 }

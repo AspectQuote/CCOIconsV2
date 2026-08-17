@@ -4,8 +4,8 @@ import cors from 'cors';
 import { cubePartDefinition, loadStaticCubeParts, turnPrefixRenderInputsIntoHashableString } from './cubeparts';
 import * as fs from 'fs-extra';
 import { patternedCubeSchema } from './schematics/patterneditems';
-import { JimpImage, saveAnimatedCubeIcon } from './utils';
-import { allCubeIDs, CubeID } from './schematics/importedschematics/cubes';
+import { JimpImage } from './utils';
+import { allCubeIDs, CubeID, cubeSchema } from './schematics/importedschematics/cubes';
 import { allPrefixes, PrefixID } from './schematics/importedschematics/prefixes';
 import { turnCubePartsIntoShorthandData, turnPrefixRendererIntoShorthandData } from './shorthandicondata';
 import { constructPrefixRenderer, prefixRenderers, renderPrefixSteps } from './schematics/prefixrenderers';
@@ -15,6 +15,7 @@ import { Jimp } from 'jimp';
 import { applyImageEffect, createBSideV2Image, turnFramesBSide } from './imageeffects';
 import { cubeIconRouteParams, customBackgroundImageRouteParams, parseCubeIconRouteParams, parseCustomBackgroundRouteParams, parsePrefixIconRouteParams, prefixIconRouteParams } from './cubeiconroutehelpers';
 import { hash } from 'crypto';
+import { saveAnimatedCubeIcon } from './imageutils';
 
 const app = express();
 
@@ -67,13 +68,13 @@ app.listen(config.serverPort, async () => {
         const givenParams = parseCubeIconRouteParams(req.params);
         const givenOutputDirectory = `${config.outputDirectory}/cubeicons/${givenParams.bSide ? 'bside/' : ''}`;
         const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, givenParams.cubeSeed);
-        const hashableStringData = turnPrefixRenderInputsIntoHashableString('sacred', prefixRenderStepSchema.cube.mainPrefix, givenParams.prefixList, prefixRenderStepSchema.cube.otherPrefixes, givenParams.prefixSeed, cubeParts, cubeIconDataSchema, true);
-        if (config.devmode) console.log(givenParams, hashableStringData.string);
+        const hashableStringData = turnPrefixRenderInputsIntoHashableString('sacred', prefixRenderStepSchema.cube.mainPrefix, givenParams.prefixList, prefixRenderStepSchema.cube.otherPrefixes, givenParams.prefixSeed, cubeParts, givenParams.cubeID, cubeIconDataSchema, true);
+        if (config.devmode) console.log(`Cube Icon Hashable: `, hashableStringData.string);
         const givenOutputFileName = `${givenParams.cubeID in patternedCubeSchema ? `${givenParams.cubeSeed}` : ``}${hash('md5', hashableStringData.string)}${givenParams.cubeID}`;
         const givenOutputFile = `${givenOutputDirectory}/${givenOutputFileName}.png` as const;
 
         if (!fs.existsSync(givenOutputFile) || config.devmode) {
-            const renderedCube = await renderPrefixSteps('sacred', givenParams.prefixList, prefixRenderStepSchema.cube.mainPrefix, prefixRenderStepSchema.cube.otherPrefixes, givenParams.cubeID, cubeParts, givenParams.prefixSeed, cubeIconDataSchema, cubeParts.icon);
+            const renderedCube = await renderPrefixSteps('sacred', givenParams.prefixList, prefixRenderStepSchema.cube.mainPrefix, prefixRenderStepSchema.cube.otherPrefixes, givenParams.cubeID, cubeParts, givenParams.prefixSeed, cubeIconDataSchema, cubeSchema[givenParams.cubeID], cubeParts.icon);
             if (givenParams.bSide) await turnFramesBSide(renderedCube);
             await saveAnimatedCubeIcon(renderedCube, givenOutputFileName, givenOutputDirectory);
         }
@@ -88,13 +89,14 @@ app.listen(config.serverPort, async () => {
         }
 
         const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, givenParams.cubeSeed);
-        const hashableStringData = turnPrefixRenderInputsIntoHashableString(givenParams.prefixID, mainStep, givenParams.otherPrefixes, otherSteps, givenParams.prefixSeed, cubeParts, cubeIconDataSchema);
+        const hashableStringData = turnPrefixRenderInputsIntoHashableString(givenParams.prefixID, mainStep, givenParams.otherPrefixes, otherSteps, givenParams.prefixSeed, cubeParts, givenParams.cubeID, cubeIconDataSchema);
+        if (config.devmode) console.log(`Prefix Icon Hashable String: `, hashableStringData.string);
         const givenOutputFileName = `${givenParams.prefixID}${hash('md5', hashableStringData.string)}`;
         const givenOutputDirectory = `${config.outputDirectory}/prefixicons/${pathAddition}/${givenParams.bSide ? 'bside/' : ''}`;
         const givenOutputFile = `${givenOutputDirectory}${givenOutputFileName}.png` as const;
 
         if (!fs.existsSync(givenOutputFile) || config.devmode) {
-            const renderedLayer = await renderPrefixSteps(givenParams.prefixID, givenParams.otherPrefixes, mainStep, otherSteps, givenParams.cubeID, cubeParts, givenParams.prefixSeed, cubeIconDataSchema);
+            const renderedLayer = await renderPrefixSteps(givenParams.prefixID, givenParams.otherPrefixes, mainStep, otherSteps, givenParams.cubeID, cubeParts, givenParams.prefixSeed, cubeIconDataSchema, cubeSchema[givenParams.cubeID]);
             if (givenParams.bSide) await turnFramesBSide(renderedLayer);
             await saveAnimatedCubeIcon(renderedLayer, givenOutputFileName, givenOutputDirectory);
         }
