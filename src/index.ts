@@ -34,6 +34,7 @@ app.listen(config.serverPort, async () => {
     for (let cubeIDIndex = 0; cubeIDIndex < allCubeIDs.length; cubeIDIndex++) {
         const currentCubeID = allCubeIDs[cubeIDIndex];
         const staticParts = await loadStaticCubeParts(currentCubeID, 0);
+        if ((staticParts.icon[0].bitmap.width % 4) !== 0) console.log(`Cube ${currentCubeID} does not have a resolution divisible by 4!`);
         cachedCubeParts[currentCubeID] = staticParts
         cubeIconDataSchema.cubes[currentCubeID] = turnCubePartsIntoShorthandData(staticParts);
     }
@@ -70,7 +71,7 @@ app.listen(config.serverPort, async () => {
         const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, givenParams.cubeSeed);
         const hashableStringData = turnPrefixRenderInputsIntoHashableString('sacred', prefixRenderStepSchema.cube.mainPrefix, givenParams.prefixList, prefixRenderStepSchema.cube.otherPrefixes, givenParams.prefixSeed, cubeParts, givenParams.cubeID, cubeIconDataSchema, true);
         if (config.devmode) console.log(`Cube Icon Hashable: `, hashableStringData.string);
-        const givenOutputFileName = `${givenParams.cubeID in patternedCubeSchema ? `${givenParams.cubeSeed}` : ``}${hash('md5', hashableStringData.string)}${givenParams.cubeID}`;
+        const givenOutputFileName = `${givenParams.cubeID in patternedCubeSchema ? `${givenParams.cubeSeed}` : ``}${givenParams.cubeID}${hash('md5', hashableStringData.string)}`;
         const givenOutputFile = `${givenOutputDirectory}/${givenOutputFileName}.png` as const;
 
         if (!fs.existsSync(givenOutputFile) || config.devmode) {

@@ -195,7 +195,7 @@ export function strokeImage(image: JimpImage, color: number, thickness: number, 
                             y: y + matrixYIndex
                         }
                         if (coord.x !== x || coord.y !== y) {
-                            if (coord.x < 0 || coord.y < 0 || coord.x >= image.bitmap.width || coord.y >= image.bitmap.height || image.bitmap.data[image.getPixelIndex(coord.x, coord.y) + 3] === 0) {
+                            if (!(coord.x < 0 || coord.y < 0 || coord.x >= image.bitmap.width || coord.y >= image.bitmap.height) && image.bitmap.data[image.getPixelIndex(coord.x, coord.y) + 3] === 0) {
                                 outlineCoords.push({ x: coord.x, y: coord.y });
                             }
                         }
@@ -408,4 +408,67 @@ export async function saveAnimatedCubeIcon(frames: JimpImage[], iconFileName: st
         }
         res(imagePath);
     })
+}
+
+export function drawLine(image: JimpImage, color: number, startPoint: { x: number, y: number }, endPoint: { x: number, y: number }) {
+    const deltaX = Math.abs(endPoint.x - startPoint.x);
+    const scalarX = (startPoint.x < endPoint.x) ? 1 : -1;
+    const deltaY = -Math.abs(endPoint.y - startPoint.y);
+    const scalarY = (startPoint.y < endPoint.y) ? 1 : -1;
+    const currentCoordinate = structuredClone(startPoint);
+    let coordinateError = deltaX + deltaY;
+
+    while (true) {
+        image.setPixelColor(color, currentCoordinate.x, currentCoordinate.y);
+        const doubleError = 2 * coordinateError;
+        if (doubleError > deltaY) {
+            if (currentCoordinate.x === endPoint.x) break;
+            coordinateError += deltaY;
+            currentCoordinate.x += scalarX;
+        }
+
+        if (doubleError <= deltaX) {
+            if (currentCoordinate.y === endPoint.y) break;
+            coordinateError += deltaX;
+            currentCoordinate.y += scalarY;
+        }
+    }
+
+    // const overallXChange = endPoint.x - startPoint.x;
+    // const overallYChange = endPoint.y - startPoint.y;
+
+    // if (Math.abs(overallYChange) < Math.abs(overallXChange)) {
+        
+    // } else {
+    //     let xChange = endPoint.x - startPoint.x;
+    //     let yChange = endPoint.y - startPoint.y;
+    //     let currentX = startPoint.x;
+    //     let startY = startPoint.y;
+    //     let endY = endPoint.y;
+
+    //     if (startPoint.y < endPoint.y) {
+    //         xChange = startPoint.x - endPoint.x;
+    //         yChange = startPoint.y - endPoint.y;
+    //         currentX = endPoint.x;
+    //         startY = endPoint.y;
+    //         endY = startPoint.y;
+    //     }
+
+    //     let xi = 1;
+    //     if (xChange < 0) {
+    //         xi = -xi;
+    //         xChange = -xChange;
+    //     }
+    //     let distance = (2 * xChange) - yChange;
+
+    //     for (let currentY = startY; currentY < endY; currentY++) {
+    //         image.setPixelColor(color, currentX, currentY);
+    //         if (distance > 0) {
+    //             currentX += xi;
+    //             distance += (2 * (xChange - yChange));
+    //         } else {
+    //             distance += 2 * xChange;
+    //         }
+    //     }
+    // }
 }

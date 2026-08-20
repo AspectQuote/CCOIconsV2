@@ -50,17 +50,53 @@ export function frameCountFromPrefixesInList(prefixList, steps, shorthandSchema)
     }).flat(1);
 }
 const tagsThatMeanCubeFramesAreNeeded = [prefixRendererTags.needsHeads, prefixRendererTags.needsEyes, prefixRendererTags.needsMouths, prefixRendererTags.needsAccents, prefixRendererTags.needsIcon];
-export function getNeededFramesForPrefix(prefixID, mainPrefixStep, otherPrefixes, otherSteps, cubeID, shorthandSchema) {
-    const prefixTags = aggregatePrefixTags(prefixID, otherPrefixes, mainPrefixStep, otherSteps, shorthandSchema);
+export function getNeededFramesForPrefix(prefixID, mainPrefixStep, otherPrefixes, otherSteps, cubeID, shorthandSchema, all = false) {
+    const usingOtherPrefixes = filterOtherPrefixesForNeeded(prefixID, mainPrefixStep, otherPrefixes, otherSteps, shorthandSchema, all);
+    const prefixTags = aggregatePrefixTags(prefixID, usingOtherPrefixes, mainPrefixStep, otherSteps, shorthandSchema);
     const cubeFrames = tagsThatMeanCubeFramesAreNeeded.some(tag => prefixTags.includes(tag)) ? (shorthandSchema.cubes[cubeID]?.frames ?? 1) : 1;
     const mainPrefixDefinition = shorthandSchema.prefixes[prefixID];
     return [
         cubeFrames,
         mainPrefixDefinition?.renderSteps?.[mainPrefixStep]?.frames ?? 1,
-        ...frameCountFromPrefixesInList(otherPrefixes, otherSteps, shorthandSchema)
+        ...frameCountFromPrefixesInList(usingOtherPrefixes, otherSteps, shorthandSchema)
     ].reduce((prev, curr) => {
         return leastCommonMultiple(prev, curr);
     }, 1);
+}
+export function filterOtherPrefixesForNeeded(mainPrefix, mainPrefixStep, otherPrefixes, otherSteps, shorthandSchema, all = false) {
+    if (!all) {
+        const mainRenderer = shorthandSchema.prefixes[mainPrefix];
+        if (!mainRenderer)
+            return [];
+        if (!mainRenderer.renderSteps[mainPrefixStep])
+            return [];
+    }
+    const mainRendererStep = shorthandSchema.prefixes[mainPrefix]?.renderSteps[mainPrefixStep] ?? constructShorthandIconPrefixDataRenderStep({});
+    return otherPrefixes.filter(prefixID => {
+        if (mainRendererStep.affectedByOtherPrefixes.includes(prefixID))
+            return true;
+        if (otherSteps.length === 0)
+            return false;
+        const otherRenderer = shorthandSchema.prefixes[prefixID];
+        return otherRenderer && prefixID !== mainPrefix && otherSteps.some(otherStep => {
+            return otherRenderer.renderSteps[otherStep];
+        });
+    });
+}
+export function getTotalFlatCanvasPaddingForAppliedSteps(otherPrefixes, otherSteps, shorthandSchema) {
+    const usingOtherPrefixes = filterOtherPrefixesForNeeded("sacred", prefixRenderSteps.background, otherPrefixes, otherSteps, shorthandSchema, true);
+    return usingOtherPrefixes.reduce((prev, otherPrefixID) => {
+        const otherPrefixRenderer = shorthandSchema.prefixes[otherPrefixID];
+        if (otherPrefixRenderer) {
+            return otherSteps.reduce((prev, otherStepID) => {
+                if (otherPrefixRenderer.renderSteps[otherStepID]) {
+                    return otherPrefixRenderer.renderSteps[otherStepID].flatCanvasPadding;
+                }
+                return prev;
+            }, 0);
+        }
+        return prev;
+    }, 0);
 }
 export function aggregatePrefixTags(mainPrefix, otherPrefixes, mainStep, otherSteps, shorthandSchema, ignoreMain = false) {
     const mainRenderer = shorthandSchema.prefixes[mainPrefix];
@@ -93,6 +129,16 @@ export function constructShorthandIconCubeData(data = {}) {
     return {
         frames: data.frames ?? 1,
         scalar: data.scalar ?? 1
+    };
+}
+function constructShorthandIconPrefixDataRenderStep(data) {
+    return {
+        canvasScalar: data.canvasScalar ?? 1,
+        flatCanvasPadding: data.flatCanvasPadding ?? 0,
+        frames: data.frames ?? 1,
+        tags: data.tags ?? [],
+        dontRenderWithPrefixesPresent: data.dontRenderWithPrefixesPresent ?? [],
+        affectedByOtherPrefixes: data.affectedByOtherPrefixes ?? []
     };
 }
 export function constructShorthandIconPrefixData(data = {}) {

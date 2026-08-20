@@ -32,5 +32,10 @@ export const config = {
     /**
      * The most amount of pixels the B-Side algorithm will process, higher resolutions than this will be resized to fit this # of pixels.
      */
-    bSideMaxPixels: 15000
+    bSideMaxPixels: 15000,
+
+    /**
+     * The B-Side iteration count
+     */
+    cubeIconBSideIterations: 2
 }

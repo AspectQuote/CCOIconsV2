@@ -1090,6 +1090,6 @@ export async function applyImageEffect(inputImage: JimpImage, filterName: filter
 export async function turnFramesBSide(frames: JimpImage[]) {
     for (let frameIndex = 0; frameIndex < frames.length; frameIndex++) {
         const frame = frames[frameIndex];
-        frames[frameIndex] = await createBSideV2Image(frame, undefined, 3);
+        frames[frameIndex] = await createBSideV2Image(frame, undefined, config.cubeIconBSideIterations);
     }
 }

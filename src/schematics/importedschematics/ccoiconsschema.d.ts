@@ -33,22 +33,26 @@ export declare const prefixRenderStepSchema: {
 };
 export type prefixRenderStepSchemaID = keyof typeof prefixRenderStepSchema;
 export declare function frameCountFromPrefixesInList(prefixList: PrefixID[], steps: prefixRenderSteps[], shorthandSchema: shorthandIconDataSchema): number[];
-export declare function getNeededFramesForPrefix(prefixID: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherSteps: prefixRenderSteps[], cubeID: CubeID, shorthandSchema: shorthandIconDataSchema): number;
+export declare function getNeededFramesForPrefix(prefixID: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherSteps: prefixRenderSteps[], cubeID: CubeID, shorthandSchema: shorthandIconDataSchema, all?: boolean): number;
+export declare function filterOtherPrefixesForNeeded(mainPrefix: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherSteps: prefixRenderSteps[], shorthandSchema: shorthandIconDataSchema, all?: boolean): PrefixID[];
+export declare function getTotalFlatCanvasPaddingForAppliedSteps(otherPrefixes: PrefixID[], otherSteps: prefixRenderSteps[], shorthandSchema: shorthandIconDataSchema): number;
 export declare function aggregatePrefixTags(mainPrefix: PrefixID, otherPrefixes: PrefixID[], mainStep: prefixRenderSteps, otherSteps: prefixRenderSteps[], shorthandSchema: shorthandIconDataSchema, ignoreMain?: boolean): prefixRendererTags[];
 export type shorthandIconCubeData = {
     frames: number;
     scalar: number;
 };
 export declare function constructShorthandIconCubeData(data?: Partial<shorthandIconCubeData>): shorthandIconCubeData;
+export type shorthandIconPrefixDataRenderStep = {
+    canvasScalar: number;
+    flatCanvasPadding: number;
+    frames: number;
+    tags: prefixRendererTags[];
+    dontRenderWithPrefixesPresent: PrefixID[];
+    affectedByOtherPrefixes: PrefixID[];
+};
 export type shorthandIconPrefixData = {
     renderSteps: {
-        [key in prefixRenderSteps]?: {
-            canvasScalar: number;
-            flatCanvasPadding: number;
-            frames: number;
-            tags: prefixRendererTags[];
-            dontRenderWithPrefixesPresent: PrefixID[];
-        };
+        [key in prefixRenderSteps]?: shorthandIconPrefixDataRenderStep;
     };
 };
 export declare function constructShorthandIconPrefixData(data?: Partial<shorthandIconPrefixData>): shorthandIconPrefixData;

@@ -19,7 +19,8 @@ export function turnPrefixRendererIntoShorthandData(renderer: prefixRendererDefi
                 tags: renderer.renderSteps[step]?.tags ?? [],
                 canvasScalar: renderer.renderSteps[step]?.canvasScale ?? 1,
                 flatCanvasPadding: renderer.renderSteps[step]?.flatCanvasPadding ?? 0,
-                dontRenderWithPrefixesPresent: renderer.renderSteps[step]?.dontRenderWithPrefixesPresent ?? []
+                dontRenderWithPrefixesPresent: renderer.renderSteps[step]?.dontRenderWithPrefixesPresent ?? [],
+                affectedByOtherPrefixes: renderer.renderSteps[step]?.affectedByOtherPrefixes ?? []
             }
             return prev;
         }, {} as shorthandIconPrefixData["renderSteps"])
