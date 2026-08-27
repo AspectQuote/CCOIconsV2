@@ -3435,7 +3435,7 @@ export declare const cubeSchema: {
         readonly authorNames: ["612d6620b5d4bc3222b310e5"];
     };
     readonly turtle: {
-        readonly author: "Kiosanna";
+        readonly author: "Kiosanna, Edits by AspectQuote";
         readonly name: "Turtle Cube";
         readonly desc: "I liek toitles";
         readonly tags: ["Wet", "Organic"];
@@ -4078,7 +4078,7 @@ export declare const cubeSchema: {
         readonly price: 102;
         readonly authorNames: ["6172c9f90adecc7bfb84388f"];
     };
-    readonly theobject: {
+    readonly objectcube: {
         readonly author: "Lain, Josh Lain.";
         readonly name: "Something..?";
         readonly desc: "What is this?";
@@ -4330,7 +4330,7 @@ export declare const cubeSchema: {
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly panda: {
-        readonly author: "Kiosanna";
+        readonly author: "Kiosanna, Edits by AspectQuote";
         readonly name: "Panda Cube";
         readonly desc: "Fat lard! Get a job!";
         readonly tags: ["Organic", "Pure", "Heavy"];
@@ -4350,7 +4350,7 @@ export declare const cubeSchema: {
         readonly authorNames: ["61989990ac937d1d02d47cae"];
     };
     readonly polarbear: {
-        readonly author: "Kiosanna";
+        readonly author: "Kiosanna, Edits by AspectQuote";
         readonly name: "Polar Bear Cube";
         readonly desc: "Bear at the poles! or the polls? can bears vote?";
         readonly tags: ["Organic", "Pure"];
@@ -4767,7 +4767,7 @@ export declare const cubeSchema: {
         readonly authorNames: ["61989990ac937d1d02d47cae"];
     };
     readonly penguin: {
-        readonly author: "Kiosanna";
+        readonly author: "Kiosanna, Edits by AspectQuote";
         readonly name: "Penguin Cube";
         readonly desc: "What sounds do penguins make? I forget.";
         readonly tags: ["Organic", "Pure"];
@@ -4777,7 +4777,7 @@ export declare const cubeSchema: {
         readonly authorNames: ["61989990ac937d1d02d47cae"];
     };
     readonly pineapple: {
-        readonly author: "Kiosanna";
+        readonly author: "AspectQuote";
         readonly name: "Pineapple Cube";
         readonly desc: "P tastey.";
         readonly tags: ["Organic", "Edible"];
@@ -4787,7 +4787,7 @@ export declare const cubeSchema: {
         readonly authorNames: ["61989990ac937d1d02d47cae"];
     };
     readonly strawberry: {
-        readonly author: "Kiosanna";
+        readonly author: "AspectQuote";
         readonly name: "Strawberry Cube";
         readonly desc: "P tastey?";
         readonly tags: ["Organic", "Edible"];
@@ -5206,7 +5206,7 @@ export declare const cubeSchema: {
         readonly authorNames: ["612c16aab5d4bc3222b30ef7"];
     };
     readonly cub: {
-        readonly author: "Kiosanna";
+        readonly author: "Kiosanna, Edits by AspectQuote";
         readonly name: "Cub Cube";
         readonly desc: "How many cubs could a cub cube cub if a cub cube could cub cubs?";
         readonly tags: ["Organic", "Light"];
@@ -5226,7 +5226,7 @@ export declare const cubeSchema: {
         readonly authorNames: ["61989990ac937d1d02d47cae"];
     };
     readonly koala: {
-        readonly author: "Kiosanna";
+        readonly author: "Kiosanna, Edits by AspectQuote";
         readonly name: "Koala Cube";
         readonly desc: "Vicious as shit ngl man";
         readonly tags: ["Organic", "Light"];
@@ -5247,7 +5247,7 @@ export declare const cubeSchema: {
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly axolotl: {
-        readonly author: "Kiosanna";
+        readonly author: "Kiosanna, Edits by AspectQuote";
         readonly name: "Axolotl Cube";
         readonly desc: "Its like a friggin' space alien lookin' thing!";
         readonly tags: ["Wet", "Slimy"];
@@ -6623,7 +6623,7 @@ export declare const cubeSchema: {
         readonly authorNames: ["612652aa7d635b3526c85610"];
     };
     readonly hanz: {
-        readonly author: "Josh Lain";
+        readonly author: "AspectQuote";
         readonly name: "Hanz Cube";
         readonly desc: "Imminent danger approaches.";
         readonly tags: ["Plastic", "Haunted", "Glass"];

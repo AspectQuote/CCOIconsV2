@@ -5229,7 +5229,7 @@ export const cubeSchema = {
         ]
     },
     "turtle": {
-        "author": "Kiosanna",
+        "author": "Kiosanna, Edits by AspectQuote",
         "name": "Turtle Cube",
         "desc": "I liek toitles",
         "tags": [
@@ -6228,7 +6228,7 @@ export const cubeSchema = {
             "6172c9f90adecc7bfb84388f"
         ]
     },
-    "theobject": {
+    "objectcube": {
         "author": "Lain, Josh Lain.",
         "name": "Something..?",
         "desc": "What is this?",
@@ -6609,7 +6609,7 @@ export const cubeSchema = {
         ]
     },
     "panda": {
-        "author": "Kiosanna",
+        "author": "Kiosanna, Edits by AspectQuote",
         "name": "Panda Cube",
         "desc": "Fat lard! Get a job!",
         "tags": [
@@ -6640,7 +6640,7 @@ export const cubeSchema = {
         ]
     },
     "polarbear": {
-        "author": "Kiosanna",
+        "author": "Kiosanna, Edits by AspectQuote",
         "name": "Polar Bear Cube",
         "desc": "Bear at the poles! or the polls? can bears vote?",
         "tags": [
@@ -7269,7 +7269,7 @@ export const cubeSchema = {
         ]
     },
     "penguin": {
-        "author": "Kiosanna",
+        "author": "Kiosanna, Edits by AspectQuote",
         "name": "Penguin Cube",
         "desc": "What sounds do penguins make? I forget.",
         "tags": [
@@ -7284,7 +7284,7 @@ export const cubeSchema = {
         ]
     },
     "pineapple": {
-        "author": "Kiosanna",
+        "author": "AspectQuote",
         "name": "Pineapple Cube",
         "desc": "P tastey.",
         "tags": [
@@ -7299,7 +7299,7 @@ export const cubeSchema = {
         ]
     },
     "strawberry": {
-        "author": "Kiosanna",
+        "author": "AspectQuote",
         "name": "Strawberry Cube",
         "desc": "P tastey?",
         "tags": [
@@ -7929,7 +7929,7 @@ export const cubeSchema = {
         ]
     },
     "cub": {
-        "author": "Kiosanna",
+        "author": "Kiosanna, Edits by AspectQuote",
         "name": "Cub Cube",
         "desc": "How many cubs could a cub cube cub if a cub cube could cub cubs?",
         "tags": [
@@ -7959,7 +7959,7 @@ export const cubeSchema = {
         ]
     },
     "koala": {
-        "author": "Kiosanna",
+        "author": "Kiosanna, Edits by AspectQuote",
         "name": "Koala Cube",
         "desc": "Vicious as shit ngl man",
         "tags": [
@@ -7991,7 +7991,7 @@ export const cubeSchema = {
         ]
     },
     "axolotl": {
-        "author": "Kiosanna",
+        "author": "Kiosanna, Edits by AspectQuote",
         "name": "Axolotl Cube",
         "desc": "Its like a friggin' space alien lookin' thing!",
         "tags": [
@@ -10036,7 +10036,7 @@ export const cubeSchema = {
         ]
     },
     "hanz": {
-        "author": "Josh Lain",
+        "author": "AspectQuote",
         "name": "Hanz Cube",
         "desc": "Imminent danger approaches.",
         "tags": [

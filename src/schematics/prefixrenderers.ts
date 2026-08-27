@@ -9,7 +9,7 @@ import { filterOtherPrefixesForNeeded, getNeededFramesForPrefix, getTotalFlatCan
 import seedrandom from "seedrandom";
 import { CubeDefinition, CubeID } from "./importedschematics/cubes";
 import { raritySchema } from "./importedschematics/rarities";
-import { dotMatrix, fillHollowRect } from "../imageeffects";
+import { dotMatrix, fillHollowRect, gaussianBlur } from "../imageeffects";
 
 function compositeHeadsToAllFrames(targetFrames: JimpImage[], cubeIconFrame: JimpImage, heads: cubeHead[][], animation: JimpImage[], expectedHeadData: cubeHead) {
     const usingHeads = heads.map(heads => {
@@ -67,6 +67,11 @@ function compositeHeadsToAllFramesWithoutScaling(targetFrames: JimpImage[], cube
 function compositeMouthsToAllFrames(targetFrames: JimpImage[], cubeIconFrame: JimpImage, mouths: cubeMouth[][], animation: JimpImage[], expectedMouthData: cubeMouth) {
     compositeHeadsToAllFrames(targetFrames, cubeIconFrame, mouths, animation, expectedMouthData);
 }
+
+function compositeMouthsToAllFramesWithoutScaling(targetFrames: JimpImage[], cubeIconFrame: JimpImage, mouths: cubeHead[][], animation: JimpImage[], coordinateOffset: { x: number, y: number }, coordinateOffsetFromRight: boolean) {
+    compositeHeadsToAllFramesWithoutScaling(targetFrames, cubeIconFrame, mouths, animation, coordinateOffset, coordinateOffsetFromRight);
+}
+
 
 function compositeEyesToAllFrames(targetFrames: JimpImage[], cubeIconFrame: JimpImage, eyes: cubeEye[][], animation: JimpImage[], customCriteria: (eye: cubeEye, index: number) => boolean = () => true) {
     const coordinateOffset = {
@@ -983,6 +988,92 @@ const prefixRendererConsts = {
                 }
             }
         }
+    },
+    blurry: {
+        renderStep: constructPrefixRendererStep({
+            tags: [
+                prefixRendererTags.needsIcon
+            ],
+            render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
+                    const inputFrame = input[inputFrameIndex];
+                    input[inputFrameIndex] = await gaussianBlur(inputFrame, 4);
+                }
+
+                return true;
+            },
+        })
+    },
+    obfuscating: {
+        renderStep: constructPrefixRendererStep({
+            tags: [
+                prefixRendererTags.needsIcon
+            ],
+            render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                const maxVariance = 6;
+                const halfVariance = maxVariance / 2;
+                for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
+                    const inputFrame = input[inputFrameIndex];
+                    const inputClone = inputFrame.clone();
+                    inputFrame.scan((x, y, idx) => {
+                        let begottenX = Math.floor((Math.random() * maxVariance) - halfVariance);
+                        let begottenY = Math.floor((Math.random() * maxVariance) - halfVariance);
+                        inputFrame.setPixelColor(inputClone.getPixelColor(begottenX + x, begottenY + y), x, y);
+                    })
+                }
+
+                return true;
+            },
+        })
+    },
+    inverted: {
+        renderStep: constructPrefixRendererStep({
+            tags: [
+                prefixRendererTags.needsIcon
+            ],
+            render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
+                    const inputFrame = input[inputFrameIndex];
+                    inputFrame.scan((x, y, idx) => {
+                        inputFrame.bitmap.data[idx + 0] = 255 - inputFrame.bitmap.data[idx + 0];
+                        inputFrame.bitmap.data[idx + 1] = 255 - inputFrame.bitmap.data[idx + 1];
+                        inputFrame.bitmap.data[idx + 2] = 255 - inputFrame.bitmap.data[idx + 2];
+                    })
+                }
+
+                return true;
+            },
+        })
+    },
+    broken: {
+        renderStep: constructPrefixRendererStep({
+            tags: [
+                prefixRendererTags.needsIcon
+            ],
+            flatCanvasPadding: 4,
+            render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                const brokenImage = await Jimp.read(`${prefixSourceDirectory}/broken/broken.png`);
+                const brokenRectangleDistanceFromEdges = 4;
+                for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
+                    const inputFrame = input[inputFrameIndex];
+                    const inputClone = new Jimp({ width: inputFrame.bitmap.width, height: inputFrame.bitmap.height, color: 0x00000000 });
+
+                    fillHollowRect(inputClone, (brokenRectangleDistanceFromEdges + 1), (brokenRectangleDistanceFromEdges + 1), inputFrame.bitmap.width - (brokenRectangleDistanceFromEdges * 2), inputFrame.bitmap.height - (brokenRectangleDistanceFromEdges * 2), 0x848284ff);
+                    fillHollowRect(inputClone, brokenRectangleDistanceFromEdges, brokenRectangleDistanceFromEdges, inputFrame.bitmap.width - (brokenRectangleDistanceFromEdges * 2), inputFrame.bitmap.height - (brokenRectangleDistanceFromEdges * 2), 0xf5f6fdff);
+                    inputClone.composite(brokenImage, (brokenRectangleDistanceFromEdges + 3), (brokenRectangleDistanceFromEdges + 3));
+
+                    input[inputFrameIndex] = inputClone;
+                }
+
+                return true;
+            },
+        })
+    },
+    roaring: {
+        floatAmplitude: 4,
+        frames: 15,
+        floatDistance: 20,
+        trailCount: 8
     }
 } as const;
 
@@ -997,7 +1088,7 @@ const universalPrefixRNGs = {
     normalizedScalar: {
         RNGString: "scalar",
         get: function (RNG: () => number) {
-            const scalarSubdivisions = 30;
+            const scalarSubdivisions = 25;
             return Math.floor(RNG() * scalarSubdivisions) / scalarSubdivisions;
         }
     }
@@ -1427,7 +1518,19 @@ export const prefixRenderers = {
             })
         }
     }),
-    // Come back to Endangered, replace with bear trap.
+    "endangered": constructPrefixRenderer({
+        renderSteps: {
+            ...constructFrontBackPrefixRenderer({
+                backImagePath: `${prefixSourceDirectory}/endangered/back.png`,
+                frontImagePath: `${prefixSourceDirectory}/endangered/front.png`,
+                tags: [prefixRendererTags.needsHeads, prefixRendererTags.isSeeded],
+                canvasModifiers: { scale: 1.5 },
+                renderImage: (seed, layerAnim, input, parts, parsedRNG) => {
+                    compositeHeadsToAllFrames(input, parts.icon[0], parts.heads, layerAnim, { x: 6, y: 0, width: 32 });
+                }
+            })
+        }
+    }),
     "marvelous": constructPrefixRenderer({
         renderSteps: {
             ...constructFrontBackPrefixRenderer({
@@ -4560,7 +4663,6 @@ export const prefixRenderers = {
                     prefixRendererTags.isSeeded,
                     prefixRendererTags.granularSeed,
                     prefixRendererTags.needsEyes,
-                    prefixRendererTags.needsHeads,
                     prefixRendererTags.needsIcon
                 ],
                 flatCanvasPadding: 16,
@@ -5067,7 +5169,271 @@ export const prefixRenderers = {
     }),
     "idiotic": constructPrefixRenderer({
         renderSteps: constructBasicHatPrefixRendererStep(`${prefixSourceDirectory}/idiotic/dunce.png`, { x: 0, y: 22, width: 32 }, 2)
+    }),
+    "sleepy": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                tags: [
+                    prefixRendererTags.needsHeads,
+                    prefixRendererTags.isSeeded
+                ],
+                predefinedRNG: {
+                    hueRotation: universalPrefixRNGs.hueRotation
+                },
+                canvasScale: 1.5,
+                render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const capImage = await Jimp.read(`${prefixSourceDirectory}/sleepy/nightcap.png`);
+                    capImage.color([{apply: "hue", params: [ parsedRNG.hueRotation ]}]);
+
+                    compositeHeadsToAllFrames(input, parts.icon[0], parts.heads, [ capImage ], { x: 8, y: 16, width: 32 });
+
+                    return true;
+                },
+            })
+        }
+    }),
+    "disgusted": constructPrefixRenderer({
+        renderSteps: constructBasicHatPrefixRendererStep(`${prefixSourceDirectory}/disgusted/disgusted.png`, { x: -22, y: 8, width: 32 }, 1.75) 
+    }),
+    "hypnotic": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                frames: 10,
+                tags: [
+                    prefixRendererTags.needsEyes
+                ],
+                flatCanvasPadding: 3,
+                render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const hypnoticEyes = parseHorizontalSpriteSheet(await Jimp.read(`${prefixSourceDirectory}/hypnotic/hypnotic.png`), 10);
+                    compositeEyesToAllFrames(input, parts.icon[0], parts.eyes, hypnoticEyes);
+                    return true;
+                },
+            })
+        }
+    }),
+    "nailed": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                tags: [
+                    prefixRendererTags.isSeeded,
+                    prefixRendererTags.granularSeed,
+                    prefixRendererTags.needsIcon
+                ],
+                flatCanvasPadding: 16,
+                render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const seedGen = seedrandom(`nailed${seed}`);
+                    const lines = generateProtrudingLines(input, parts.icon, seedGen, { maxCount: 16, minCount: 7, minLength: 5, maxLength: 9 });
+                    const nailHeadLength = 2;
+                    const nailColors: number[] = [];
+                    for (let lineIndex = 0; lineIndex < lines[0].length; lineIndex++) {
+                        const nailChannelColor = Math.floor(seedGen() * 50) + 50;
+                        nailColors.push((nailChannelColor * ( 2 ** 24 )) + (nailChannelColor * ( 2 ** 16 )) + (nailChannelColor * ( 2 ** 8 )) + 255)
+                    }
+
+                    for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
+                        const inputFrame = input[inputFrameIndex];
+                        const linesThisFrame = lines[inputFrameIndex % lines.length];
+                        for (let lineIndex = 0; lineIndex < linesThisFrame.length; lineIndex++) {
+                            const line = linesThisFrame[lineIndex];
+                            const nailColor = nailColors[lineIndex % nailColors.length];
+                            drawLine(inputFrame, nailColor, line.start, line.end);
+                            const nailHeadAngle = Math.atan2(line.start.y - line.end.y, line.start.x - line.end.x) + (Math.PI / 2);
+                            const nailHeadEndPositionModifier = { x: Math.round(Math.cos(nailHeadAngle) * nailHeadLength), y: Math.round(Math.sin(nailHeadAngle) * nailHeadLength) };
+                            drawLine(inputFrame, nailColor, { x: line.end.x + nailHeadEndPositionModifier.x, y: line.end.y + nailHeadEndPositionModifier.y }, { x: line.end.x - nailHeadEndPositionModifier.x, y: line.end.y - nailHeadEndPositionModifier.y });
+                        }
+
+                        // strokeImage(inputFrame, 0x424242ff, 1, false, [[0,0,0],[0,0,0],[0,1,0]], true);
+                    }
+
+                    return true;
+                },
+            })
+        }
+    }),
+    "farmboy": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                tags: [
+                    prefixRendererTags.needsMouths
+                ],
+                canvasScale: 2,
+                render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    compositeMouthsToAllFrames(input, parts.icon[0], parts.mouths, [ await Jimp.read(`${prefixSourceDirectory}/farmboy/farmboy.png`) ], { x: 20, y: 4, width: 4 });
+                    return true;
+                },
+            })
+        }
+    }),
+    "blurry": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.applyToCube]: prefixRendererConsts.blurry.renderStep,
+            // [prefixRenderSteps.applyToBackground]: prefixRendererConsts.blurry.renderStep,
+            // [prefixRenderSteps.applyToForeground]: prefixRendererConsts.blurry.renderStep,
+        }
+    }),
+    "obfuscating": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.applyToCube]: prefixRendererConsts.obfuscating.renderStep,
+            // [prefixRenderSteps.applyToBackground]: prefixRendererConsts.obfuscating.renderStep,
+            // [prefixRenderSteps.applyToForeground]: prefixRendererConsts.obfuscating.renderStep,
+        }
+    }),
+    "inverted": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.applyToCube]: prefixRendererConsts.inverted.renderStep,
+            // [prefixRenderSteps.applyToBackground]: prefixRendererConsts.inverted.renderStep,
+            // [prefixRenderSteps.applyToForeground]: prefixRendererConsts.inverted.renderStep,
+        }
+    }),
+    "broken": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.applyToCube]: prefixRendererConsts.broken.renderStep,
+            // [prefixRenderSteps.applyToBackground]: prefixRendererConsts.broken.renderStep,
+            // [prefixRenderSteps.applyToForeground]: prefixRendererConsts.broken.renderStep,
+        }
+    }),
+    "angery": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                tags: [
+                    prefixRendererTags.needsIconDimensions
+                ],
+                canvasScale: 1.5,
+                render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const middleFingerImage = await Jimp.read(`${prefixSourceDirectory}/angery/middlefinger.png`);
+                    const targetSize = parts.icon[0].bitmap.width / 48;
+                    middleFingerImage.resize({ w: Math.ceil(middleFingerImage.bitmap.width * targetSize), h: Math.ceil(middleFingerImage.bitmap.height * targetSize), mode: ResizeStrategy.NEAREST_NEIGHBOR });
+
+                    const compositingFrame = input[0];
+                    compositingFrame.composite(middleFingerImage, compositingFrame.bitmap.width - (middleFingerImage.bitmap.width + 7), compositingFrame.bitmap.height - (middleFingerImage.bitmap.height + 6));
+
+                    return true;
+                },
+            })
+        }
+    }),
+    "despairing": constructPrefixRenderer({
+        renderSteps: constructBasicHatPrefixRendererStep(`${prefixSourceDirectory}/despairing/despairing.png`, { x: 8, y: 16, width: 32 }, 2)
+    }),
+    "dookied": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({ 
+                frames: 5,
+                canvasScale: 1.75,
+                tags: [
+                    prefixRendererTags.needsHeads
+                ],
+                render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    compositeHeadsToAllFrames(input, parts.icon[0], parts.heads, parseHorizontalSpriteSheet(await Jimp.read(`${prefixSourceDirectory}/dookied/dookied.png`), 2), { x: -1, y: 25, width: 32 })
+                    return true;
+                },
+            })
+        }
+    }),
+    "grinning": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                predefinedRNG: {
+                    mouth: {
+                        RNGString: `mouthtype`,
+                        get(RNG) {
+                            return Math.floor(RNG() * 6);
+                        },
+                    }
+                },
+                tags: [
+                    prefixRendererTags.needsMouths,
+                    prefixRendererTags.isSeeded
+                ],
+                render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    compositeMouthsToAllFrames(input, parts.icon[0], parts.mouths, [(parseHorizontalSpriteSheet(await Jimp.read(`${prefixSourceDirectory}/grinning/mouths.png`), 6))[parsedRNG.mouth]], { x: 6, y: 5, width: 4 });
+                    return true;
+                },
+            })
+        }
+    }),
+
+    // scrumptious
+    // constructive
+    // conjoined
+    // misprinted
+    "roaring": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.background]: constructPrefixRendererStep({
+                frames: prefixRendererConsts.roaring.frames,
+                flatCanvasPadding: prefixRendererConsts.roaring.floatDistance,
+                tags: [
+                    prefixRendererTags.needsIcon
+                ],
+                render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const iconPartIndexScalar = parts.icon.length / (input.length - 1);
+                    const iconFloatAngleMultiple = (2 * Math.PI) / (input.length - 1);
+                    const centerCompositePosition = {
+                        x: Math.floor((input[0].bitmap.width - parts.icon[0].bitmap.width) / 2),
+                        y: Math.floor((input[0].bitmap.height - parts.icon[0].bitmap.height) / 2),
+                    }
+                    const trailingSegmentMultiple = (prefixRendererConsts.roaring.floatDistance + (parts.icon[0].bitmap.width)) / prefixRendererConsts.roaring.trailCount;
+                    const angleSegmentMultiple = (2 * Math.PI) / prefixRendererConsts.roaring.trailCount;
+                    const opacitySegmentMultiple = 1 / prefixRendererConsts.roaring.trailCount;
+
+                    const workingOpacityFrames: JimpImage[] = [];
+                    for (let iconFrameIndex = 0; iconFrameIndex < parts.icon.length; iconFrameIndex++) {
+                        workingOpacityFrames.push(parts.icon[iconFrameIndex].clone());
+                    }
+
+                    for (let trailingCubeIndex = prefixRendererConsts.roaring.trailCount - 1; trailingCubeIndex >= 0; trailingCubeIndex--) {
+                        const trailingOffset = trailingSegmentMultiple * trailingCubeIndex;
+                        const angleOffset = angleSegmentMultiple * trailingCubeIndex;
+                        const opacityOffset = opacitySegmentMultiple * trailingCubeIndex;
+                        for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
+                            const progressThisSegment = (iconPartIndexScalar * inputFrameIndex) % 1;
+                            const inputFrame = input[inputFrameIndex];
+                            const cubeIconFrameIndex = Math.floor((inputFrameIndex * iconPartIndexScalar)) % parts.icon.length;
+                            const trailingDistance = trailingOffset + (trailingSegmentMultiple * progressThisSegment);
+                            const floatAngle = (angleOffset + (iconFloatAngleMultiple * inputFrameIndex)) + (angleSegmentMultiple * progressThisSegment);
+                            const opacityMultiple = 1 - (opacityOffset + (opacitySegmentMultiple * progressThisSegment));
+                            const cubeIconFrame = workingOpacityFrames[cubeIconFrameIndex];
+                            cubeIconFrame.scan((x, y, idx) => {
+                                if (cubeIconFrame.bitmap.data[idx + 3] > 0) cubeIconFrame.bitmap.data[idx + 3] = Math.ceil(parts.icon[cubeIconFrameIndex].bitmap.data[idx + 3] * opacityMultiple);
+                            })
+                            
+                            inputFrame.composite(cubeIconFrame, centerCompositePosition.x + trailingDistance, centerCompositePosition.y + Math.round(Math.sin(floatAngle) * prefixRendererConsts.roaring.floatAmplitude));
+                            
+                        }
+                    }
+
+                    return true;
+                },
+            }),
+            [prefixRenderSteps.applyToCube]: constructPrefixRendererStep({
+                frames: prefixRendererConsts.roaring.frames,
+                flatCanvasPadding: prefixRendererConsts.roaring.floatDistance,
+                tags: [
+                    prefixRendererTags.needsIcon
+                ],
+                render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const iconPartIndexScalar = parts.icon.length / (input.length - 1);
+                    const iconFloatAngleMultiple = (2 * Math.PI) / (input.length - 1);
+                    const centerCompositePosition = {
+                        x: Math.floor((input[0].bitmap.width - parts.icon[0].bitmap.width) / 2),
+                        y: Math.floor((input[0].bitmap.height - parts.icon[0].bitmap.height) / 2),
+                    }
+                    for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
+                        const inputFrame = input[inputFrameIndex];
+                        const cubeIconFrameIndex = Math.floor((inputFrameIndex * iconPartIndexScalar)) % parts.icon.length;
+                        const cubeIconFrame = parts.icon[cubeIconFrameIndex];
+                        fillRect(inputFrame, 0, 0, inputFrame.bitmap.width, inputFrame.bitmap.height, 0x00000000);
+
+                        inputFrame.composite(cubeIconFrame, centerCompositePosition.x, centerCompositePosition.y + Math.round(Math.sin(iconFloatAngleMultiple * inputFrameIndex) * prefixRendererConsts.roaring.floatAmplitude));
+                    }
+
+                    return true;
+                },
+            }),
+        }
     })
+    // defeatable
+    // marbleized
 } as {[key in PrefixID]?: prefixRendererDefinition};
 
 export const prefixApplicationOrder = [

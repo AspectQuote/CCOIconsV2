@@ -39,7 +39,7 @@ export const prefixSchema = {
     "based": {
         "name": "Based",
         "multiplier": 126,
-        "desc": "*Earrape Sfx*",
+        "desc": "*LOUD BASS BOOSTED SFX*",
         "universal": true,
         "dropParties": true,
         "dropPartyDateRange": [],
@@ -51,7 +51,7 @@ export const prefixSchema = {
     "orbital": {
         "name": "Orbital",
         "multiplier": 125,
-        "desc": "These cubes are so friggin annoying. They think they're the center of the universe! (Prefix Idea by Gary)",
+        "desc": "The center of its own little universe!",
         "universal": true,
         "dropParties": true,
         "dropPartyDateRange": [],
@@ -124,7 +124,7 @@ export const prefixSchema = {
     "endangered": {
         "name": "Endangered",
         "multiplier": 120,
-        "desc": "This cube has damocles syndrome... whatever that is.",
+        "desc": "IT'S A TRAP!",
         "universal": true,
         "dropParties": true,
         "dropPartyDateRange": [],
@@ -209,7 +209,7 @@ export const prefixSchema = {
     "captain": {
         "name": "Captain",
         "multiplier": 114,
-        "desc": "Too bad it's not on fire, then it would be worth a lot more.",
+        "desc": "YES! PERFECT!",
         "universal": false,
         "dropParties": true,
         "dropPartyDateRange": [],
@@ -254,6 +254,16 @@ export const prefixSchema = {
         ],
         "validSlatedPrefix": true
     },
+    "marbleized": {
+        "name": "Marbleized",
+        "multiplier": 112,
+        "desc": "Jawline chiseled from stone.",
+        "universal": false,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": ["Stony", "Heavy"],
+        "validSlatedPrefix": true
+    },
     "snowy": {
         "name": "Snowy",
         "multiplier": 111,
@@ -264,6 +274,16 @@ export const prefixSchema = {
         "elements": [
             "Cold"
         ],
+        "validSlatedPrefix": true
+    },
+    "roaring": {
+        "name": "Roaring",
+        "multiplier": 111,
+        "desc": "It might be desstructive.",
+        "universal": false,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": ["Haunted", "Heavy"],
         "validSlatedPrefix": true
     },
     "summoning": {
@@ -278,6 +298,16 @@ export const prefixSchema = {
         ],
         "validSlatedPrefix": true
     },
+    "misprinted": {
+        "name": "Misprinted",
+        "multiplier": 110,
+        "desc": "That's gotta be worth overpay.",
+        "universal": false,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [],
+        "validSlatedPrefix": true
+    },
     "swarming": {
         "name": "Swarming",
         "multiplier": 109,
@@ -288,6 +318,16 @@ export const prefixSchema = {
         "elements": [
             "Haunted"
         ],
+        "validSlatedPrefix": true
+    },
+    "conjoined": {
+        "name": "Conjoined",
+        "multiplier": 109,
+        "desc": "Look! He's... smiling?",
+        "universal": false,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": ["Haunted"],
         "validSlatedPrefix": true
     },
     "kramped": {
@@ -305,6 +345,16 @@ export const prefixSchema = {
         ],
         "validSlatedPrefix": true
     },
+    "constructive": {
+        "name": "Constructive",
+        "multiplier": 108,
+        "desc": "Now if it copied the cube to the right...",
+        "universal": false,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": ["Light"],
+        "validSlatedPrefix": true
+    },
     "dandy": {
         "name": "Dandy",
         "multiplier": 107,
@@ -315,6 +365,16 @@ export const prefixSchema = {
         "elements": [
             "Pure"
         ],
+        "validSlatedPrefix": true
+    },
+    "scrumptious": {
+        "name": "Scrumptious",
+        "multiplier": 107,
+        "desc": "Get me a bowl of THAT!",
+        "universal": false,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": ["Edible"],
         "validSlatedPrefix": true
     },
     "incarcerated": {
@@ -874,13 +934,23 @@ export const prefixSchema = {
     "blushing": {
         "name": "Blushing",
         "multiplier": 65,
-        "desc": ">~< I'm so vewwy sowwy I don't add that much vawyou ;-; h-how can I make it up to you, baka?",
+        "desc": ">~< I'm so vewwy sowwy I don't add that much vawyou ;-; h-how can I make it up to you, baka?", // I'm sorry.
         "universal": true,
         "dropParties": true,
         "dropPartyDateRange": [],
         "elements": [
             "Hot"
         ],
+        "validSlatedPrefix": true
+    },
+    "defeatable": {
+        "name": "Defeatable",
+        "multiplier": 65,
+        "desc": "The noise is coming!",
+        "universal": false,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": ["Makes-Noise"],
         "validSlatedPrefix": true
     },
     "sweetened": {
@@ -1631,7 +1701,7 @@ export const prefixSchema = {
     "obfuscating": {
         "name": "Obfuscating",
         "multiplier": 0.7,
-        "desc": "Have fun telling what cube this is by shape alone!",
+        "desc": "A bit jumbled up.",
         "universal": true,
         "dropParties": true,
         "dropPartyDateRange": [],
@@ -1641,7 +1711,7 @@ export const prefixSchema = {
     "inverted": {
         "name": "Inverted",
         "multiplier": 0.6,
-        "desc": "Your cube has been... Inverted!",
+        "desc": "Evil cube be like: \"don't collect me\"",
         "universal": false,
         "dropParties": true,
         "dropPartyDateRange": [],
@@ -1680,8 +1750,8 @@ export const prefixSchema = {
         ],
         "validSlatedPrefix": false
     },
-    "Dookied": {
-        "name": "dookied",
+    "dookied": {
+        "name": "Dookied",
         "multiplier": 0.2,
         "desc": "heheheh poopie",
         "universal": false,

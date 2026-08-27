@@ -43,7 +43,7 @@ export declare const prefixSchema: {
     readonly based: {
         readonly name: "Based";
         readonly multiplier: 126;
-        readonly desc: "*Earrape Sfx*";
+        readonly desc: "*LOUD BASS BOOSTED SFX*";
         readonly universal: true;
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
@@ -53,7 +53,7 @@ export declare const prefixSchema: {
     readonly orbital: {
         readonly name: "Orbital";
         readonly multiplier: 125;
-        readonly desc: "These cubes are so friggin annoying. They think they're the center of the universe! (Prefix Idea by Gary)";
+        readonly desc: "The center of its own little universe!";
         readonly universal: true;
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
@@ -113,7 +113,7 @@ export declare const prefixSchema: {
     readonly endangered: {
         readonly name: "Endangered";
         readonly multiplier: 120;
-        readonly desc: "This cube has damocles syndrome... whatever that is.";
+        readonly desc: "IT'S A TRAP!";
         readonly universal: true;
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
@@ -183,7 +183,7 @@ export declare const prefixSchema: {
     readonly captain: {
         readonly name: "Captain";
         readonly multiplier: 114;
-        readonly desc: "Too bad it's not on fire, then it would be worth a lot more.";
+        readonly desc: "YES! PERFECT!";
         readonly universal: false;
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
@@ -220,6 +220,16 @@ export declare const prefixSchema: {
         readonly elements: ["Painted"];
         readonly validSlatedPrefix: true;
     };
+    readonly marbleized: {
+        readonly name: "Marbleized";
+        readonly multiplier: 112;
+        readonly desc: "Jawline chiseled from stone.";
+        readonly universal: false;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Stony", "Heavy"];
+        readonly validSlatedPrefix: true;
+    };
     readonly snowy: {
         readonly name: "Snowy";
         readonly multiplier: 111;
@@ -228,6 +238,16 @@ export declare const prefixSchema: {
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
         readonly elements: ["Cold"];
+        readonly validSlatedPrefix: true;
+    };
+    readonly roaring: {
+        readonly name: "Roaring";
+        readonly multiplier: 111;
+        readonly desc: "It might be desstructive.";
+        readonly universal: false;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Haunted", "Heavy"];
         readonly validSlatedPrefix: true;
     };
     readonly summoning: {
@@ -240,11 +260,31 @@ export declare const prefixSchema: {
         readonly elements: ["Light-Emitting"];
         readonly validSlatedPrefix: true;
     };
+    readonly misprinted: {
+        readonly name: "Misprinted";
+        readonly multiplier: 110;
+        readonly desc: "That's gotta be worth overpay.";
+        readonly universal: false;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: [];
+        readonly validSlatedPrefix: true;
+    };
     readonly swarming: {
         readonly name: "Swarming";
         readonly multiplier: 109;
         readonly desc: "It's very rare to have cubes gather in packs around one larger, alpha cube.";
         readonly universal: true;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Haunted"];
+        readonly validSlatedPrefix: true;
+    };
+    readonly conjoined: {
+        readonly name: "Conjoined";
+        readonly multiplier: 109;
+        readonly desc: "Look! He's... smiling?";
+        readonly universal: false;
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
         readonly elements: ["Haunted"];
@@ -260,6 +300,16 @@ export declare const prefixSchema: {
         readonly elements: ["Ancient"];
         readonly validSlatedPrefix: true;
     };
+    readonly constructive: {
+        readonly name: "Constructive";
+        readonly multiplier: 108;
+        readonly desc: "Now if it copied the cube to the right...";
+        readonly universal: false;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Light"];
+        readonly validSlatedPrefix: true;
+    };
     readonly dandy: {
         readonly name: "Dandy";
         readonly multiplier: 107;
@@ -268,6 +318,16 @@ export declare const prefixSchema: {
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
         readonly elements: ["Pure"];
+        readonly validSlatedPrefix: true;
+    };
+    readonly scrumptious: {
+        readonly name: "Scrumptious";
+        readonly multiplier: 107;
+        readonly desc: "Get me a bowl of THAT!";
+        readonly universal: false;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Edible"];
         readonly validSlatedPrefix: true;
     };
     readonly incarcerated: {
@@ -738,6 +798,16 @@ export declare const prefixSchema: {
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
         readonly elements: ["Hot"];
+        readonly validSlatedPrefix: true;
+    };
+    readonly defeatable: {
+        readonly name: "Defeatable";
+        readonly multiplier: 65;
+        readonly desc: "The noise is coming!";
+        readonly universal: false;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Makes-Noise"];
         readonly validSlatedPrefix: true;
     };
     readonly sweetened: {
@@ -1383,7 +1453,7 @@ export declare const prefixSchema: {
     readonly obfuscating: {
         readonly name: "Obfuscating";
         readonly multiplier: 0.7;
-        readonly desc: "Have fun telling what cube this is by shape alone!";
+        readonly desc: "A bit jumbled up.";
         readonly universal: true;
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
@@ -1393,7 +1463,7 @@ export declare const prefixSchema: {
     readonly inverted: {
         readonly name: "Inverted";
         readonly multiplier: 0.6;
-        readonly desc: "Your cube has been... Inverted!";
+        readonly desc: "Evil cube be like: \"don't collect me\"";
         readonly universal: false;
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
@@ -1430,8 +1500,8 @@ export declare const prefixSchema: {
         readonly elements: ["Heavy"];
         readonly validSlatedPrefix: false;
     };
-    readonly Dookied: {
-        readonly name: "dookied";
+    readonly dookied: {
+        readonly name: "Dookied";
         readonly multiplier: 0.2;
         readonly desc: "heheheh poopie";
         readonly universal: false;
