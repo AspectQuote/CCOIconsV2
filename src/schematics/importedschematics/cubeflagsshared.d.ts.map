@@ -1,0 +1,1 @@
+{"version":3,"file":"cubeflagsshared.d.ts","sourceRoot":"","sources":["../src/schematics/cubeflagsshared.ts"],"names":[],"mappings":"AAEA,oBAAY,SAAS;IACjB,KAAK,IAAA;IACL,UAAU,IAAA;IACV,MAAM,IAAA;IACN,MAAM,IAAA;IACN,UAAU,IAAA;CACb;AAED,eAAO,MAAM,OAAO,QAA0C,CAAC;AAE/D,eAAO,MAAM,iBAAiB,QAAuB,CAAC;AAEtD,wBAAgB,kBAAkB,CAAC,UAAU,EAAE,MAAM,EAAE,IAAI,EAAE,SAAS,WAErE"}

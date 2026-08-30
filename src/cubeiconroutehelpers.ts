@@ -1,5 +1,6 @@
 import { config } from "./config";
 import { allFilterIDs, filterID } from "./imageeffects";
+import { cubeFlagInBitfield, cubeFlags, maxFlagFieldValue } from "./schematics/importedschematics/cubeflagsshared";
 import { CubeID, cubeSchema } from "./schematics/importedschematics/cubes";
 import { PrefixID, prefixSchema } from "./schematics/importedschematics/prefixes";
 
@@ -64,14 +65,15 @@ function parseGivenParamAsBoolean(param: string) {
     return `${param}` === '1';
 }
 
-export const cubeIconRouteParams = `:prefixes/:bside/:divine/:slated/:collectors/:iconseed/:prefixseed/:cubeid`;
+export const cubeIconRouteParams = `:prefixes/:flags/:iconseed/:prefixseed/:cubeid`;
 
 export function parseCubeIconRouteParams(givenParams: Record<string, string>) {
     const cubeID = parseGivenParamAsCubeID(givenParams?.cubeid);
-    const bSide = parseGivenParamAsBoolean(givenParams?.bside);
-    const slated = parseGivenParamAsBoolean(givenParams?.slated);
-    const divine = parseGivenParamAsBoolean(givenParams?.divine);
-    const collectors = parseGivenParamAsBoolean(givenParams?.collectors);
+    const flagsField = parseGivenParamAsNumber(givenParams?.flags, maxFlagFieldValue, 0, true);
+    const bSide = cubeFlagInBitfield(flagsField, cubeFlags.bSide);
+    const slated = cubeFlagInBitfield(flagsField, cubeFlags.slated);
+    const divine = cubeFlagInBitfield(flagsField, cubeFlags.divine);
+    const collectors = cubeFlagInBitfield(flagsField, cubeFlags.collectors);
     const cubeSeed = parseGivenParamAsCubeSeed(givenParams?.iconseed);
     const prefixSeed = parseGivenParamAsPrefixSeed(givenParams?.prefixseed);
     const prefixList = parseGivenParamAsPrefixList(givenParams?.prefixes);

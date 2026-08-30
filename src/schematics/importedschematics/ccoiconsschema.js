@@ -1,8 +1,12 @@
+import { cubeFlagInBitfield, cubeFlags } from "./cubeflagsshared";
 import { cubeSchema } from "./cubes";
 import { prefixSchema } from "./prefixes";
 import { raritySchema } from "./rarities";
 const sharedSchema = {
-    cubeSchema, prefixSchema, raritySchema
+    cubeSchema, prefixSchema, raritySchema, cubeFlags
+};
+const sharedFunctionality = {
+    cubeFlagInBitfield
 };
 export var prefixRenderSteps;
 (function (prefixRenderSteps) {

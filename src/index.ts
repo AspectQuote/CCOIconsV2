@@ -6,7 +6,7 @@ import * as fs from 'fs-extra';
 import { patternedCubeSchema } from './schematics/patterneditems';
 import { JimpImage } from './utils';
 import { allCubeIDs, CubeID, cubeSchema } from './schematics/importedschematics/cubes';
-import { allPrefixes, PrefixID } from './schematics/importedschematics/prefixes';
+import { allPrefixes, PrefixID, sortPrefixesByApplicationOrder } from './schematics/importedschematics/prefixes';
 import { turnCubePartsIntoShorthandData, turnPrefixRendererIntoShorthandData } from './shorthandicondata';
 import { constructPrefixRenderer, prefixRenderers, renderPrefixSteps } from './schematics/prefixrenderers';
 import { prefixRenderSteps, prefixRenderStepSchema, shorthandIconDataSchema } from './schematics/importedschematics/ccoiconsschema';
@@ -82,13 +82,14 @@ app.listen(config.serverPort, async () => {
         return res.sendFile(givenOutputFile);
     });
 
-    async function renderPrefix(givenParams: ReturnType<typeof parsePrefixIconRouteParams>, pathAddition: string, mainStep: prefixRenderSteps, otherSteps: prefixRenderSteps[]): Promise<string> {
+    async function renderPrefix(givenParams: ReturnType<typeof parsePrefixIconRouteParams>, pathAddition: string, mainStep: prefixRenderSteps, otherSteps: prefixRenderSteps[], applicationSortDirection: 1 | -1): Promise<string> {
         const rendererDefinition = prefixRenderers[givenParams.prefixID] ?? constructPrefixRenderer({});
 
         if (!rendererDefinition.renderSteps[mainStep]) {
             return `${config.sourceImagesDirectory}/cubes/invisible/cube.png`;
         }
 
+        sortPrefixesByApplicationOrder(givenParams.otherPrefixes, applicationSortDirection);
         const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, givenParams.cubeSeed);
         const hashableStringData = turnPrefixRenderInputsIntoHashableString(givenParams.prefixID, mainStep, givenParams.otherPrefixes, otherSteps, givenParams.prefixSeed, cubeParts, givenParams.cubeID, cubeIconDataSchema);
         if (config.devmode) console.log(`Prefix Icon Hashable String: `, hashableStringData.string);
@@ -123,13 +124,13 @@ app.listen(config.serverPort, async () => {
 
     app.get(`/prefixforeground/${prefixIconRouteParams}`, async (req, res) => {
         const givenParams = parsePrefixIconRouteParams(req.params);
-        const outputFile = await renderPrefix(givenParams, "foregrounds", prefixRenderStepSchema.foreground.mainPrefix, prefixRenderStepSchema.foreground.otherPrefixes);
+        const outputFile = await renderPrefix(givenParams, "foregrounds", prefixRenderStepSchema.foreground.mainPrefix, prefixRenderStepSchema.foreground.otherPrefixes, 1);
         return res.sendFile(outputFile);
     });
 
     app.get(`/prefixbackground/${prefixIconRouteParams}`, async (req, res) => {
         const givenParams = parsePrefixIconRouteParams(req.params);
-        const outputFile = await renderPrefix(givenParams, "backgrounds", prefixRenderStepSchema.background.mainPrefix, prefixRenderStepSchema.background.otherPrefixes);
+        const outputFile = await renderPrefix(givenParams, "backgrounds", prefixRenderStepSchema.background.mainPrefix, prefixRenderStepSchema.background.otherPrefixes, -1);
         return res.sendFile(outputFile);
     });
 });
