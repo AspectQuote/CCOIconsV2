@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { config } from './config';
 import cors from 'cors';
 import { cubePartDefinition, loadStaticCubeParts, turnPrefixRenderInputsIntoHashableString } from './cubeparts';
@@ -21,10 +21,20 @@ import { turnFlagsFieldIntoFlagsArray } from './schematics/importedschematics/cu
 
 const app = express();
 
+const requestCacheLength = 3600 * 24;
+function applyDefaultHeaders(res: Response) {
+    res.setHeader('Cache-Control', `max-age=${requestCacheLength}`);
+}
+
+function defaultHeadersMiddleWare(req: Request, res: Response, next: NextFunction) {
+    applyDefaultHeaders(res);
+    next();
+}
+
 app.use(cors());
 
 app.listen(config.serverPort, async () => {
-    console.log(`Starting....`);
+    console.log(`Starting...`);
     const cachedCubeParts: {[key in CubeID]?: cubePartDefinition} = {};
     const cubeIconDataSchema: shorthandIconDataSchema = {
         cubes: {},
@@ -60,15 +70,15 @@ app.listen(config.serverPort, async () => {
 
     console.log(`Listening on port ${config.serverPort}`);
 
-    app.use('/static', express.static(path.resolve(`${config.sourceImagesDirectory}/static`)));
-    app.use('/boxes', express.static(path.resolve(`${config.sourceImagesDirectory}/boxes`)));
+    app.use('/static', defaultHeadersMiddleWare, express.static(path.resolve(`${config.sourceImagesDirectory}/static`)));
+    app.use('/boxes', defaultHeadersMiddleWare, express.static(path.resolve(`${config.sourceImagesDirectory}/boxes`)));
 
     app.get(`/shorthandicondata.json`, async (req, res) => {
         return res.json(cubeIconDataSchema);
     })
 
-    app.get(`/cubeicon/${cubeIconRouteParams}`, async (req, res) => {
-        const givenParams = parseCubeIconRouteParams(req.params);
+    app.get(`/cubeicon/${cubeIconRouteParams}`, defaultHeadersMiddleWare, async (req, res) => {
+        const givenParams = parseCubeIconRouteParams(req.params as Record<string, string>);
         const givenOutputDirectory = `${config.outputDirectory}/cubeicons/`;
         const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, givenParams.cubeSeed);
         const hashableStringData = turnPrefixRenderInputsIntoHashableString('sacred', prefixRenderStepSchema.cube.mainPrefix, givenParams.prefixList, prefixRenderStepSchema.cube.otherPrefixes, givenParams.prefixSeed, cubeParts, givenParams.cubeID, givenParams.flags, cubeIconDataSchema, true);
@@ -108,8 +118,8 @@ app.listen(config.serverPort, async () => {
         return givenOutputFile;
     }
 
-    app.get(`/custombackgroundimage/${customBackgroundImageRouteParams}`, async (req, res) => {
-        const givenParams = parseCustomBackgroundRouteParams(req.params, allBackgroundImages);
+    app.get(`/custombackgroundimage/${customBackgroundImageRouteParams}`, defaultHeadersMiddleWare, async (req, res) => {
+        const givenParams = parseCustomBackgroundRouteParams(req.params as Record<string, string>, allBackgroundImages);
         const outputDirectory = path.resolve(`${config.outputDirectory}/custombackgrounds/${givenParams.filter}/`);
         fs.mkdirSync(`${outputDirectory}`, { recursive: true });
         const outputFile = `${givenParams.image}.jpg`;
@@ -123,20 +133,20 @@ app.listen(config.serverPort, async () => {
         return res.sendFile(outputPath);
     })
 
-    app.get(`/prefixforeground/${prefixIconRouteParams}`, async (req, res) => {
-        const givenParams = parsePrefixIconRouteParams(req.params);
+    app.get(`/prefixforeground/${prefixIconRouteParams}`, defaultHeadersMiddleWare, async (req, res) => {
+        const givenParams = parsePrefixIconRouteParams(req.params as Record<string, string>);
         const outputFile = await renderPrefix(givenParams, "foregrounds", prefixRenderStepSchema.foreground.mainPrefix, prefixRenderStepSchema.foreground.otherPrefixes, 1);
         return res.sendFile(outputFile);
     });
 
-    app.get(`/prefixbackground/${prefixIconRouteParams}`, async (req, res) => {
-        const givenParams = parsePrefixIconRouteParams(req.params);
+    app.get(`/prefixbackground/${prefixIconRouteParams}`, defaultHeadersMiddleWare, async (req, res) => {
+        const givenParams = parsePrefixIconRouteParams(req.params as Record<string, string>);
         const outputFile = await renderPrefix(givenParams, "backgrounds", prefixRenderStepSchema.background.mainPrefix, prefixRenderStepSchema.background.otherPrefixes, -1);
         return res.sendFile(outputFile);
     });
 
-    app.get(`/flagbackground/${flagIconRouteParams}`, async (req, res) => {
-        const givenParams = parseFlagIconRouteParams(req.params);
+    app.get(`/flagbackground/${flagIconRouteParams}`, defaultHeadersMiddleWare, async (req, res) => {
+        const givenParams = parseFlagIconRouteParams(req.params as Record<string, string>);
         const givenOutputDirectory = `${config.outputDirectory}/flagicons/`;
         const usingFlags = filterOtherFlagsForNeeded(turnFlagsFieldIntoFlagsArray(givenParams.allFlags), prefixRenderStepSchema.background.otherPrefixes);
         const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, 0);
