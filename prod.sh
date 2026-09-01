@@ -1,1 +1,10 @@
-sudo su; pm2 delete CCOIcons; cd ~; sudo rm -rfv CCOIconsV2; git clone https://github.com/AspectQuote/CCOIconsV2.git; cd CCOIconsV2; rm -rfv node_modules; npm install; pm2 start npm --name "CCOIcons" -- run prod; pm2 logs CCOIcons;
+sudo su
+pm2 delete CCOIcons
+cd ~
+sudo rm -rfv CCOIconsV2
+git clone https://github.com/AspectQuote/CCOIconsV2.git
+cd CCOIconsV2
+rm -rfv node_modules;
+npm install
+pm2 start npm --name "CCOIcons" -- run prod
+pm2 logs CCOIcons
