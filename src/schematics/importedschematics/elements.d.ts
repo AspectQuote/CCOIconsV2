@@ -177,4 +177,3 @@ export declare function getElementSpriteSheetPosition(elementID: string): {
     x: number;
     y: number;
 };
-//# sourceMappingURL=elements.d.ts.map

@@ -5,11 +5,13 @@ import { JimpImage, JimpImgMod } from "../utils"
 import { PrefixID } from "./importedschematics/prefixes"
 import * as fs from 'fs-extra'
 import { clampForRGB, defaultStrokeMatrix, drawLine, fillRect, generateSmallWordImage, lerpColors, loadAnimatedCubeIcon, luminanceFromColor, parseHorizontalSpriteSheet, strokeImage, strokeImageWithResize, strokeMatrix } from "../imageutils";
-import { filterOtherPrefixesForNeeded, getNeededFramesForPrefix, getTotalFlatCanvasPaddingForAppliedSteps, leastCommonMultiple, prefixRendererTags, prefixRenderSteps, shorthandIconDataSchema } from "./importedschematics/ccoiconsschema";
+import { filterOtherFlagsForNeeded, filterOtherPrefixesForNeeded, getNeededFramesForPrefix, getTotalFlatCanvasPaddingForAppliedSteps, leastCommonMultiple, prefixRendererTags, prefixRenderSteps, shorthandIconDataSchema } from "./importedschematics/ccoiconsschema";
 import seedrandom from "seedrandom";
 import { CubeDefinition, CubeID } from "./importedschematics/cubes";
 import { raritySchema } from "./importedschematics/rarities";
 import { dotMatrix, fillHollowRect, gaussianBlur } from "../imageeffects";
+import { turnFlagsFieldIntoFlagsArray } from "./importedschematics/cubeflagsshared";
+import { flagRendererSchema } from "./flagrenderers";
 
 function compositeHeadsToAllFrames(targetFrames: JimpImage[], cubeIconFrame: JimpImage, heads: cubeHead[][], animation: JimpImage[], expectedHeadData: cubeHead) {
     const usingHeads = heads.map(heads => {
@@ -146,7 +148,7 @@ export function constructPrefixRendererStep<T extends prefixRNGDeclaration>(data
 
 const prefixSourceDirectory = `${config.sourceImagesDirectory}/prefixes`;
 
-function generateBlankFrames(resolution: number, frameCount: number) {
+export function generateBlankFrames(resolution: number, frameCount: number) {
     const blankFrames: JimpImage[] = [];
     const frameSize = Math.ceil(Math.max(1, resolution));
     while (blankFrames.length < frameCount) {
@@ -169,12 +171,13 @@ export function somePrefixInListHasTag(prefixList: PrefixID[], steps: prefixRend
     })
 }
 
-export async function renderPrefixSteps(mainPrefix: PrefixID, otherPrefixes: PrefixID[], mainStep: prefixRenderSteps, otherSteps: prefixRenderSteps[], cubeID: CubeID, cubeParts: cubePartDefinition, prefixSeed: number, shorthandSchema: shorthandIconDataSchema, cubeData: CubeDefinition, inputFrames?: JimpImage[]): Promise<JimpImage[]> {
+export async function renderPrefixSteps(mainPrefix: PrefixID, otherPrefixes: PrefixID[], mainStep: prefixRenderSteps, otherSteps: prefixRenderSteps[], cubeID: CubeID, cubeParts: cubePartDefinition, prefixSeed: number, shorthandSchema: shorthandIconDataSchema, cubeData: CubeDefinition, iconFlags: number, inputFrames?: JimpImage[]): Promise<JimpImage[]> {
     const mainRenderer = prefixRenderers[mainPrefix] ?? constructPrefixRenderer({});
     let prefixFrames: JimpImage[];
     const usingOtherPrefixes = filterOtherPrefixesForNeeded(mainPrefix, mainStep, otherPrefixes, otherSteps, shorthandSchema, !!inputFrames);
+    const usingOtherFlags = filterOtherFlagsForNeeded(turnFlagsFieldIntoFlagsArray(iconFlags), otherSteps);
     const requiredFrames = getNeededFramesForPrefix(mainPrefix, mainStep, usingOtherPrefixes, otherSteps, cubeID, shorthandSchema);
-    const flatPaddingForInput = getTotalFlatCanvasPaddingForAppliedSteps(usingOtherPrefixes, otherSteps, shorthandSchema);
+    const flatPaddingForInput = getTotalFlatCanvasPaddingForAppliedSteps(usingOtherPrefixes, usingOtherFlags, otherSteps, shorthandSchema);
     if (!inputFrames) {
         if (!mainRenderer.renderSteps[mainStep]) return [];
         const mainStepDefinition = mainRenderer.renderSteps[mainStep];
@@ -206,6 +209,16 @@ export async function renderPrefixSteps(mainPrefix: PrefixID, otherPrefixes: Pre
                 }
             }
         } 
+    }
+
+    for (let otherFlagIndex = 0; otherFlagIndex < usingOtherFlags.length; otherFlagIndex++) {
+        const otherFlag = usingOtherFlags[otherFlagIndex];
+        for (let otherStepIndex = 0; otherStepIndex < otherSteps.length; otherStepIndex++) {
+            const otherStep = otherSteps[otherStepIndex];
+            const renderStep = flagRendererSchema[otherFlag].renderSteps[otherStep];
+            console.log("Rendered Flag", otherFlag);
+            if (renderStep) await renderStep.render(cubeParts, prefixFrames, 0, cubeData, [], {});
+        }
     }
 
     return prefixFrames;

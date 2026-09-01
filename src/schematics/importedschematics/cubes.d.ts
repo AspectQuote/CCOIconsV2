@@ -11767,4 +11767,3 @@ export type CubeDefinition = {
 };
 export type CubeID = keyof typeof cubeSchema;
 export declare const allCubeIDs: CubeID[];
-//# sourceMappingURL=cubes.d.ts.map

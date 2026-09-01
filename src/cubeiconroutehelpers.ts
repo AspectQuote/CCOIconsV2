@@ -1,6 +1,6 @@
 import { config } from "./config";
 import { allFilterIDs, filterID } from "./imageeffects";
-import { cubeFlagInBitfield, cubeFlags, maxFlagFieldValue } from "./schematics/importedschematics/cubeflagsshared";
+import { cubeFlagInBitfield, cubeFlags, maxFlag, maxFlagFieldValue } from "./schematics/importedschematics/cubeflagsshared";
 import { CubeID, cubeSchema } from "./schematics/importedschematics/cubes";
 import { PrefixID, prefixSchema } from "./schematics/importedschematics/prefixes";
 
@@ -86,11 +86,12 @@ export function parseCubeIconRouteParams(givenParams: Record<string, string>) {
         collectors,
         cubeSeed,
         prefixSeed,
-        prefixList
+        prefixList,
+        flags: flagsField
     }
 }
 
-export const prefixIconRouteParams = `:otherprefixes/:prefixseed/:cubeseed/:cubeid/:bside/:prefixid`;
+export const prefixIconRouteParams = `:otherprefixes/:prefixseed/:cubeseed/:cubeid/:flags/:prefixid`;
 
 export function parsePrefixIconRouteParams(givenParams: Record<string, string>) {
     return {
@@ -99,6 +100,16 @@ export function parsePrefixIconRouteParams(givenParams: Record<string, string>) 
         cubeSeed: parseGivenParamAsCubeSeed(givenParams?.cubeseed),
         cubeID: parseGivenParamAsCubeID(givenParams?.cubeid),
         prefixID: parseGivenParamAsPrefix(givenParams?.prefixid),
-        bSide: parseGivenParamAsBoolean(givenParams?.bside)
+        flags: parseGivenParamAsNumber(givenParams?.flags, maxFlagFieldValue, 0, true),
+    }
+}
+
+export const flagIconRouteParams = `:otherflags/:cubeid/:mainflag`;
+
+export function parseFlagIconRouteParams(givenParams: Record<string, string>) {
+    return {
+        allFlags: parseGivenParamAsNumber(givenParams?.otherflags, maxFlagFieldValue, 0, true),
+        cubeID: parseGivenParamAsCubeID(givenParams?.cubeid),
+        mainFlag: parseGivenParamAsNumber(givenParams?.mainflag, maxFlag, 0, true)
     }
 }

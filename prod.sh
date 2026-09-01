@@ -1,0 +1,1 @@
+cd ~; sudo rm -rfv CCOIcons; git clone https://github.com/AspectQuote/CCOIcons.git; cd CCOIcons; rm -rfv node_modules; npm install; sudo pm2 start "cd CCOIcons; npm run prod" --attach;

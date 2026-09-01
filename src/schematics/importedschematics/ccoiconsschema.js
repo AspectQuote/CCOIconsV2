@@ -1,4 +1,4 @@
-import { cubeFlagInBitfield, cubeFlags } from "./cubeflagsshared";
+import { cubeFlagInBitfield, cubeFlags, turnFlagsFieldIntoFlagsArray } from "./cubeflagsshared";
 import { cubeSchema } from "./cubes";
 import { prefixSchema } from "./prefixes";
 import { raritySchema } from "./rarities";
@@ -6,7 +6,7 @@ const sharedSchema = {
     cubeSchema, prefixSchema, raritySchema, cubeFlags
 };
 const sharedFunctionality = {
-    cubeFlagInBitfield
+    cubeFlagInBitfield, turnFlagsFieldIntoFlagsArray
 };
 export var prefixRenderSteps;
 (function (prefixRenderSteps) {
@@ -87,19 +87,34 @@ export function filterOtherPrefixesForNeeded(mainPrefix, mainPrefixStep, otherPr
         });
     });
 }
-export function getTotalFlatCanvasPaddingForAppliedSteps(otherPrefixes, otherSteps, shorthandSchema) {
+export function filterOtherFlagsForNeeded(flags, otherSteps) {
+    return flags.filter(flag => {
+        return otherSteps.some(renderStep => {
+            return renderStep in flagIconRendererConstSchema[flag];
+        });
+    });
+}
+export function getTotalFlatCanvasPaddingForAppliedSteps(otherPrefixes, flags, otherSteps, shorthandSchema) {
     const usingOtherPrefixes = filterOtherPrefixesForNeeded("sacred", prefixRenderSteps.background, otherPrefixes, otherSteps, shorthandSchema, true);
+    const usingOtherFlags = filterOtherFlagsForNeeded(flags, otherSteps);
     return usingOtherPrefixes.reduce((prev, otherPrefixID) => {
         const otherPrefixRenderer = shorthandSchema.prefixes[otherPrefixID];
         if (otherPrefixRenderer) {
-            return otherSteps.reduce((prev, otherStepID) => {
+            return prev + otherSteps.reduce((prev, otherStepID) => {
                 if (otherPrefixRenderer.renderSteps[otherStepID]) {
-                    return otherPrefixRenderer.renderSteps[otherStepID].flatCanvasPadding;
+                    return prev + otherPrefixRenderer.renderSteps[otherStepID].flatCanvasPadding;
                 }
                 return prev;
             }, 0);
         }
         return prev;
+    }, 0) + usingOtherFlags.reduce((prev, flag) => {
+        return prev + otherSteps.reduce((prev, otherStepID) => {
+            // @ts-ignore
+            if (otherStepID in flagIconRendererConstSchema[flag])
+                return prev + (flagIconRendererConstSchema[flag][otherStepID].flatCanvasPadding ?? 0);
+            return prev;
+        }, 0);
     }, 0);
 }
 export function aggregatePrefixTags(mainPrefix, otherPrefixes, mainStep, otherSteps, shorthandSchema, ignoreMain = false) {
@@ -162,3 +177,42 @@ export function greatestCommonDenominator(a, b) {
 export function leastCommonMultiple(a, b) {
     return a * b / greatestCommonDenominator(a, b);
 }
+export function constructFlagIconLayerConsts(data) {
+    return {
+        render: data.render ?? false,
+        frames: data.frames ?? 1,
+        flatPadding: data.flatPadding ?? 0,
+        canvasScale: data.canvasScale ?? 1
+    };
+}
+const bSideFlagRendererConsts = {
+    render: true
+};
+export const flagIconRendererConstSchema = {
+    [cubeFlags.bSide]: {
+        [prefixRenderSteps.applyToBackground]: constructFlagIconLayerConsts(bSideFlagRendererConsts),
+        [prefixRenderSteps.applyToCube]: constructFlagIconLayerConsts(bSideFlagRendererConsts),
+        [prefixRenderSteps.applyToForeground]: constructFlagIconLayerConsts(bSideFlagRendererConsts),
+    },
+    [cubeFlags.collectors]: {
+        [prefixRenderSteps.background]: constructFlagIconLayerConsts({
+            render: true,
+            flatPadding: 8
+        })
+    },
+    [cubeFlags.contraband]: {},
+    [cubeFlags.divine]: {
+        [prefixRenderSteps.background]: constructFlagIconLayerConsts({
+            render: true,
+            canvasScale: 2,
+            frames: 15
+        })
+    },
+    [cubeFlags.slated]: {
+        [prefixRenderSteps.background]: constructFlagIconLayerConsts({
+            render: true,
+            flatPadding: 16,
+            frames: 15
+        })
+    }
+};

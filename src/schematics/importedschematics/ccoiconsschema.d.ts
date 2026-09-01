@@ -1,3 +1,4 @@
+import { cubeFlags } from "./cubeflagsshared";
 import { type CubeID } from "./cubes";
 import { type PrefixID } from "./prefixes";
 export declare enum prefixRenderSteps {
@@ -35,7 +36,8 @@ export type prefixRenderStepSchemaID = keyof typeof prefixRenderStepSchema;
 export declare function frameCountFromPrefixesInList(prefixList: PrefixID[], steps: prefixRenderSteps[], shorthandSchema: shorthandIconDataSchema): number[];
 export declare function getNeededFramesForPrefix(prefixID: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherSteps: prefixRenderSteps[], cubeID: CubeID, shorthandSchema: shorthandIconDataSchema, all?: boolean): number;
 export declare function filterOtherPrefixesForNeeded(mainPrefix: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherSteps: prefixRenderSteps[], shorthandSchema: shorthandIconDataSchema, all?: boolean): PrefixID[];
-export declare function getTotalFlatCanvasPaddingForAppliedSteps(otherPrefixes: PrefixID[], otherSteps: prefixRenderSteps[], shorthandSchema: shorthandIconDataSchema): number;
+export declare function filterOtherFlagsForNeeded(flags: cubeFlags[], otherSteps: prefixRenderSteps[]): cubeFlags[];
+export declare function getTotalFlatCanvasPaddingForAppliedSteps(otherPrefixes: PrefixID[], flags: cubeFlags[], otherSteps: prefixRenderSteps[], shorthandSchema: shorthandIconDataSchema): number;
 export declare function aggregatePrefixTags(mainPrefix: PrefixID, otherPrefixes: PrefixID[], mainStep: prefixRenderSteps, otherSteps: prefixRenderSteps[], shorthandSchema: shorthandIconDataSchema, ignoreMain?: boolean): prefixRendererTags[];
 export type shorthandIconCubeData = {
     frames: number;
@@ -68,4 +70,30 @@ export declare function retrieveShorthandCubeData(cubeID: CubeID, schema: shorth
 export declare function retrieveShorthandPrefixData(prefixID: PrefixID, schema: shorthandIconDataSchema): shorthandIconPrefixData;
 export declare function greatestCommonDenominator(a: number, b: number): number;
 export declare function leastCommonMultiple(a: number, b: number): number;
-//# sourceMappingURL=ccoiconsschema.d.ts.map
+export type flagIconRendererConsts = {
+    [key in prefixRenderSteps]?: flagIconRendererLayerConsts;
+};
+export type flagIconRendererLayerConsts = {
+    render: boolean;
+    frames: number;
+    flatPadding: number;
+    canvasScale: number;
+};
+export declare function constructFlagIconLayerConsts(data: Partial<flagIconRendererLayerConsts>): flagIconRendererLayerConsts;
+export declare const flagIconRendererConstSchema: {
+    readonly 0: {
+        readonly 2: flagIconRendererLayerConsts;
+        readonly 3: flagIconRendererLayerConsts;
+        readonly 4: flagIconRendererLayerConsts;
+    };
+    readonly 1: {
+        readonly 0: flagIconRendererLayerConsts;
+    };
+    readonly 4: {};
+    readonly 2: {
+        readonly 0: flagIconRendererLayerConsts;
+    };
+    readonly 3: {
+        readonly 0: flagIconRendererLayerConsts;
+    };
+};

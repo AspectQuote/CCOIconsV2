@@ -307,4 +307,3 @@ declare const raritySchema: {
 type RarityID = keyof typeof raritySchema;
 declare const allRarities: RarityID[];
 export { raritySchema, allRarities, type RarityID };
-//# sourceMappingURL=rarities.d.ts.map

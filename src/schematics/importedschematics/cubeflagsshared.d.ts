@@ -8,4 +8,4 @@ export declare enum cubeFlags {
 export declare const maxFlag: number;
 export declare const maxFlagFieldValue: number;
 export declare function cubeFlagInBitfield(flagsField: number, flag: cubeFlags): boolean;
-//# sourceMappingURL=cubeflagsshared.d.ts.map
+export declare function turnFlagsFieldIntoFlagsArray(flags: number): cubeFlags[];

@@ -1795,10 +1795,16 @@ export const prefixSchema = {
 };
 export const allPrefixes = Object.keys(prefixSchema);
 export const prefixApplicationOrderObject = {
+    // -------------- "Meta" or filter cases
     "fake": 1, // Turns the icon into a 'fake' PNG
     "dotted": 1, // Gives the cube a "dot matrix" effect
     "rippling": 1, // Adds a sine wave to the cube
     "musical": 1, // Adds an animated music sheet to the cube
+    "misprinted": 1, // Gives the cube a "Misprinted" effect, (TCG misprint)
+    "blurry": 1, // Blurs the cube
+    "obfuscating": 1, // Scrambles the cube icon
+    "inverted": 1, // inverts the cube icon
+    "broken": 1, // 'breaks' the cube icon
     // -------------- Special cases
     "censored": 1, // Adds a censor bar to the cube
     "sussy": 1, // Adds an ESP (cheater) overlay to the cube
@@ -1817,6 +1823,7 @@ export const prefixApplicationOrderObject = {
     "flaming": 1, // Makes the cube on FREAKING FIRE
     "foggy": 1, // Adds fog to the cube
     "angry": 1, // Adds an animated anime-esque anger icon to the cube
+    "disgusted": 1, // Adds an anime "disgust" emotion indicator to the cube
     "thinking": 1, // Adds a thought bubble with a question mark to the cube
     "talkative": 1, // Adds an animated yellow speech indicator to the cube
     "eudaemonic": 1, // Adds an animated happy face speech bubble to the cube
@@ -1837,6 +1844,7 @@ export const prefixApplicationOrderObject = {
     "expensive": 1, // Adds dollar signs to the eyes of the cube
     "lovey": 1, // Adds Heart Eyes to the Cube
     "googly": 1, // Adds Googly Eyes to the Cube
+    "hypnotic": 1, // Adds 'hypnotized' eyes to the cube
     "expressive": 1, // Adds sassy eyebrows to the Cube
     "blushing": 1, // Adds blush to the cube
     "clapping": 1, // Adds the twitch clapping emote to the cube
@@ -1853,11 +1861,15 @@ export const prefixApplicationOrderObject = {
     "onomatopoeiacal": 1, // Adds Onomatopoeia to the cube
     "fatherly": 1, // Adds one or two smaller versions of the cube to the cube
     "saiyan": 1, // Makes the cube yell super loud whilst charging
+    "roaring": 1, // Adds a "trailing" effect to the cube icon
     "electrified": 1, // Adds arcing lightning to the cube
-    "cucurbitaphilic": 1, // Adds a random pumpkin to the cube
     "ailurophilic": 1, // Adds a cat to the cube
+    "cucurbitaphilic": 1, // Adds a random pumpkin to the cube
+    "angery": 1, // Adds a middle finger to the cube
     "conspicuous": 1, // Adds crime scene markers to the cube
     "read": 1, // Adds a tarot reading to the cube (swords, wands, etc.)
+    "marbleized": 1, // Turns the cube to marble, adds a marble pedestal to the cube
+    "constructive": 1, // Adds a blueprint and blueprint filter to the cube
     // -------------- Prefixes That Add Accessories (Props that are bound to the cube's parts)
     "sacred": 1, // Adds a Fancy Halo to the Cube
     "omniscient": 1, // Adds an eye of providence to the Cube
@@ -1875,15 +1887,19 @@ export const prefixApplicationOrderObject = {
     "basking": 1, // Adds sand and an umbrella to the cube
     "bladed": 1, // Adds a sword to the cube
     "overcast": 1, // Adds clouds around the cube
+    "despairing": 1, // Adds a giant metal sheet to the cube
     "emburdening": 1, // Adds a statue of Atlas holding up the cube
+    "scrumptious": 1, // Puts the cube into a ramen bowl
     "royal": 1, // Adds a crown to the cube
     "kramped": 1, // Adds a pair of krampus horns to the cube
     "oriental": 1, // Adds an oriental-style roof to the cube
     "wranglin": 1, // Adds a cowboy hat to the cube
     "sophisticated": 1, // Adds a top hat to the cube
     "adorable": 1, // Adds a cute little bow to the cube
+    "defeatable": 1, // Adds a pink wig to the cube
     "culinary": 1, // Adds a chef's toque to the cube
     "captain": 1, // Adds a Team Captain hat to the cube
+    "dookied": 1, // Adds a turd to the cube
     "idiotic": 1, // Adds a dunce cap to the cube
     "fuming": 1, // Adds a set of steam coming out of the cube's "ears"
     "magical": 1, // Adds a wizard hat to the cube
@@ -1893,9 +1909,11 @@ export const prefixApplicationOrderObject = {
     "dovey": 1, // Adds a dove perched on the cube
     "batty": 1, // Adds a bat hanging from the cube NOTE: this is super gross. I don't like bats
     "jolly": 1, // Adds a Santa hat to the cube
+    "sleepy": 1, // Adds a nightcap to the cube
     "partying": 1, // Adds a party hat to the cube
     "hardboiled": 1, // Adds a holmes-esque detective hat to the cube
     "smoked": 1, // Adds a GET SMOKED hat to the cube
+    "conjoined": 1, // Adds a parasitic twin to the cube
     "blind": 1, // Adds a blindfold to the cube
     "outlawed": 1, // Adds a bandanna to the cube
     "serving": 1, // Adds a french-maid-style skirt and bonnet to the cube
@@ -1909,13 +1927,17 @@ export const prefixApplicationOrderObject = {
     "chained": 1, // Adds moving chains to the cube
     "adduced": 1, // Adds moving caution tape to the cube
     "roped": 1, // Adds moving ropes to the cube
+    "addicted": 1, // Adds a cigarette to the cube
+    "farmboy": 1, // Adds a wheat stalk to the cube
     "bushy": 1, // Adds a Random Beard to the Cube
+    "grinning": 1, // Adds a mouth to the cube
     "emphasized": 1, // Adds a random amount of red arrows to the cube
     "ornamentalized": 1, // Adds a few christmas ornaments to the cube
     "brainy": 1, // Adds a gross brain to the cube
     "comfortable": 1, // Adds a pillow for the cube to sit on
     // -------------- Prefixes That Are Skin-Tight (idk how to phrase this)
     "voodoo": 1, // Adds pins and Xes to the cube
+    "nailed": 1, // Puts nails into the edges of the cube
     "swag": 1, // Adds sunglasses to the cube
     "stereoscopic": 1, // Adds stereoscopic shades to the cube
     "sick": 1, // Adds a face mask to the cube
@@ -1930,33 +1952,12 @@ export const prefixApplicationOrderObject = {
     "95in": 1, // Adds a Windows 95-esque application window to the cube
     "wanted": 1, // Adds a wanted poster to the cube
     // -------------- Prefixes That only generate masks
-    "phasing": 1, // Adds a mask using an overengineered equation (https://www.desmos.com/calculator/mbxk8blmhp)
-    "evanescent": 1, // Adds a mask using an overengineered equation (https://www.desmos.com/calculator/mbxk8blmhp)
+    "phasing": 1, // Makes the cube partially transparent
+    "evanescent": 1, // Makes the cube partially transparent
     // -------------- Prefixes that only apply filters
     "raving": 1, // Hue shifts the cube every frame to create a 'rainbow' effect
     "dlc": 1, // Turns the cube completely black
-    marbleized: 1,
-    roaring: 1,
-    misprinted: 1,
-    conjoined: 1,
-    constructive: 1,
-    scrumptious: 1,
-    defeatable: 1,
-    addicted: 1,
-    sleepy: 1,
-    disgusted: 1,
-    hypnotic: 1,
-    nailed: 1,
-    farmboy: 1,
-    blurry: 1,
-    obfuscating: 1,
-    inverted: 1,
-    broken: 1,
-    angery: 1,
-    despairing: 1,
-    dookied: 1,
-    grinning: 1,
-    worthless: 1
+    "worthless": 1 // Doesn't change anything
 };
 export const prefixApplicationOrder = Object.keys(prefixApplicationOrderObject);
 export function sortPrefixesByApplicationOrder(prefixes, direction = 1) {

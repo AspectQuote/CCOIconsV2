@@ -10,8 +10,9 @@ import seedrandom from 'seedrandom';
 import { hash } from "crypto";
 import { constructPrefixRenderer, constructPrefixRendererStep, parsedPrefixRNGDeclaration, prefixRendererDefinition, prefixRenderers, turnPrefixRNGDeclarationIntoValues } from "./schematics/prefixrenderers";
 import { PrefixID } from "./schematics/importedschematics/prefixes";
-import { aggregatePrefixTags, filterOtherPrefixesForNeeded, prefixRendererTags, prefixRenderSteps, shorthandIconDataSchema } from "./schematics/importedschematics/ccoiconsschema";
+import { aggregatePrefixTags, filterOtherFlagsForNeeded, filterOtherPrefixesForNeeded, prefixRendererTags, prefixRenderSteps, shorthandIconDataSchema } from "./schematics/importedschematics/ccoiconsschema";
 import { loadAnimatedCubeIcon, saveAnimatedCubeIcon } from "./imageutils";
+import { turnFlagsFieldIntoFlagsArray } from "./schematics/importedschematics/cubeflagsshared";
 
 export type cubeHead = {
     x: number,
@@ -355,12 +356,13 @@ export async function loadStaticCubeParts(cubeID: CubeID, cubeSeed: number): Pro
     return await parseCubePartImagesIntoCubeParts(iconFrames, headFrames, mouthFrames, eyesFrames, accentFrames, 'seededIcon' in cubeSchema[cubeID]);
 }
 
-export function turnPrefixRenderInputsIntoHashableString(mainPrefix: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherPrefixSteps: prefixRenderSteps[], prefixSeed: number, cubeParts: cubePartDefinition, cubeID: CubeID, shorthandSchema: shorthandIconDataSchema, ignoreMain: boolean = false) {
+export function turnPrefixRenderInputsIntoHashableString(mainPrefix: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherPrefixSteps: prefixRenderSteps[], prefixSeed: number, cubeParts: cubePartDefinition, cubeID: CubeID, iconFlags: number, shorthandSchema: shorthandIconDataSchema, ignoreMain: boolean = false) {
     const usingOtherPrefixes = filterOtherPrefixesForNeeded(mainPrefix, mainPrefixStep, otherPrefixes, otherPrefixSteps, shorthandSchema, ignoreMain).sort();
+    const usingOtherFlags = filterOtherFlagsForNeeded(turnFlagsFieldIntoFlagsArray(iconFlags), otherPrefixSteps);
     const allPrefixTags = aggregatePrefixTags(mainPrefix, usingOtherPrefixes, mainPrefixStep, otherPrefixSteps, shorthandSchema, ignoreMain);
     let partString = ``;
 
-    if (allPrefixTags.includes(prefixRendererTags.needsIconDimensions)) partString = `${partString},Dimensions:${cubeParts.icon[0]?.bitmap?.width ?? 0}x${cubeParts.icon[0]?.bitmap?.height ?? 0}`
+    /* if (allPrefixTags.includes(prefixRendererTags.needsIconDimensions)) */ partString = `${partString},Dimensions:${cubeParts.icon[0]?.bitmap?.width ?? 0}x${cubeParts.icon[0]?.bitmap?.height ?? 0}`
     if (allPrefixTags.includes(prefixRendererTags.needsHeads)) partString = `${partString},Heads:${JSON.stringify(cubeParts.heads)}`;
     if (allPrefixTags.includes(prefixRendererTags.needsEyes)) partString = `${partString},Eyes:${JSON.stringify(cubeParts.eyes)}`;
     if (allPrefixTags.includes(prefixRendererTags.needsMouths)) partString = `${partString},Mouths:${JSON.stringify(cubeParts.mouths)}`;
@@ -397,6 +399,9 @@ export function turnPrefixRenderInputsIntoHashableString(mainPrefix: PrefixID, m
     }
     if (allPrefixTags.includes(prefixRendererTags.needsIcon)) {
         partString = `${partString},Cube:${cubeID}`;
+    }
+    if (usingOtherFlags.length > 0) {
+        partString = `${partString},Flags:${usingOtherFlags.sort().join(',')}`
     }
 
     return {
