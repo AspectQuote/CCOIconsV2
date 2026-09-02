@@ -1817,9 +1817,9 @@ export const prefixRenderers = {
                     let seedGen = seedrandom(`tentacular${seed}`);
                     let tentacleImage = await Jimp.read(`${prefixSourceDirectory}/tentacular/tentacle.png`);
 
-                    compositeHeadsToAllFrames(input, parts.icon[0], parts.heads, [await Jimp.read(`${prefixSourceDirectory}/tentacular/front.png`)], { x: 8, y: 16, width: 32 })
-                    
                     compositeRopeSlidingAnimation(input, parts.icon, seedGen, { image: tentacleImage });
+                    
+                    compositeHeadsToAllFrames(input, parts.icon[0], parts.heads, [await Jimp.read(`${prefixSourceDirectory}/tentacular/front.png`)], { x: 8, y: 16, width: 32 })
 
                     return true;
                 },

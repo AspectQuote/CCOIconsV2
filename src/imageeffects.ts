@@ -706,21 +706,22 @@ export async function rotateImage(image: JimpImage, radians: number) {
 }
 
 export function applyLinearMatrix(image: JimpImage, matrix: LinearMatrix): JimpImage {
-    const newImage: JimpImage = new Jimp({width: image.bitmap.width, height: image.bitmap.height, color: 0x00000000});
+    const newImage = new Jimp({width: image.bitmap.width, height: image.bitmap.height, color: 0x00000000});
 
     const inverseMatrix: LinearMatrix = generateInverseLinearMatrix(matrix);
 
     const halfMeasures = {
-        width: (image.bitmap.width / 2),
-        height: (image.bitmap.height / 2)
+        width: Math.floor(image.bitmap.width / 2),
+        height: Math.floor(image.bitmap.height / 2)
     };
 
     newImage.scan(0, 0, newImage.bitmap.width, newImage.bitmap.height, function (x, y, idx) {
         const pixelX = x - halfMeasures.width;
         const pixelY = y - halfMeasures.height;
 
-        const sourcePixelX = (pixelX * inverseMatrix[0][0]) + (pixelY * inverseMatrix[0][1]) + halfMeasures.width;
-        const sourcePixelY = (pixelX * inverseMatrix[1][0]) + (pixelY * inverseMatrix[1][1]) + halfMeasures.height;
+        const sourcePixelX = Math.floor((pixelX * inverseMatrix[0][0]) + (pixelY * inverseMatrix[0][1]) + halfMeasures.width);
+        const sourcePixelY = Math.floor((pixelX * inverseMatrix[1][0]) + (pixelY * inverseMatrix[1][1]) + halfMeasures.height);
+        // console.log(sourcePixelX, sourcePixelY, { width: image.bitmap.width, height: image.bitmap.height });
 
         if (sourcePixelX < 0 || sourcePixelX >= image.bitmap.width || sourcePixelY < 0 || sourcePixelY >= image.bitmap.height) {
         } else {
@@ -745,13 +746,13 @@ export function resizeRotate(image: JimpImage, radians: number) {
     const BottomLeftLength = Math.abs(image.bitmap.height * Math.sin(radians));
     const LeftBottomLength = Math.abs(image.bitmap.height * Math.cos(radians));
 
-    const newImage = new Jimp({ width: BottomRightLength + BottomLeftLength, height: RightBottomLength + LeftBottomLength, color: 0x00000000 });
+    const newImage = new Jimp({ width: Math.floor(BottomRightLength + BottomLeftLength), height: Math.floor(RightBottomLength + LeftBottomLength), color: 0x00000000 });
     newImage.composite(image, 0.5 * (newImage.bitmap.width - image.bitmap.width), 0.5 * (newImage.bitmap.height - image.bitmap.height));
 
     return rotateImage(newImage, radians);
 }
 
-export async function rotatedScreentone(image: JimpImage, rotation: number, matrix: Parameters<typeof getDitheringMatrix>[0] = 4, scaleFactor: number = 4, toneLight: number = 0xffffffff, toneDark: number = 0x000000ff): Promise<JimpImage> {
+export async function rotatedScreentone(image: JimpImage, rotation: number, matrix: Parameters<typeof getDitheringMatrix>[0] = 4, scaleFactor: number = 4, toneLight: number = 0xffffffff, toneDark: number = 0x212121ff): Promise<JimpImage> {
     const originalDimensions = {
         width: image.bitmap.width,
         height: image.bitmap.height
@@ -1013,7 +1014,6 @@ export type customImageEffectParameters = {
     medianKernelRadius: number,
     contrastMaskLow: number,
     contrastMaskHigh: number
-
 }
 
 export async function applyImageEffect(inputImage: JimpImage, filterName: filterID | "random", customParameters: Partial<customImageEffectParameters>) {
@@ -1045,7 +1045,7 @@ export async function applyImageEffect(inputImage: JimpImage, filterName: filter
         case "bside":
             outputImage = await separatedGaussianBlur(inputImage, customParameters.gaussianBlurRadius ?? 6);
             outputImage = await sharpenImage(outputImage, customParameters.sharpnessIntensity ?? 2, customParameters.gaussianEdgeRadius ?? 8, customParameters.gaussianType ?? "fast");
-            outputImage = await createBSideV2Image(outputImage, customParameters.similarColorThereshold ?? 8, customParameters.bSideIterations ?? 3, customParameters.bSideBlendStrategy ?? "dithered");
+            outputImage = await createBSideV2Image(outputImage, customParameters.similarColorThereshold ?? 8, customParameters.bSideIterations ?? 4, customParameters.bSideBlendStrategy ?? "dithered");
             break;
         case "dither":
             outputImage = await ditherImage(inputImage, customParameters.ditherMatrix ?? 8, customParameters.ditherSpread ?? 0.1, customParameters.quantizeColorsPerChannel ?? 12, customParameters.ditherScale ?? 3);
