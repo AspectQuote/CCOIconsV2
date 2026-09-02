@@ -1472,7 +1472,8 @@ export const prefixRenderers = {
                 frames: prefixRendererConsts.orbital.frames,
                 tags: [
                     prefixRendererTags.isSeeded,
-                    prefixRendererTags.needsIconDimensions
+                    prefixRendererTags.needsIconDimensions,
+                    prefixRendererTags.granularSeed
                 ],
                 render: async function (parts, input, seed) {
                     await prefixRendererConsts.orbital.layerRenderer(parts, input, seed, "back");
