@@ -791,6 +791,16 @@ export const prefixSchema = {
         ],
         "validSlatedPrefix": false
     },
+    "awardwin": {
+        "name": "Award-Winning",
+        "multiplier": 76,
+        "desc": "First place at the faire!",
+        "universal": true,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [],
+        "validSlatedPrefix": true
+    },
     "glitchy": {
         "name": "Glitchy",
         "multiplier": 76,
@@ -883,6 +893,18 @@ export const prefixSchema = {
         ],
         "validSlatedPrefix": true
     },
+    "leeking": {
+        "name": "Leeking",
+        "multiplier": 60,
+        "desc": "ievan polkka spins me 'round.",
+        "universal": true,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [
+            "Edible"
+        ],
+        "validSlatedPrefix": true
+    },
     "sophisticated": {
         "name": "Sophisticated",
         "multiplier": 69,
@@ -928,6 +950,18 @@ export const prefixSchema = {
         "dropPartyDateRange": [],
         "elements": [
             "Light-Emitting"
+        ],
+        "validSlatedPrefix": true
+    },
+    "demarcated": {
+        "name": "Demarcated",
+        "multiplier": 65,
+        "desc": "To ensure your safety, stay away from this cube.",
+        "universal": true,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [
+            "Painted"
         ],
         "validSlatedPrefix": true
     },
@@ -1015,6 +1049,18 @@ export const prefixSchema = {
         ],
         "validSlatedPrefix": true
     },
+    "puppeted": {
+        "name": "Puppeted",
+        "multiplier": 60,
+        "desc": "Master of Cubes is pulling your strings!",
+        "universal": true,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [
+            "Haunted"
+        ],
+        "validSlatedPrefix": true
+    },
     "musical": {
         "name": "Musical",
         "multiplier": 60,
@@ -1043,6 +1089,16 @@ export const prefixSchema = {
         "name": "Stunned",
         "multiplier": 58,
         "desc": "Tazed the cube. Stunned it. More Expensive? YES.",
+        "universal": true,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [],
+        "validSlatedPrefix": true
+    },
+    "marked": {
+        "name": "Marked",
+        "multiplier": 57,
+        "desc": "STILL HITTIN' HEADSHOTS!.",
         "universal": true,
         "dropParties": true,
         "dropPartyDateRange": [],
@@ -1083,6 +1139,18 @@ export const prefixSchema = {
         "dropPartyDateRange": [],
         "elements": [
             "Plastic"
+        ],
+        "validSlatedPrefix": true
+    },
+    "stabbed": {
+        "name": "Stabbed",
+        "multiplier": 54,
+        "desc": "It hort so bad.",
+        "universal": true,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [
+            "Magnetic"
         ],
         "validSlatedPrefix": true
     },
@@ -1273,6 +1341,18 @@ export const prefixSchema = {
         "dropParties": true,
         "dropPartyDateRange": [],
         "elements": [],
+        "validSlatedPrefix": true
+    },
+    "buttered": {
+        "name": "Buttered",
+        "multiplier": 40,
+        "desc": "Cube wit da butta on em.",
+        "universal": true,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [
+            "Edible"
+        ],
         "validSlatedPrefix": true
     },
     "sick": {
@@ -1676,6 +1756,16 @@ export const prefixSchema = {
         ],
         "validSlatedPrefix": true
     },
+    "dirtied": {
+        "name": "Dirty",
+        "multiplier": 7,
+        "desc": "Grody!",
+        "universal": true,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [],
+        "validSlatedPrefix": true
+    },
     "nailed": {
         "name": "Nailed",
         "multiplier": 6,
@@ -1835,6 +1925,7 @@ export const prefixApplicationOrderObject = {
     "brilliant": 1, // Adds a floating light bulb to the cube
     "scientific": 1, // Adds a sciency flask to the cube
     "dazed": 1, // Adds 'dazed' particles around the cube (I don't know what I was thinking when I created this prefix in 2020)
+    "marked": 1, // Adds a bullseye to the cube's head
     "boiled": 1, // Adds steam coming off the cube
     "amorous": 1, // Adds hearts around the head of the cube
     "drunken": 1, // Adds a drunken stupor effect to the cube
@@ -1868,9 +1959,11 @@ export const prefixApplicationOrderObject = {
     "angery": 1, // Adds a middle finger to the cube
     "conspicuous": 1, // Adds crime scene markers to the cube
     "read": 1, // Adds a tarot reading to the cube (swords, wands, etc.)
+    "leeking": 1, // Adds a leek to the cube
     "marbleized": 1, // Turns the cube to marble, adds a marble pedestal to the cube
     "constructive": 1, // Adds a blueprint and blueprint filter to the cube
     // -------------- Prefixes That Add Accessories (Props that are bound to the cube's parts)
+    "puppeted": 1, // Adds a puppet crossbar to the Cube
     "sacred": 1, // Adds a Fancy Halo to the Cube
     "omniscient": 1, // Adds an eye of providence to the Cube
     "cuffed": 1, // Adds a handcuff around the Cube
@@ -1885,6 +1978,7 @@ export const prefixApplicationOrderObject = {
     "incarcerated": 1, // Adds a Jail around the Cube
     "pugilistic": 1, // Adds boxing gloves to the Cube
     "basking": 1, // Adds sand and an umbrella to the cube
+    "demarcated": 1, // Adds demarcation/caution lines around the cube
     "bladed": 1, // Adds a sword to the cube
     "overcast": 1, // Adds clouds around the cube
     "despairing": 1, // Adds a giant metal sheet to the cube
@@ -1922,13 +2016,16 @@ export const prefixApplicationOrderObject = {
     "beboppin": 1, // Adds space mercenary hair to the cube
     "foolish": 1, // Adds a jester Hat to the Cube
     "cruel": 1, // Adds Cruelty Squad-Inspired Glasses to the Cube
-    "neko": 1, // Adds cat ears and tail to the cube
-    "tentacular": 1, // Adds moving tentacles to the cube
-    "chained": 1, // Adds moving chains to the cube
-    "adduced": 1, // Adds moving caution tape to the cube
-    "roped": 1, // Adds moving ropes to the cube
-    "addicted": 1, // Adds a cigarette to the cube
-    "farmboy": 1, // Adds a wheat stalk to the cube
+    "stabbed": 1, // Adds a knife sticking out of the Cube
+    "neko": 1, // Adds cat ears and tail to the Cube
+    "tentacular": 1, // Adds moving tentacles to the Cube
+    "chained": 1, // Adds moving chains to the Cube
+    "adduced": 1, // Adds moving caution tape to the Cube
+    "roped": 1, // Adds moving ropes to the Cube
+    "awardwin": 1, // Adds a medal/ribbon to the Cube
+    "buttered": 1, // Adds a small slab of butter to the Cube
+    "addicted": 1, // Adds a cigarette to the Cube
+    "farmboy": 1, // Adds a wheat stalk to the Cube
     "bushy": 1, // Adds a Random Beard to the Cube
     "grinning": 1, // Adds a mouth to the cube
     "emphasized": 1, // Adds a random amount of red arrows to the cube
@@ -1951,13 +2048,14 @@ export const prefixApplicationOrderObject = {
     "rdming": 1, // Adds an animated gravity-gun outline to the cube
     "95in": 1, // Adds a Windows 95-esque application window to the cube
     "wanted": 1, // Adds a wanted poster to the cube
+    "dirtied": 1, // Adds dirt/grime to the cube
     // -------------- Prefixes That only generate masks
     "phasing": 1, // Makes the cube partially transparent
     "evanescent": 1, // Makes the cube partially transparent
     // -------------- Prefixes that only apply filters
     "raving": 1, // Hue shifts the cube every frame to create a 'rainbow' effect
     "dlc": 1, // Turns the cube completely black
-    "worthless": 1 // Doesn't change anything
+    "worthless": 1,
 };
 export const prefixApplicationOrder = Object.keys(prefixApplicationOrderObject);
 export function sortPrefixesByApplicationOrder(prefixes, direction = 1) {

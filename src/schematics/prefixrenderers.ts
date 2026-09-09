@@ -1121,6 +1121,9 @@ const prefixRendererConsts = {
                 butt: 0xe0b353ff
             }
         ]
+    },
+    demarcated: {
+        lineThickness: 5,
     }
 } as const;
 
@@ -5745,7 +5748,7 @@ export const prefixRenderers = {
                     drawLine(usingFrame, prefixRendererConsts.marbleized.pedestalPalette.bottomRim, bottomRightPixel, topRightLowerPixel);
 
                     drawLine(usingFrame, prefixRendererConsts.marbleized.pedestalPalette.topRim, topLeftUpperPixel, centerLeftPixel);
-                    drawLine(usingFrame, prefixRendererConsts.marbleized.pedestalPalette.topRim, topLeftUpperPixel, topCenterLeftPixel);`g`
+                    drawLine(usingFrame, prefixRendererConsts.marbleized.pedestalPalette.topRim, topLeftUpperPixel, topCenterLeftPixel);
                     drawLine(usingFrame, prefixRendererConsts.marbleized.pedestalPalette.topRim, topRightUpperPixel, centerRightPixel);
                     drawLine(usingFrame, prefixRendererConsts.marbleized.pedestalPalette.topRim, topRightUpperPixel, topCenterRightPixel);
 
@@ -5821,6 +5824,112 @@ export const prefixRenderers = {
 
                     return true;
                 },
+            })
+        }
+    }),
+    "dirtied": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                tags: [
+                    prefixRendererTags.needsIcon
+                ],
+                render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const dumbRNG = seedrandom(`${cubeData.name}dirt`);
+                    const dirtImage = await Jimp.read(`${prefixSourceDirectory}/dirtied/dirt.png`);
+                    const imageOffset = {
+                        x: Math.floor(dirtImage.bitmap.width * dumbRNG()),
+                        y: Math.floor(dirtImage.bitmap.height * dumbRNG())
+                    }
+                    
+                    for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
+                        const inputFrame = input[inputFrameIndex];
+                        const iconFrame = parts.icon[inputFrameIndex % parts.icon.length];
+                        const lazyShadingFrame = new Jimp({ width: inputFrame.bitmap.width, height: inputFrame.bitmap.height, color: 0x00000000 });
+
+                        inputFrame.scan((x, y, idx) => {
+                            if (iconFrame.bitmap.data[idx + 3] > 0) {
+                                inputFrame.setPixelColor(dirtImage.getPixelColor((x + imageOffset.x) % dirtImage.bitmap.width, (y + imageOffset.y) % dirtImage.bitmap.height), x, y);
+                                if (inputFrame.bitmap.data[idx + 3] === 255) {
+                                    lazyShadingFrame.bitmap.data[idx + 3] = Math.floor((1 - luminanceFromColor(iconFrame.getPixelColor(x, y))) * 125);
+                                }
+                            }
+                        })
+
+                        inputFrame.composite(lazyShadingFrame);
+                    }
+
+                    return true;
+                },
+            })
+        }
+    }),
+    "stabbed": constructPrefixRenderer({
+        renderSteps: constructBasicHatPrefixRendererStep(`${prefixSourceDirectory}/stabbed/knife.png`, { x: -11, y: 31, width: 32 }, 2.5)
+    }),
+    "buttered": constructPrefixRenderer({
+        renderSteps: constructBasicHatPrefixRendererStep(`${prefixSourceDirectory}/buttered/butter.png`, { x: 0, y: 8, width: 32 }, 1)
+    }),
+    "puppeted": constructPrefixRenderer({
+        renderSteps: constructBasicHatPrefixRendererStep(`${prefixSourceDirectory}/puppeted/crossbar.png`, { x: -5, y: 20, width: 32 }, 2)
+    }),
+    "leeking": constructPrefixRenderer({
+        renderSteps: constructBasicHatPrefixRendererStep(`${prefixSourceDirectory}/leeking/leek.png`, { x: -15, y: 7, width: 32 }, 1.5)
+    }),
+    "marked": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                tags: [
+                    prefixRendererTags.isSeeded,
+                    prefixRendererTags.needsHeads
+                ],
+                predefinedRNG: {
+                    usingCrosshair: {
+                        RNGString: `crosshair`,
+                        get(RNG) {
+                            return Math.floor(5 * RNG());
+                        },
+                    }
+                },
+                render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const crosshairs = await loadAnimatedCubeIcon(`${prefixSourceDirectory}/marked/crosshairs.png`);
+                    compositeHeadsToAllFrames(input, parts.icon[0], parts.heads, [crosshairs[parsedRNG.usingCrosshair]], { x: -3, y: -6, width: 32 });
+                    return true;
+                },
+            })
+        }
+    }),
+    "demarcated": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.background]: constructPrefixRendererStep({
+                flatCanvasPadding: prefixRendererConsts.demarcated.lineThickness * 3,
+                tags: [
+                    prefixRendererTags.needsIconDimensions
+                ],
+                render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const usingFrame = input[0];
+                    const diagonalDeltaY = Math.floor((usingFrame.bitmap.width - 2) / 4);
+                    const bottomCenterLeftPixel = { x: Math.floor(usingFrame.bitmap.width / 2) - 1, y: Math.floor(usingFrame.bitmap.height * 0.95) - (prefixRendererConsts.demarcated.lineThickness)};
+                    const bottomCenterRightPixel = { x: bottomCenterLeftPixel.x + 1, y: bottomCenterLeftPixel.y };
+                    const rightPixel = { y: bottomCenterLeftPixel.y - diagonalDeltaY, x: usingFrame.bitmap.width - 1 };
+                    const leftPixel = { y: bottomCenterLeftPixel.y - diagonalDeltaY, x: 0 };
+
+                    const topCenterLeftPixel = { x: bottomCenterLeftPixel.x, y: (leftPixel.y - diagonalDeltaY) + 1 };
+                    const topCenterRightPixel = { x: bottomCenterRightPixel.x, y: topCenterLeftPixel.y };
+
+                    for (let thicknessIndex = 0; thicknessIndex < prefixRendererConsts.demarcated.lineThickness; thicknessIndex++) {
+                        drawLine(usingFrame, 0xffffffff, { x: bottomCenterLeftPixel.x, y: bottomCenterLeftPixel.y - thicknessIndex }, { x: leftPixel.x + (thicknessIndex * 2), y: leftPixel.y });
+                        drawLine(usingFrame, 0xffffffff, { x: bottomCenterRightPixel.x, y: bottomCenterRightPixel.y - thicknessIndex }, { x: rightPixel.x - (thicknessIndex * 2), y: rightPixel.y });
+                        drawLine(usingFrame, 0xffffffff, { x: topCenterLeftPixel.x, y: topCenterLeftPixel.y + thicknessIndex }, { x: leftPixel.x + (thicknessIndex * 2), y: leftPixel.y });
+                        drawLine(usingFrame, 0xffffffff, { x: topCenterRightPixel.x, y: topCenterRightPixel.y + thicknessIndex }, { x: rightPixel.x - (thicknessIndex * 2), y: rightPixel.y });
+                    }
+
+                    const stripeImage = await Jimp.read(`${prefixSourceDirectory}/demarcated/stripes.png`);
+                    usingFrame.scan((x, y, idx) => {
+                        if (usingFrame.bitmap.data[idx + 3] > 0) usingFrame.setPixelColor(stripeImage.getPixelColor(x % stripeImage.bitmap.width, y % stripeImage.bitmap.width), x, y);
+                    })
+
+                    return true;
+                }
             })
         }
     })

@@ -1,5 +1,28 @@
 import type { CubeElementID } from "./elements";
 import type { RarityID } from "./rarities";
+export type CubeDefinition = {
+    author: string;
+    name: string;
+    desc: string;
+    tags: Array<CubeElementID>;
+    rarity: RarityID;
+    gen: string;
+    price: number;
+    qp?: number;
+    propername?: boolean;
+    specialseeds?: {
+        idx: number[];
+        multi: number;
+        name: string;
+    }[];
+    seededIcon?: boolean;
+    raresmashdrop?: boolean;
+    authorNames: string[];
+    guaranteedprefixes?: number;
+    guaranteedtallying?: boolean;
+    dateRange?: [string, string];
+    specialOrigin?: specialCubeOriginID;
+};
 export declare const cubeSchema: {
     readonly unrealgreen: {
         readonly author: "The Gods";
@@ -328,7 +351,7 @@ export declare const cubeSchema: {
         readonly tags: ["Magnetic", "Shiny"];
         readonly rarity: "cubic";
         readonly gen: "1";
-        readonly price: 169735;
+        readonly price: 149735;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly synthesizing: {
@@ -4165,7 +4188,7 @@ export declare const cubeSchema: {
         readonly tags: ["Heavy", "Glass"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 14052;
+        readonly price: 12052;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly baseball: {
@@ -4215,7 +4238,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Wet", "Stony"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 13392;
+        readonly price: 12392;
         readonly authorNames: ["6172c9f90adecc7bfb84388f"];
     };
     readonly mars: {
@@ -4366,7 +4389,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Pure"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 270238;
+        readonly price: 85238;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly cubeonanotherstick: {
@@ -4417,7 +4440,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Haunted"];
         readonly rarity: "cubic";
         readonly gen: "2";
-        readonly price: 320973;
+        readonly price: 125973;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly undead: {
@@ -4427,7 +4450,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Haunted"];
         readonly rarity: "cubic";
         readonly gen: "2";
-        readonly price: 320973;
+        readonly price: 120973;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly skin: {
@@ -5191,7 +5214,7 @@ export declare const cubeSchema: {
         readonly tags: ["Hot", "Hot", "Wet", "Poisonous"];
         readonly rarity: "cubic";
         readonly gen: "2";
-        readonly price: 60028;
+        readonly price: 70028;
         readonly authorNames: ["6172c9f90adecc7bfb84388f"];
     };
     readonly coral: {
@@ -5201,7 +5224,7 @@ export declare const cubeSchema: {
         readonly tags: ["Wet", "Organic"];
         readonly rarity: "gold";
         readonly gen: "2";
-        readonly price: 1274812;
+        readonly price: 1974812;
         readonly qp: 12;
         readonly authorNames: ["612c16aab5d4bc3222b30ef7"];
     };
@@ -5212,7 +5235,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Light"];
         readonly rarity: "uncommon";
         readonly gen: "2";
-        readonly price: 18;
+        readonly price: 4;
         readonly authorNames: ["61989990ac937d1d02d47cae"];
     };
     readonly fox: {
@@ -5222,7 +5245,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Heavy"];
         readonly rarity: "uncommon";
         readonly gen: "2";
-        readonly price: 19;
+        readonly price: 5;
         readonly authorNames: ["61989990ac937d1d02d47cae"];
     };
     readonly koala: {
@@ -5242,7 +5265,7 @@ export declare const cubeSchema: {
         readonly tags: ["Plastic", "Heavy", "Ancient"];
         readonly rarity: "gold";
         readonly gen: "2";
-        readonly price: 1149610;
+        readonly price: 1749610;
         readonly qp: 13;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
@@ -5253,7 +5276,7 @@ export declare const cubeSchema: {
         readonly tags: ["Wet", "Slimy"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 15709;
+        readonly price: 5709;
         readonly authorNames: ["61989990ac937d1d02d47cae"];
     };
     readonly speaker: {
@@ -5263,7 +5286,7 @@ export declare const cubeSchema: {
         readonly tags: ["Heavy", "Makes-Noise", "Electronic"];
         readonly rarity: "uncommon";
         readonly gen: "2";
-        readonly price: 19;
+        readonly price: 3;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly deepsea: {
@@ -5273,7 +5296,7 @@ export declare const cubeSchema: {
         readonly tags: ["Wet", "Magnetic", "Ancient"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 17545;
+        readonly price: 6545;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly spartan: {
@@ -5303,7 +5326,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Slimy"];
         readonly rarity: "uncommon";
         readonly gen: "2";
-        readonly price: 22;
+        readonly price: 5;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly desertcamo: {
@@ -5323,7 +5346,7 @@ export declare const cubeSchema: {
         readonly tags: ["Plastic", "Haunted"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 141236;
+        readonly price: 81236;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly melon: {
@@ -5343,7 +5366,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Makes-Noise", "Slimy"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 11371;
+        readonly price: 4371;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly ghost: {
@@ -5353,7 +5376,7 @@ export declare const cubeSchema: {
         readonly tags: ["Haunted", "Haunted", "Haunted", "Wet"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 12222;
+        readonly price: 7222;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly sunset: {
@@ -5363,7 +5386,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Light-Emitting"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 112022;
+        readonly price: 82022;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly greenradar: {
@@ -5373,7 +5396,7 @@ export declare const cubeSchema: {
         readonly tags: ["Electronic", "Light-Emitting", "Makes-Noise"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 9149;
+        readonly price: 6149;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly pensive: {
@@ -5383,7 +5406,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Haunted"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 9133;
+        readonly price: 7133;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly bash: {
@@ -5393,7 +5416,7 @@ export declare const cubeSchema: {
         readonly tags: ["Electronic", "Heavy"];
         readonly rarity: "uncommon";
         readonly gen: "2";
-        readonly price: 25;
+        readonly price: 11;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot1: {
@@ -5403,7 +5426,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "common";
         readonly gen: "2";
-        readonly price: 1000;
+        readonly price: 9;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot2: {
@@ -5413,7 +5436,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "common";
         readonly gen: "2";
-        readonly price: 1000;
+        readonly price: 13;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot3: {
@@ -5423,7 +5446,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "common";
         readonly gen: "2";
-        readonly price: 1000;
+        readonly price: 15;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot4: {
@@ -5433,7 +5456,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "uncommon";
         readonly gen: "2";
-        readonly price: 2000;
+        readonly price: 35;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot5: {
@@ -5443,7 +5466,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "uncommon";
         readonly gen: "2";
-        readonly price: 2000;
+        readonly price: 44;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot6: {
@@ -5453,7 +5476,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "uncommon";
         readonly gen: "2";
-        readonly price: 2000;
+        readonly price: 51;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot7: {
@@ -5463,7 +5486,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "rare";
         readonly gen: "2";
-        readonly price: 4000;
+        readonly price: 77;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot8: {
@@ -5473,7 +5496,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "rare";
         readonly gen: "2";
-        readonly price: 4000;
+        readonly price: 94;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot9: {
@@ -5483,7 +5506,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "rare";
         readonly gen: "2";
-        readonly price: 4000;
+        readonly price: 102;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot10: {
@@ -5493,7 +5516,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "epic";
         readonly gen: "2";
-        readonly price: 10000;
+        readonly price: 244;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot11: {
@@ -5503,7 +5526,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "epic";
         readonly gen: "2";
-        readonly price: 10000;
+        readonly price: 251;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot12: {
@@ -5513,7 +5536,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "epic";
         readonly gen: "2";
-        readonly price: 10000;
+        readonly price: 263;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot13: {
@@ -5523,8 +5546,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "legendary";
         readonly gen: "2";
-        readonly price: 20000;
-        readonly qp: 605;
+        readonly price: 1257;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot14: {
@@ -5534,8 +5556,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "legendary";
         readonly gen: "2";
-        readonly price: 20000;
-        readonly qp: 322;
+        readonly price: 1299;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot15: {
@@ -5545,8 +5566,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "legendary";
         readonly gen: "2";
-        readonly price: 20000;
-        readonly qp: 902;
+        readonly price: 1352;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot16: {
@@ -5556,8 +5576,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 65000;
-        readonly qp: 1701;
+        readonly price: 13062;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot17: {
@@ -5567,8 +5586,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 65000;
-        readonly qp: 3094;
+        readonly price: 14122;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot18: {
@@ -5578,8 +5596,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 65000;
-        readonly qp: 5661;
+        readonly price: 15204;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot19: {
@@ -5589,8 +5606,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "cubic";
         readonly gen: "2";
-        readonly price: 250000;
-        readonly qp: 12023;
+        readonly price: 142249;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot20: {
@@ -5600,8 +5616,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "cubic";
         readonly gen: "2";
-        readonly price: 250000;
-        readonly qp: 19572;
+        readonly price: 139283;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot21: {
@@ -5611,8 +5626,8 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "gold";
         readonly gen: "2";
-        readonly price: 2500000;
-        readonly qp: 37510;
+        readonly price: 2492783;
+        readonly qp: 117;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot22: {
@@ -5622,8 +5637,8 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Plastic"];
         readonly rarity: "gold";
         readonly gen: "2";
-        readonly price: 2500000;
-        readonly qp: 35876;
+        readonly price: 2258237;
+        readonly qp: 134;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keya: {
@@ -5633,8 +5648,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyb: {
@@ -5644,8 +5658,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyc: {
@@ -5655,8 +5668,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyd: {
@@ -5666,8 +5678,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keye: {
@@ -5677,8 +5688,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyf: {
@@ -5688,8 +5698,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyg: {
@@ -5699,8 +5708,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyh: {
@@ -5710,8 +5718,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyi: {
@@ -5721,8 +5728,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyj: {
@@ -5732,8 +5738,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyk: {
@@ -5743,8 +5748,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyl: {
@@ -5754,8 +5758,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keym: {
@@ -5765,8 +5768,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyn: {
@@ -5776,8 +5778,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyo: {
@@ -5787,8 +5788,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyp: {
@@ -5798,8 +5798,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyq: {
@@ -5809,8 +5808,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyr: {
@@ -5820,8 +5818,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keys: {
@@ -5831,8 +5828,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyt: {
@@ -5842,8 +5838,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyu: {
@@ -5853,8 +5848,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyv: {
@@ -5864,8 +5858,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyw: {
@@ -5875,8 +5868,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyx: {
@@ -5886,8 +5878,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyy: {
@@ -5897,8 +5888,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keyz: {
@@ -5908,8 +5898,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly key1: {
@@ -5919,8 +5908,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly key2: {
@@ -5930,8 +5918,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly key3: {
@@ -5941,8 +5928,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly key4: {
@@ -5952,8 +5938,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly key5: {
@@ -5963,8 +5948,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly key6: {
@@ -5974,8 +5958,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly key7: {
@@ -5985,8 +5968,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly key8: {
@@ -5996,8 +5978,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly key9: {
@@ -6007,8 +5988,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly key0: {
@@ -6018,8 +5998,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Plastic"];
         readonly rarity: "special";
         readonly gen: "2";
-        readonly price: 1000;
-        readonly qp: 1;
+        readonly price: 600;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly rainbowcircuit: {
@@ -6128,8 +6107,8 @@ export declare const cubeSchema: {
         readonly tags: ["Wet", "Hot"];
         readonly rarity: "gold";
         readonly gen: "2";
-        readonly price: 5085139;
-        readonly qp: 1000;
+        readonly price: 2585139;
+        readonly qp: 205;
         readonly authorNames: ["612d6620b5d4bc3222b310e5"];
     };
     readonly tornado: {
@@ -6139,8 +6118,7 @@ export declare const cubeSchema: {
         readonly tags: ["Wet", "Painted"];
         readonly rarity: "cubic";
         readonly gen: "2";
-        readonly price: 426301;
-        readonly qp: 500;
+        readonly price: 152568;
         readonly authorNames: ["612d6620b5d4bc3222b310e5"];
     };
     readonly volcano: {
@@ -6150,8 +6128,7 @@ export declare const cubeSchema: {
         readonly tags: ["Hot", "Stony"];
         readonly rarity: "relic";
         readonly gen: "2";
-        readonly price: 48751;
-        readonly qp: 250;
+        readonly price: 18751;
         readonly authorNames: ["612d6620b5d4bc3222b310e5"];
     };
     readonly meteor: {
@@ -6161,8 +6138,7 @@ export declare const cubeSchema: {
         readonly tags: ["Heavy", "Stony"];
         readonly rarity: "legendary";
         readonly gen: "2";
-        readonly price: 12074;
-        readonly qp: 75;
+        readonly price: 1274;
         readonly authorNames: ["612d6620b5d4bc3222b310e5"];
     };
     readonly ufolaser: {
@@ -6172,8 +6148,7 @@ export declare const cubeSchema: {
         readonly tags: ["Electronic", "Hot"];
         readonly rarity: "epic";
         readonly gen: "2";
-        readonly price: 6089;
-        readonly qp: 75;
+        readonly price: 289;
         readonly authorNames: ["612d6620b5d4bc3222b310e5"];
     };
     readonly cyclone: {
@@ -6183,8 +6158,7 @@ export declare const cubeSchema: {
         readonly tags: ["Wet", "Painted"];
         readonly rarity: "rare";
         readonly gen: "2";
-        readonly price: 1447;
-        readonly qp: 50;
+        readonly price: 147;
         readonly authorNames: ["612d6620b5d4bc3222b310e5"];
     };
     readonly earthquake: {
@@ -6194,8 +6168,7 @@ export declare const cubeSchema: {
         readonly tags: ["Heavy", "Makes-Noise"];
         readonly rarity: "uncommon";
         readonly gen: "2";
-        readonly price: 607;
-        readonly qp: 20;
+        readonly price: 27;
         readonly authorNames: ["612d6620b5d4bc3222b310e5"];
     };
     readonly blackhole: {
@@ -6205,8 +6178,7 @@ export declare const cubeSchema: {
         readonly tags: ["Heavy", "Dull"];
         readonly rarity: "common";
         readonly gen: "2";
-        readonly price: 371;
-        readonly qp: 10;
+        readonly price: 9;
         readonly authorNames: ["612d6620b5d4bc3222b310e5"];
     };
     readonly kekw: {
@@ -7561,7 +7533,7 @@ export declare const cubeSchema: {
         readonly tags: ["Fabric", "Painted"];
         readonly rarity: "relic";
         readonly gen: "3";
-        readonly price: 15299;
+        readonly price: 12299;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly rugtwo: {
@@ -7571,7 +7543,7 @@ export declare const cubeSchema: {
         readonly tags: ["Fabric", "Painted"];
         readonly rarity: "relic";
         readonly gen: "3";
-        readonly price: 15711;
+        readonly price: 12711;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tablet: {
@@ -7581,7 +7553,7 @@ export declare const cubeSchema: {
         readonly tags: ["Electronic", "Glass"];
         readonly rarity: "cubic";
         readonly gen: "3";
-        readonly price: 158280;
+        readonly price: 98280;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly winebottle: {
@@ -7591,7 +7563,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Wet"];
         readonly rarity: "cubic";
         readonly gen: "3";
-        readonly price: 200884;
+        readonly price: 100884;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly bed: {
@@ -8030,8 +8002,8 @@ export declare const cubeSchema: {
         readonly tags: ["Haunted"];
         readonly rarity: "cubic";
         readonly gen: "1";
-        readonly price: 629002;
-        readonly qp: 1642;
+        readonly price: 159002;
+        readonly qp: 4;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly troll: {
@@ -8063,8 +8035,8 @@ export declare const cubeSchema: {
         readonly tags: ["Plastic", "Haunted"];
         readonly rarity: "cubic";
         readonly gen: "1";
-        readonly price: 628046;
-        readonly qp: 1538;
+        readonly price: 148046;
+        readonly qp: 5;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly badass: {
@@ -8634,7 +8606,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Hard", "Hard"];
         readonly rarity: "cubic";
         readonly gen: "3";
-        readonly price: 299612;
+        readonly price: 329612;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly cuteshark: {
@@ -8654,7 +8626,7 @@ export declare const cubeSchema: {
         readonly tags: ["Cold", "Glass", "Electronic"];
         readonly rarity: "cubic";
         readonly gen: "3";
-        readonly price: 311924;
+        readonly price: 81924;
         readonly authorNames: ["616ef9144aa4f75a4ccc932b"];
     };
     readonly goldtoaster: {
@@ -9800,8 +9772,8 @@ export declare const cubeSchema: {
         readonly tags: ["Wet", "Wet"];
         readonly rarity: "gold";
         readonly gen: "3";
-        readonly price: 5767183;
-        readonly qp: 750;
+        readonly price: 2767183;
+        readonly qp: 56;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly forestfire: {
@@ -9811,8 +9783,7 @@ export declare const cubeSchema: {
         readonly tags: ["Hot", "Organic"];
         readonly rarity: "cubic";
         readonly gen: "3";
-        readonly price: 558094;
-        readonly qp: 375;
+        readonly price: 128094;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly nuked: {
@@ -9822,8 +9793,7 @@ export declare const cubeSchema: {
         readonly tags: ["Hot", "Poisonous"];
         readonly rarity: "relic";
         readonly gen: "3";
-        readonly price: 45974;
-        readonly qp: 190;
+        readonly price: 15974;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly locust: {
@@ -9833,8 +9803,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Light"];
         readonly rarity: "legendary";
         readonly gen: "3";
-        readonly price: 12798;
-        readonly qp: 50;
+        readonly price: 1298;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly famine: {
@@ -9844,8 +9813,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Dull"];
         readonly rarity: "epic";
         readonly gen: "3";
-        readonly price: 6387;
-        readonly qp: 50;
+        readonly price: 287;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly hurricane: {
@@ -9855,8 +9823,7 @@ export declare const cubeSchema: {
         readonly tags: ["Wet", "Painted"];
         readonly rarity: "rare";
         readonly gen: "3";
-        readonly price: 1488;
-        readonly qp: 20;
+        readonly price: 291;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly climatechanged: {
@@ -9866,8 +9833,7 @@ export declare const cubeSchema: {
         readonly tags: ["Wet", "Hot", "Cold"];
         readonly rarity: "uncommon";
         readonly gen: "3";
-        readonly price: 556;
-        readonly qp: 10;
+        readonly price: 26;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly wormhole: {
@@ -9877,8 +9843,7 @@ export declare const cubeSchema: {
         readonly tags: ["Light-Emitting", "Dull"];
         readonly rarity: "common";
         readonly gen: "3";
-        readonly price: 310;
-        readonly qp: 5;
+        readonly price: 11;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly pear: {
@@ -10144,7 +10109,7 @@ export declare const cubeSchema: {
         readonly tags: ["Edible", "Wet"];
         readonly rarity: "cubic";
         readonly gen: "3";
-        readonly price: 297472;
+        readonly price: 126472;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly hilbert: {
@@ -10713,10 +10678,10 @@ export declare const cubeSchema: {
         readonly author: "Link (Edits by Aspect)";
         readonly name: "Draft Cube";
         readonly desc: "Tastes terrible.";
-        readonly tags: ["Edible", "Glass", "Wet", "Cold"];
+        readonly tags: ["Poisonous", "Glass", "Wet", "Cold"];
         readonly rarity: "relic";
         readonly gen: "4";
-        readonly price: 15228;
+        readonly price: 12228;
         readonly authorNames: ["6108f09abc4b812a386c5c84", "618a90899350123869b79b26"];
     };
     readonly mangoindustrial: {
@@ -10726,7 +10691,7 @@ export declare const cubeSchema: {
         readonly tags: ["Dull", "Heavy", "Electronic"];
         readonly rarity: "relic";
         readonly gen: "4";
-        readonly price: 16004;
+        readonly price: 12004;
         readonly authorNames: ["6181851eb851d138fd0415d4"];
     };
     readonly linksvines: {
@@ -10736,7 +10701,7 @@ export declare const cubeSchema: {
         readonly tags: ["Wet", "Organic", "Painted"];
         readonly rarity: "relic";
         readonly gen: "4";
-        readonly price: 16205;
+        readonly price: 14205;
         readonly authorNames: ["6108f09abc4b812a386c5c84", "618a90899350123869b79b26"];
     };
     readonly linksneapolitan: {
@@ -10756,7 +10721,7 @@ export declare const cubeSchema: {
         readonly tags: ["Haunted", "Fabric", "Organic"];
         readonly rarity: "cubic";
         readonly gen: "4";
-        readonly price: 220140;
+        readonly price: 160140;
         readonly authorNames: ["6108f09abc4b812a386c5c84", "618a90899350123869b79b26"];
     };
     readonly linksradish: {
@@ -10766,7 +10731,7 @@ export declare const cubeSchema: {
         readonly tags: ["Edible", "Organic", "Fresh"];
         readonly rarity: "cubic";
         readonly gen: "4";
-        readonly price: 209642;
+        readonly price: 149642;
         readonly authorNames: ["6108f09abc4b812a386c5c84", "618a90899350123869b79b26"];
     };
     readonly mangospolluted: {
@@ -10776,7 +10741,7 @@ export declare const cubeSchema: {
         readonly tags: ["Wet", "Poisonous", "Slimy"];
         readonly rarity: "cubic";
         readonly gen: "4";
-        readonly price: 200563;
+        readonly price: 172563;
         readonly authorNames: ["6181851eb851d138fd0415d4"];
     };
     readonly sneejcd: {
@@ -10842,7 +10807,7 @@ export declare const cubeSchema: {
         readonly tags: ["Glass", "Poisonous", "Wet"];
         readonly rarity: "legendary";
         readonly gen: "4";
-        readonly price: 4573;
+        readonly price: 2073;
         readonly specialseeds: [{
             readonly idx: [139, 185, 211, 379, 399, 430, 584, 734, 789, 793, 920];
             readonly multi: 8;
@@ -10866,7 +10831,7 @@ export declare const cubeSchema: {
         readonly tags: ["Makes-Noise", "Heavy", "Painted"];
         readonly rarity: "legendary";
         readonly gen: "4";
-        readonly price: 4821;
+        readonly price: 1721;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly heartratemonitor: {
@@ -10877,7 +10842,7 @@ export declare const cubeSchema: {
         readonly tags: ["Electronic", "Light-Emitting", "Makes-Noise"];
         readonly rarity: "epic";
         readonly gen: "4";
-        readonly price: 402;
+        readonly price: 266;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly striped: {
@@ -10888,7 +10853,7 @@ export declare const cubeSchema: {
         readonly tags: ["Fabric"];
         readonly rarity: "common";
         readonly gen: "4";
-        readonly price: 21;
+        readonly price: 19;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly houndstooth: {
@@ -10899,7 +10864,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted"];
         readonly rarity: "uncommon";
         readonly gen: "4";
-        readonly price: 25;
+        readonly price: 28;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly barcode: {
@@ -10910,7 +10875,7 @@ export declare const cubeSchema: {
         readonly tags: ["Painted", "Light"];
         readonly rarity: "common";
         readonly gen: "4";
-        readonly price: 25;
+        readonly price: 15;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly static: {
@@ -10932,7 +10897,7 @@ export declare const cubeSchema: {
         readonly tags: ["Haunted", "Glass", "Organic"];
         readonly rarity: "rare";
         readonly gen: "4";
-        readonly price: 327;
+        readonly price: 227;
         readonly specialseeds: [{
             readonly idx: [338];
             readonly multi: 55;
@@ -10956,7 +10921,7 @@ export declare const cubeSchema: {
         readonly tags: ["Haunted", "Glass", "Organic"];
         readonly rarity: "rare";
         readonly gen: "4";
-        readonly price: 355;
+        readonly price: 255;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly confetti: {
@@ -10967,7 +10932,7 @@ export declare const cubeSchema: {
         readonly tags: ["Light", "Plastic", "Ancient"];
         readonly rarity: "relic";
         readonly gen: "4";
-        readonly price: 31821;
+        readonly price: 15821;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly perceiving: {
@@ -10978,7 +10943,7 @@ export declare const cubeSchema: {
         readonly tags: ["Haunted", "Organic", "Slimy"];
         readonly rarity: "relic";
         readonly gen: "4";
-        readonly price: 32219;
+        readonly price: 16219;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly general: {
@@ -11357,7 +11322,7 @@ export declare const cubeSchema: {
         readonly rarity: "gold";
         readonly gen: "3";
         readonly price: 3194067;
-        readonly qp: 5579;
+        readonly qp: 109;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly milk: {
@@ -11576,7 +11541,7 @@ export declare const cubeSchema: {
         readonly tags: ["Electronic", "Plastic"];
         readonly rarity: "cubic";
         readonly gen: "4";
-        readonly price: 260450;
+        readonly price: 180450;
         readonly authorNames: ["65bd51b73e72f6b51a88f58d"];
     };
     readonly dragoncurve: {
@@ -11622,7 +11587,7 @@ export declare const cubeSchema: {
         readonly tags: ["Electronic", "Plastic"];
         readonly rarity: "legendary";
         readonly gen: "4";
-        readonly price: 4729;
+        readonly price: 429;
         readonly authorNames: ["65bd51b73e72f6b51a88f58d"];
     };
     readonly mandelbrot: {
@@ -11633,7 +11598,7 @@ export declare const cubeSchema: {
         readonly tags: ["Electronic", "Plastic"];
         readonly rarity: "cubic";
         readonly gen: "4";
-        readonly price: 269287;
+        readonly price: 169287;
         readonly specialseeds: [{
             readonly idx: [53];
             readonly multi: 15;
@@ -11649,7 +11614,7 @@ export declare const cubeSchema: {
         readonly tags: ["Electronic", "Plastic"];
         readonly rarity: "relic";
         readonly gen: "4";
-        readonly price: 29677;
+        readonly price: 15677;
         readonly specialseeds: [{
             readonly idx: [31];
             readonly multi: 15;
@@ -11681,7 +11646,7 @@ export declare const cubeSchema: {
         readonly tags: ["Electronic", "Plastic"];
         readonly rarity: "relic";
         readonly gen: "4";
-        readonly price: 30542;
+        readonly price: 14542;
         readonly authorNames: ["65bd51b73e72f6b51a88f58d"];
     };
     readonly spearmint: {
@@ -11742,28 +11707,5 @@ export declare const cubeSchema: {
     };
 };
 export type specialCubeOriginID = "purchase" | "unbox";
-export type CubeDefinition = {
-    author: string;
-    name: string;
-    desc: string;
-    tags: Array<CubeElementID>;
-    rarity: RarityID;
-    gen: string;
-    price: number;
-    qp?: number;
-    propername?: boolean;
-    specialseeds?: {
-        idx: number[];
-        multi: number;
-        name: string;
-    }[];
-    seededIcon?: boolean;
-    raresmashdrop?: boolean;
-    authorNames: string[];
-    guaranteedprefixes?: number;
-    guaranteedtallying?: boolean;
-    dateRange?: [string, string];
-    specialOrigin?: specialCubeOriginID;
-};
 export type CubeID = keyof typeof cubeSchema;
 export declare const allCubeIDs: CubeID[];

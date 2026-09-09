@@ -680,6 +680,16 @@ export declare const prefixSchema: {
         readonly elements: ["Organic", "Makes-Noise"];
         readonly validSlatedPrefix: false;
     };
+    readonly awardwin: {
+        readonly name: "Award-Winning";
+        readonly multiplier: 76;
+        readonly desc: "First place at the faire!";
+        readonly universal: true;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: [];
+        readonly validSlatedPrefix: true;
+    };
     readonly glitchy: {
         readonly name: "Glitchy";
         readonly multiplier: 76;
@@ -750,6 +760,16 @@ export declare const prefixSchema: {
         readonly elements: ["Makes-Noise"];
         readonly validSlatedPrefix: true;
     };
+    readonly leeking: {
+        readonly name: "Leeking";
+        readonly multiplier: 60;
+        readonly desc: "ievan polkka spins me 'round.";
+        readonly universal: true;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Edible"];
+        readonly validSlatedPrefix: true;
+    };
     readonly sophisticated: {
         readonly name: "Sophisticated";
         readonly multiplier: 69;
@@ -788,6 +808,16 @@ export declare const prefixSchema: {
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
         readonly elements: ["Light-Emitting"];
+        readonly validSlatedPrefix: true;
+    };
+    readonly demarcated: {
+        readonly name: "Demarcated";
+        readonly multiplier: 65;
+        readonly desc: "To ensure your safety, stay away from this cube.";
+        readonly universal: true;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Painted"];
         readonly validSlatedPrefix: true;
     };
     readonly blushing: {
@@ -860,6 +890,16 @@ export declare const prefixSchema: {
         readonly elements: ["Makes-Noise"];
         readonly validSlatedPrefix: true;
     };
+    readonly puppeted: {
+        readonly name: "Puppeted";
+        readonly multiplier: 60;
+        readonly desc: "Master of Cubes is pulling your strings!";
+        readonly universal: true;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Haunted"];
+        readonly validSlatedPrefix: true;
+    };
     readonly musical: {
         readonly name: "Musical";
         readonly multiplier: 60;
@@ -884,6 +924,16 @@ export declare const prefixSchema: {
         readonly name: "Stunned";
         readonly multiplier: 58;
         readonly desc: "Tazed the cube. Stunned it. More Expensive? YES.";
+        readonly universal: true;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: [];
+        readonly validSlatedPrefix: true;
+    };
+    readonly marked: {
+        readonly name: "Marked";
+        readonly multiplier: 57;
+        readonly desc: "STILL HITTIN' HEADSHOTS!.";
         readonly universal: true;
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
@@ -918,6 +968,16 @@ export declare const prefixSchema: {
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
         readonly elements: ["Plastic"];
+        readonly validSlatedPrefix: true;
+    };
+    readonly stabbed: {
+        readonly name: "Stabbed";
+        readonly multiplier: 54;
+        readonly desc: "It hort so bad.";
+        readonly universal: true;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Magnetic"];
         readonly validSlatedPrefix: true;
     };
     readonly expressive: {
@@ -1078,6 +1138,16 @@ export declare const prefixSchema: {
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
         readonly elements: [];
+        readonly validSlatedPrefix: true;
+    };
+    readonly buttered: {
+        readonly name: "Buttered";
+        readonly multiplier: 40;
+        readonly desc: "Cube wit da butta on em.";
+        readonly universal: true;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Edible"];
         readonly validSlatedPrefix: true;
     };
     readonly sick: {
@@ -1430,6 +1500,16 @@ export declare const prefixSchema: {
         readonly elements: ["Fabric"];
         readonly validSlatedPrefix: true;
     };
+    readonly dirtied: {
+        readonly name: "Dirty";
+        readonly multiplier: 7;
+        readonly desc: "Grody!";
+        readonly universal: true;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: [];
+        readonly validSlatedPrefix: true;
+    };
     readonly nailed: {
         readonly name: "Nailed";
         readonly multiplier: 6;
@@ -1579,6 +1659,7 @@ export declare const prefixApplicationOrderObject: {
     brilliant: 1;
     scientific: 1;
     dazed: 1;
+    marked: 1;
     boiled: 1;
     amorous: 1;
     drunken: 1;
@@ -1611,8 +1692,10 @@ export declare const prefixApplicationOrderObject: {
     angery: 1;
     conspicuous: 1;
     read: 1;
+    leeking: 1;
     marbleized: 1;
     constructive: 1;
+    puppeted: 1;
     sacred: 1;
     omniscient: 1;
     cuffed: 1;
@@ -1627,6 +1710,7 @@ export declare const prefixApplicationOrderObject: {
     incarcerated: 1;
     pugilistic: 1;
     basking: 1;
+    demarcated: 1;
     bladed: 1;
     overcast: 1;
     despairing: 1;
@@ -1664,11 +1748,14 @@ export declare const prefixApplicationOrderObject: {
     beboppin: 1;
     foolish: 1;
     cruel: 1;
+    stabbed: 1;
     neko: 1;
     tentacular: 1;
     chained: 1;
     adduced: 1;
     roped: 1;
+    awardwin: 1;
+    buttered: 1;
     addicted: 1;
     farmboy: 1;
     bushy: 1;
@@ -1692,6 +1779,7 @@ export declare const prefixApplicationOrderObject: {
     rdming: 1;
     "95in": 1;
     wanted: 1;
+    dirtied: 1;
     phasing: 1;
     evanescent: 1;
     raving: 1;

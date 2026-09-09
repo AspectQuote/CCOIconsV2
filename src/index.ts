@@ -23,6 +23,7 @@ const app = express();
 
 const requestCacheLength = 3600 * 24;
 function applyDefaultHeaders(res: Response) {
+    if (config.devmode) return;
     res.setHeader('Cache-Control', `max-age=${requestCacheLength}`);
 }
 
