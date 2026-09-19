@@ -381,6 +381,30 @@ export const patternedCubeSchema = {
             }
         ]
     },
+    "earthenware": {
+        "baseimage": "base",
+        "overlayimage": "finaloverlay",
+        "masks": [
+            {
+                "images": [
+                    "patternmask"
+                ],
+                "patternimage": 0
+            }
+        ],
+        "patternimages": [
+            {
+                "path": "pollock",
+                "seedrotate": false,
+                "seedhuerotate": true,
+                "seedscale": false,
+                "seedscalerange": [
+                    0.1,
+                    2
+                ]
+            }
+        ]
+    },
     "eclipse": {
         "baseimage": "base",
         "overlayimage": "finaloverlay",

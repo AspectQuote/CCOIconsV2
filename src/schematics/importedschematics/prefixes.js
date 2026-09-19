@@ -654,6 +654,16 @@ export const prefixSchema = {
         "elements": [],
         "validSlatedPrefix": true
     },
+    "skewed": {
+        "name": "Skewed",
+        "multiplier": 86,
+        "desc": "...and I'm hopelessly askew.",
+        "universal": false,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [],
+        "validSlatedPrefix": true
+    },
     "hardboiled": {
         "name": "Hard-Boiled",
         "multiplier": 85,
@@ -746,6 +756,16 @@ export const prefixSchema = {
         "elements": [],
         "validSlatedPrefix": true
     },
+    "palletized": {
+        "name": "Palletized",
+        "multiplier": 79,
+        "desc": "Ready to be shipped off!",
+        "universal": false,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [],
+        "validSlatedPrefix": true
+    },
     "collectible": {
         "name": "Collectible",
         "multiplier": 79,
@@ -823,6 +843,18 @@ export const prefixSchema = {
         "elements": [
             "Cold",
             "Cold"
+        ],
+        "validSlatedPrefix": true
+    },
+    "freshened": {
+        "name": "Freshened",
+        "multiplier": 75,
+        "desc": "Smells... fresh.",
+        "universal": false,
+        "dropParties": true,
+        "dropPartyDateRange": [],
+        "elements": [
+            "Fresh"
         ],
         "validSlatedPrefix": true
     },
@@ -1534,7 +1566,7 @@ export const prefixSchema = {
     "glinting": {
         "name": "Glinting",
         "multiplier": 26,
-        "desc": "Ro ro! Fight da powah!",
+        "desc": "May not actually be enchanted.",
         "universal": false,
         "dropParties": true,
         "dropPartyDateRange": [],
@@ -1893,6 +1925,7 @@ export const prefixApplicationOrderObject = {
     "misprinted": 1, // Gives the cube a "Misprinted" effect, (TCG misprint)
     "blurry": 1, // Blurs the cube
     "obfuscating": 1, // Scrambles the cube icon
+    "skewed": 1, // Skews/shears the cube icon
     "inverted": 1, // inverts the cube icon
     "broken": 1, // 'breaks' the cube icon
     // -------------- Special cases
@@ -2009,6 +2042,7 @@ export const prefixApplicationOrderObject = {
     "smoked": 1, // Adds a GET SMOKED hat to the cube
     "conjoined": 1, // Adds a parasitic twin to the cube
     "blind": 1, // Adds a blindfold to the cube
+    "freshened": 1, // Adds a car tree to the cube
     "outlawed": 1, // Adds a bandanna to the cube
     "serving": 1, // Adds a french-maid-style skirt and bonnet to the cube
     "angelic": 1, // Adds a halo to the cube
@@ -2032,6 +2066,7 @@ export const prefixApplicationOrderObject = {
     "ornamentalized": 1, // Adds a few christmas ornaments to the cube
     "brainy": 1, // Adds a gross brain to the cube
     "comfortable": 1, // Adds a pillow for the cube to sit on
+    "palletized": 1, // Adds a pallet for the cube to sit on
     // -------------- Prefixes That Are Skin-Tight (idk how to phrase this)
     "voodoo": 1, // Adds pins and Xes to the cube
     "nailed": 1, // Puts nails into the edges of the cube

@@ -9,7 +9,7 @@ import { filterOtherFlagsForNeeded, filterOtherPrefixesForNeeded, getNeededFrame
 import seedrandom from "seedrandom";
 import { CubeDefinition, CubeID } from "./importedschematics/cubes";
 import { raritySchema } from "./importedschematics/rarities";
-import { dotMatrix, fillHollowRect, gaussianBlur } from "../imageeffects";
+import { applyLinearMatrix, dotMatrix, fillHollowRect, gaussianBlur, LinearMatrix } from "../imageeffects";
 import { turnFlagsFieldIntoFlagsArray } from "./importedschematics/cubeflagsshared";
 import { flagRendererSchema } from "./flagrenderers";
 
@@ -773,7 +773,7 @@ const prefixRendererConsts = {
                         const iconFrameYOffset = yOffset(iconFrameXPosition, sinWaveFrameIdx);
                         for (let iconFrameYPosition = 0; iconFrameYPosition < currentIconFrame.bitmap.height; iconFrameYPosition++) {
                             // console.log(currentIconFrame.getPixelColor(iconFrameXPosition, iconFrameYPosition), iconFrameXPosition, iconFrameYPosition)
-                            currentIconFrame.setPixelColor(currentIconFrameClone.getPixelColor(iconFrameXPosition, iconFrameYPosition), iconFrameXPosition + maxSinMovement, iconFrameYPosition + iconFrameYOffset + maxSinMovement)
+                            currentIconFrame.setPixelColor(currentIconFrameClone.getPixelColor(iconFrameXPosition, iconFrameYPosition), iconFrameXPosition, iconFrameYPosition + iconFrameYOffset)
                         }
                     }
                 }
@@ -5930,6 +5930,98 @@ export const prefixRenderers = {
 
                     return true;
                 }
+            })
+        }
+    }),
+    "awardwin": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                tags: [
+                    prefixRendererTags.needsHeads,
+                    prefixRendererTags.isSeeded
+                ],
+                canvasScale: 1.5,
+                predefinedRNG: {
+                    medalType: {
+                        RNGString: `medal`,
+                        get(RNG) {
+                            return Math.floor(RNG() * 6);
+                        }
+                    }
+                },
+                render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const medals = await loadAnimatedCubeIcon(`${prefixSourceDirectory}/awardwin/medals.png`);
+                    const usingMedal = medals[parsedRNG.medalType];
+
+                    compositeHeadsToAllFrames(input, parts.icon[0], parts.heads, [usingMedal], { width: 32, x: -17, y: -10 });
+
+                    return true;
+                },
+            })
+        }
+    }),
+    "palletized": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.background]: constructPrefixRendererStep({
+                tags: [
+                    prefixRendererTags.needsIconDimensions
+                ],
+                canvasScale: 2,
+                render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const palletImage = await Jimp.read(`${prefixSourceDirectory}/palletized/pallet.png`);
+                    compositeHeadsToAllFrames(input, parts.icon[0], parts.icon.map(iconImage => { return [{ x: 0, y: Math.floor(iconImage.bitmap.height * 0.25), width: iconImage.bitmap.width }]; }), [palletImage], { x: 14, y: -1, width: 32 });
+                    
+                    return true;
+                },
+            })
+        }
+    }),
+    "freshened": constructPrefixRenderer({
+        renderSteps: constructFrontBackPrefixRenderer({
+            backImagePath: `${prefixSourceDirectory}/freshened/back.png`,
+            frontImagePath: `${prefixSourceDirectory}/freshened/front.png`,
+            renderImage(seed, layerAnimation, inputFrames, parts, parsedRNG) {
+                compositeHeadsToAllFrames(inputFrames, parts.icon[0], parts.heads, layerAnimation, { x: 0, y: 8, width: 32 });
+            },
+        })
+    }),
+    "skewed": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.applyToCube]: constructPrefixRendererStep({
+                flatCanvasPadding: 16,
+                tags: [
+                    prefixRendererTags.isSeeded
+                ],
+                predefinedRNG: {
+                    direction: {
+                        RNGString: `skewedaxis`,
+                        get(RNG) {
+                            return (RNG() > 0.5 ? 'x' : 'y');
+                        },
+                    },
+                    magnitude: {
+                        RNGString: `skewedmagnitude`,
+                        get(RNG) {
+                            return ((universalPrefixRNGs.normalizedScalar.get(RNG) * 0.4) + 0.3) * (RNG() > 0.5 ? -1 : 1);
+                        }
+                    }
+                },
+                render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const linearMatrix: LinearMatrix = parsedRNG.direction === "x" ? [
+                        [1, parsedRNG.magnitude],
+                        [0, 1]
+                    ] : [
+                        [1, 0],
+                        [parsedRNG.magnitude, 1]
+                    ];
+                    for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
+                        const inputFrame = input[inputFrameIndex];
+                        
+                        input[inputFrameIndex] = applyLinearMatrix(inputFrame, linearMatrix);
+                    }
+
+                    return true;
+                },
             })
         }
     })

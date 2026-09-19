@@ -560,6 +560,16 @@ export declare const prefixSchema: {
         readonly elements: [];
         readonly validSlatedPrefix: true;
     };
+    readonly skewed: {
+        readonly name: "Skewed";
+        readonly multiplier: 86;
+        readonly desc: "...and I'm hopelessly askew.";
+        readonly universal: false;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: [];
+        readonly validSlatedPrefix: true;
+    };
     readonly hardboiled: {
         readonly name: "Hard-Boiled";
         readonly multiplier: 85;
@@ -640,6 +650,16 @@ export declare const prefixSchema: {
         readonly elements: [];
         readonly validSlatedPrefix: true;
     };
+    readonly palletized: {
+        readonly name: "Palletized";
+        readonly multiplier: 79;
+        readonly desc: "Ready to be shipped off!";
+        readonly universal: false;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: [];
+        readonly validSlatedPrefix: true;
+    };
     readonly collectible: {
         readonly name: "Collectible";
         readonly multiplier: 79;
@@ -708,6 +728,16 @@ export declare const prefixSchema: {
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
         readonly elements: ["Cold", "Cold"];
+        readonly validSlatedPrefix: true;
+    };
+    readonly freshened: {
+        readonly name: "Freshened";
+        readonly multiplier: 75;
+        readonly desc: "Smells... fresh.";
+        readonly universal: false;
+        readonly dropParties: true;
+        readonly dropPartyDateRange: [];
+        readonly elements: ["Fresh"];
         readonly validSlatedPrefix: true;
     };
     readonly electrified: {
@@ -1303,7 +1333,7 @@ export declare const prefixSchema: {
     readonly glinting: {
         readonly name: "Glinting";
         readonly multiplier: 26;
-        readonly desc: "Ro ro! Fight da powah!";
+        readonly desc: "May not actually be enchanted.";
         readonly universal: false;
         readonly dropParties: true;
         readonly dropPartyDateRange: [];
@@ -1631,6 +1661,7 @@ export declare const prefixApplicationOrderObject: {
     misprinted: 1;
     blurry: 1;
     obfuscating: 1;
+    skewed: 1;
     inverted: 1;
     broken: 1;
     censored: 1;
@@ -1741,6 +1772,7 @@ export declare const prefixApplicationOrderObject: {
     smoked: 1;
     conjoined: 1;
     blind: 1;
+    freshened: 1;
     outlawed: 1;
     serving: 1;
     angelic: 1;
@@ -1764,6 +1796,7 @@ export declare const prefixApplicationOrderObject: {
     ornamentalized: 1;
     brainy: 1;
     comfortable: 1;
+    palletized: 1;
     voodoo: 1;
     nailed: 1;
     swag: 1;
