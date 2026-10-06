@@ -129,16 +129,6 @@ export declare const elementSchema: {
         readonly icon: "TagIcons/Ancient.png";
         readonly flavors: ["REEEEEEEEEEEEEEEEEEEAAAAAAALY old cubes!", "Cubes that are at least (visibly) older than 500 years."];
     };
-    readonly Divine: {
-        readonly name: "Divine";
-        readonly icon: "materials/divineshard.png";
-        readonly flavors: ["Pure cubes", "Holy cubes"];
-    };
-    readonly Slated: {
-        readonly name: "Slated";
-        readonly icon: "materials/slatedchip.png";
-        readonly flavors: ["Nasty cubes", "Dirty cubes"];
-    };
     readonly Exotic: {
         readonly name: "Exotic";
         readonly icon: "";

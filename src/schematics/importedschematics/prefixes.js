@@ -1,1919 +1,1022 @@
+function constructPrefix(data) {
+    return {
+        name: data.name ?? "Prefix Name",
+        multiplier: data.multiplier ?? 1,
+        desc: data.desc ?? "Prefix Description",
+        excludedFromCompletion: data.excludedFromCompletion ?? false,
+        elements: data.elements ?? []
+    };
+}
 export const prefixSchema = {
-    "bugged": {
-        "name": "Bugged",
-        "multiplier": 200,
-        "desc": "DOES NOT COMPUTE. Can only be seen by obtaining a cube with a broken prefix.",
-        "universal": false,
-        "dropParties": false,
-        "dropPartyDateRange": [
-            "December 32",
-            "December 33"
-        ],
-        "elements": [],
-        "validSlatedPrefix": false
-    },
-    "leafy": {
+    "bugged": constructPrefix({
+        name: "Bugged",
+        multiplier: 200,
+        desc: "DOES NOT COMPUTE. Can only be seen by obtaining a cube with a broken prefix.",
+        excludedFromCompletion: true
+    }),
+    "leafy": constructPrefix({
         "name": "Leafy",
         "multiplier": 128,
         "desc": "Not to be confused with leafy.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Organic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "cruel": {
+        ]
+    }),
+    "cruel": constructPrefix({
         "name": "Cruel",
         "multiplier": 127,
         "desc": "I feel as if these cubes would do a good job fighting market manipulation.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Glass"
-        ],
-        "validSlatedPrefix": true
-    },
-    "based": {
+        ]
+    }),
+    "based": constructPrefix({
         "name": "Based",
         "multiplier": 126,
         "desc": "*LOUD BASS BOOSTED SFX*",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Makes-Noise"
-        ],
-        "validSlatedPrefix": true
-    },
-    "orbital": {
+        ]
+    }),
+    "orbital": constructPrefix({
         "name": "Orbital",
         "multiplier": 125,
         "desc": "The center of its own little universe!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Heavy"
-        ],
-        "validSlatedPrefix": true
-    },
-    "sacred": {
+        ]
+    }),
+    "sacred": constructPrefix({
         "name": "Sacred",
         "multiplier": 124,
         "desc": "The sacrificial cube",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Pure"
-        ],
-        "validSlatedPrefix": true
-    },
-    "flaming": {
+        ]
+    }),
+    "flaming": constructPrefix({
         "name": "Flaming",
         "multiplier": 123,
         "desc": "I. AM. ON. FIRE!!!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Hot"
-        ],
-        "validSlatedPrefix": true
-    },
-    "cursed": {
+        ]
+    }),
+    "cursed": constructPrefix({
         "name": "Cursed",
         "multiplier": 123,
-        "desc": "Purble fire... 2spooky...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
+        "desc": "THE PENTACLE REVOLVING",
         "elements": [
             "Hot"
-        ],
-        "validSlatedPrefix": true
-    },
-    "emburdening": {
+        ]
+    }),
+    "emburdening": constructPrefix({
         "name": "Emburdening",
         "multiplier": 122,
         "desc": "'Man this cube is super heavy' - the guy holding this cube up",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Heavy",
             "Stony"
-        ],
-        "validSlatedPrefix": true
-    },
-    "cuffed": {
+        ]
+    }),
+    "cuffed": constructPrefix({
         "name": "Cuffed",
         "multiplier": 121,
-        "desc": "You can almost see the town inside it!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
+        "desc": "You are under the rest.",
         "elements": [
             "Magnetic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "endangered": {
+        ]
+    }),
+    "endangered": constructPrefix({
         "name": "Endangered",
         "multiplier": 120,
-        "desc": "IT'S A TRAP!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "marvelous": {
+        "desc": "IT'S A TRAP! (...a bear trap!)"
+    }),
+    "marvelous": constructPrefix({
         "name": "Marvelous",
         "multiplier": 119,
-        "desc": "Quieres?",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "May 15",
-            "May 30"
-        ],
+        "desc": "A hand-holding cube! How scandalous!ddd",
         "elements": [
             "Heavy"
-        ],
-        "validSlatedPrefix": true
-    },
-    "phasing": {
+        ]
+    }),
+    "phasing": constructPrefix({
         "name": "Phasing",
         "multiplier": 118,
-        "desc": "It's... it's not shutting down...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
+        "desc": "It's decorporealizing!",
         "elements": [
             "Light"
-        ],
-        "validSlatedPrefix": true
-    },
-    "tentacular": {
+        ]
+    }),
+    "tentacular": constructPrefix({
         "name": "Tentacular",
         "multiplier": 117,
-        "desc": "cube34.xxx",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
+        "desc": "It's got extra appendages!",
         "elements": [
             "Slimy"
-        ],
-        "validSlatedPrefix": true
-    },
-    "dotted": {
+        ]
+    }),
+    "dotted": constructPrefix({
         "name": "Dotted",
         "multiplier": 117,
         "desc": "Circles in your cubes? It's more likely than you think.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Pure"
-        ],
-        "validSlatedPrefix": true
-    },
-    "evanescent": {
+        ]
+    }),
+    "evanescent": constructPrefix({
         "name": "Evanescent",
         "multiplier": 116,
-        "desc": "A hole?! In reality?!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
+        "desc": "It's dematerializing!",
         "elements": [
             "Light"
-        ],
-        "validSlatedPrefix": true
-    },
-    "royal": {
+        ]
+    }),
+    "royal": constructPrefix({
         "name": "Royal",
         "multiplier": 115,
-        "desc": "Only the finest. Cubes of a pureblooded lineage may bear this prefix.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
+        "desc": "Only cubes of a pureblooded lineage may bear this prefix.",
         "elements": [
             "Shiny"
         ],
-        "validSlatedPrefix": true
-    },
-    "captain": {
+    }),
+    "captain": constructPrefix({
         "name": "Captain",
         "multiplier": 114,
         "desc": "YES! PERFECT!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "oriental": {
+        ]
+    }),
+    "oriental": constructPrefix({
         "name": "Oriental",
         "multiplier": 114,
         "desc": "It's raising the roof!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Heavy"
-        ],
-        "validSlatedPrefix": false
-    },
-    "insignificant": {
+        "elements": ["Heavy"],
+        excludedFromCompletion: true
+    }),
+    "insignificant": constructPrefix({
         "name": "Insignificant",
         "multiplier": 113,
         "desc": "THIS IS NOT OVER!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "95in": {
+        ]
+    }),
+    "95in": constructPrefix({
         "name": "95in'",
         "multiplier": 112,
         "desc": "[Error Sound]",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Painted"
-        ],
-        "validSlatedPrefix": true
-    },
-    "marbleized": {
+        ]
+    }),
+    "marbleized": constructPrefix({
         "name": "Marbleized",
         "multiplier": 112,
         "desc": "Jawline chiseled from stone.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": ["Stony", "Heavy"],
-        "validSlatedPrefix": true
-    },
-    "snowy": {
+        "elements": ["Stony", "Heavy"]
+    }),
+    "snowy": constructPrefix({
         "name": "Snowy",
         "multiplier": 111,
-        "desc": "A cold wind blows away... (Prefix Idea by Sdoma)",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
+        "desc": "A cold wind blows away...",
         "elements": [
             "Cold"
         ],
-        "validSlatedPrefix": true
-    },
-    "roaring": {
+    }),
+    "roaring": constructPrefix({
         "name": "Roaring",
         "multiplier": 111,
         "desc": "Hopefully it doesn't have a Black Knife!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": ["Haunted", "Heavy"],
-        "validSlatedPrefix": true
-    },
-    "summoning": {
+        "elements": ["Haunted", "Heavy"]
+    }),
+    "summoning": constructPrefix({
         "name": "Summoning",
         "multiplier": 110,
         "desc": "Lots of spinny cubes spinning around your cube (which might even be spinning itself!)",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": [
             "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "misprinted": {
+        ]
+    }),
+    "misprinted": constructPrefix({
         "name": "Misprinted",
         "multiplier": 110,
         "desc": "That's gotta be worth overpay.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "swarming": {
+        "elements": []
+    }),
+    "swarming": constructPrefix({
         "name": "Swarming",
         "multiplier": 109,
-        "desc": "It's very rare to have cubes gather in packs around one larger, alpha cube.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
+        "desc": "They gather for you.",
         "elements": [
             "Haunted"
         ],
-        "validSlatedPrefix": true
-    },
-    "conjoined": {
+    }),
+    "conjoined": constructPrefix({
         "name": "Conjoined",
         "multiplier": 109,
         "desc": "Look! He's... smiling?",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": ["Haunted"],
-        "validSlatedPrefix": true
-    },
-    "kramped": {
+        "elements": ["Haunted"]
+    }),
+    "kramped": constructPrefix({
         "name": "Kramped",
         "multiplier": 108,
         "desc": "Coal. For every holiday.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "December 1",
-            "December 30"
-        ],
         "elements": [
             "Ancient"
-        ],
-        "validSlatedPrefix": true
-    },
-    "constructive": {
+        ]
+    }),
+    "constructive": constructPrefix({
         "name": "Constructive",
         "multiplier": 108,
         "desc": "Now if it copied the cube to the right...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": ["Light"],
-        "validSlatedPrefix": true
-    },
-    "dandy": {
+        "elements": ["Light"]
+    }),
+    "dandy": constructPrefix({
         "name": "Dandy",
         "multiplier": 107,
-        "desc": "I need money for boobies.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
+        "desc": "You really are... dandy.",
         "elements": [
             "Pure"
-        ],
-        "validSlatedPrefix": true
-    },
-    "scrumptious": {
+        ]
+    }),
+    "scrumptious": constructPrefix({
         "name": "Scrumptious",
         "multiplier": 107,
         "desc": "Get me a bowl of THAT!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": ["Edible"],
-        "validSlatedPrefix": true
-    },
-    "incarcerated": {
+        "elements": ["Edible"]
+    }),
+    "incarcerated": constructPrefix({
         "name": "Incarcerated",
         "multiplier": 106,
         "desc": "Imprisoned for being too collectable",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Heavy",
-            "Magnetic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "runic": {
+        "elements": ["Heavy", "Magnetic"]
+    }),
+    "boxed": constructPrefix({
+        "name": "Boxed",
+        "multiplier": 106,
+        "desc": "Matryoshka boxes with a cube center.",
+        "elements": ["Plastic"]
+    }),
+    "runic": constructPrefix({
         "name": "Runic",
         "multiplier": 105,
-        "desc": "A bunch of viking runes, honestly, I couldn't tell you what they mean.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
+        "desc": "A bunch of norse runes. Honestly, I couldn't tell you what they mean.",
         "elements": [
             "Pure"
-        ],
-        "validSlatedPrefix": true
-    },
-    "rippling": {
+        ]
+    }),
+    "rippling": constructPrefix({
         "name": "Rippling",
         "multiplier": 104,
-        "desc": "A disturbance in time, mind you.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
+        "desc": "I guess you could say it's... making waves.",
         "elements": [
             "Electronic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "emphasized": {
+        ]
+    }),
+    "emphasized": constructPrefix({
         "name": "Emphasized",
         "multiplier": 103,
         "desc": "Way to put the spotlight on it!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "chained": {
+        "elements": ["Light-Emitting"]
+    }),
+    "chained": constructPrefix({
         "name": "Chained",
         "multiplier": 102,
         "desc": "It has some strings to hold it down! (Heavy and Metal strings)",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Magnetic",
-            "Heavy"
-        ],
-        "validSlatedPrefix": true
-    },
-    "tumbling": {
+        "elements": ["Magnetic", "Heavy"]
+    }),
+    "tumbling": constructPrefix({
         "name": "Tumbling",
         "multiplier": 102,
-        "desc": "It all comes tumbling down, tumbling down...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "angelic": {
+        "desc": "Congratulations!"
+    }),
+    "angelic": constructPrefix({
         "name": "Angelic",
         "multiplier": 101,
         "desc": "A halo of LIES! (Nobody knows if the halo is fake or not.)",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Pure",
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "menacing": {
+        "elements": ["Pure", "Light-Emitting"]
+    }),
+    "menacing": constructPrefix({
         "name": "Menacing",
         "multiplier": 100,
-        "desc": "AYAYAYA!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "serving": {
+        "desc": "This thing is as tough as a pillar, man."
+    }),
+    "serving": constructPrefix({
         "name": "Serving",
         "multiplier": 99,
-        "desc": "What can I do for you, collector-sama?",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "holy": {
+        "desc": "It cares so much, you wonder if it's being obsequious.",
+        "elements": ["Fabric"]
+    }),
+    "holy": constructPrefix({
         "name": "Holy",
         "multiplier": 98,
         "desc": "*angelic voices*",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "unholy": {
+        "elements": ["Light-Emitting"]
+    }),
+    "unholy": constructPrefix({
         "name": "Unholy",
         "multiplier": 97,
         "desc": "*not so angelic voices*",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "contaminated": {
+        "elements": ["Light-Emitting"]
+    }),
+    "contaminated": constructPrefix({
         "name": "Contaminated",
         "multiplier": 96,
         "desc": "*irradiated voices*",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "phosphorescent": {
+        "elements": ["Light-Emitting"]
+    }),
+    "phosphorescent": constructPrefix({
         "name": "Phosphorescent",
         "multiplier": 95,
         "desc": "*glowing voices*",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "neko": {
+        "elements": ["Light-Emitting"]
+    }),
+    "neko": constructPrefix({
         "name": "Neko",
         "multiplier": 94,
         "desc": "meow meow.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Organic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "mathematical": {
+        "elements": ["Organic"]
+    }),
+    "mathematical": constructPrefix({
         "name": "Mathematical",
         "multiplier": 93,
         "desc": "All the numbers for this prefix are unique to this cube, isn't that cool?",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Electronic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "wanted": {
+        "elements": ["Electronic"]
+    }),
+    "wanted": constructPrefix({
         "name": "Wanted",
         "multiplier": 92,
         "desc": "DEAD OR ALIVE.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "onomatopoeiacal": {
+        "elements": ["Fabric"]
+    }),
+    "onomatopoeiacal": constructPrefix({
         "name": "Onomatopoeiacal",
         "multiplier": 91,
         "desc": "Try saying and SPELLING that 3 times fast!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Makes-Noise"
-        ],
-        "validSlatedPrefix": true
-    },
-    "foolish": {
+        "elements": ["Makes-Noise"]
+    }),
+    "foolish": constructPrefix({
         "name": "Foolish",
         "multiplier": 91,
         "desc": "Thank you, Dangly Bells.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "April 1",
-            "April 7"
-        ],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "smoked": {
+        "elements": ["Fabric"]
+    }),
+    "smoked": constructPrefix({
         "name": "Smoked",
         "multiplier": 90,
-        "desc": "Get Smoked, kid.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "basking": {
+        "desc": "You just got smoked boooy!",
+        "elements": ["Fabric"]
+    }),
+    "basking": constructPrefix({
         "name": "Basking",
         "multiplier": 89,
-        "desc": "Sunbather hexahedronal extraordinaire",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "June 1",
-            "September 30"
-        ],
-        "elements": [
-            "Hot"
-        ],
-        "validSlatedPrefix": true
-    },
-    "omniscient": {
+        "desc": "It's getting its tanlines done.",
+        "elements": ["Hot"]
+    }),
+    "omniscient": constructPrefix({
         "name": "Omniscient",
         "multiplier": 88,
         "desc": "The all-knowing prefix",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Haunted"
-        ],
-        "validSlatedPrefix": true
-    },
-    "sniping": {
+        "elements": ["Haunted"]
+    }),
+    "sniping": constructPrefix({
         "name": "Sniping",
         "multiplier": 87,
-        "desc": "360 ooga booga booga!!!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "beboppin": {
+        "desc": "Taking fire, need assistance!"
+    }),
+    "beboppin": constructPrefix({
         "name": "Beboppin'",
         "multiplier": 86,
-        "desc": "In the rain...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "skewed": {
+        "desc": "In the rain..."
+    }),
+    "skewed": constructPrefix({
         "name": "Skewed",
         "multiplier": 86,
-        "desc": "...and I'm hopelessly askew.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "hardboiled": {
+        "desc": "...and I'm hopelessly askew."
+    }),
+    "hardboiled": constructPrefix({
         "name": "Hard-Boiled",
         "multiplier": 85,
-        "desc": "Elementary, my dear hexahedron!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "angry": {
+        "desc": "Elementary, my dear collector!",
+        "elements": ["Fabric"]
+    }),
+    "angry": constructPrefix({
         "name": "Angry",
         "multiplier": 84,
         "desc": "Very angery cubes can have this prefix!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Hot"
-        ],
-        "validSlatedPrefix": true
-    },
-    "gruesome": {
+        "elements": ["Hot"]
+    }),
+    "gruesome": constructPrefix({
         "name": "Gruesome",
         "multiplier": 83,
         "desc": "Man who thought pink blood was a good idea!?",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Wet"
-        ],
-        "validSlatedPrefix": true
-    },
-    "outlawed": {
+        "elements": ["Wet"]
+    }),
+    "outlawed": constructPrefix({
         "name": "Outlawed",
         "multiplier": 82,
-        "desc": "The fastest cube in the west!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "wranglin": {
+        "desc": "The fastest cube in the west!"
+    }),
+    "wranglin": constructPrefix({
         "name": "Wranglin'",
         "multiplier": 81,
         "desc": "18 naked cubes",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "canoodled": {
+        "elements": ["Fabric"],
+        excludedFromCompletion: true
+    }),
+    "canoodled": constructPrefix({
         "name": "Canoodled",
         "multiplier": 80,
-        "desc": "mwah",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Painted"
-        ],
-        "validSlatedPrefix": true
-    },
-    "saiyan": {
+        "desc": "*mwah*",
+        "elements": ["Painted"]
+    }),
+    "saiyan": constructPrefix({
         "name": "Saiyan",
         "multiplier": 80,
         "desc": "[Joke about the number 9000 here]",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "amorous": {
+        "elements": ["Light-Emitting"]
+    }),
+    "amorous": constructPrefix({
         "name": "Amorous",
         "multiplier": 79,
-        "desc": "Trying to get all lovey-dovey with your cubes? Weirdo.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "palletized": {
+        "desc": "Trying to get all lovey-dovey with your cubes? Weirdo."
+    }),
+    "palletized": constructPrefix({
         "name": "Palletized",
         "multiplier": 79,
         "desc": "Ready to be shipped off!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "collectible": {
+        "elements": ["Heavy"],
+    }),
+    "collectible": constructPrefix({
         "name": "Collectible",
         "multiplier": 79,
         "desc": "Cube Collectors search for Collectible Cubes to fill out their Cube Collection.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "dazed": {
+        elements: ["Glass"]
+    }),
+    "dazed": constructPrefix({
         "name": "Dazed",
         "multiplier": 78,
-        "desc": "Got punched in the face? You might be dazed! Try it! It increases your value!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "adduced": {
+        "desc": "Punch your cube in the face! Try it! That'll increase its value!"
+    }),
+    "adduced": constructPrefix({
         "name": "Adduced",
         "multiplier": 77,
         "desc": "Move along people, nothing to see here.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Plastic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "meleagris": {
+        "elements": ["Plastic"],
+    }),
+    "meleagris": constructPrefix({
         "name": "Meleagris",
         "multiplier": 77,
         "desc": "You can faintly hear 'Gobble Gobble'.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Organic",
-            "Makes-Noise"
-        ],
-        "validSlatedPrefix": false
-    },
-    "awardwin": {
+        "elements": ["Organic", "Makes-Noise"],
+        excludedFromCompletion: true
+    }),
+    "awardwin": constructPrefix({
         "name": "Award-Winning",
         "multiplier": 76,
-        "desc": "First place at the faire!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "glitchy": {
+        "desc": "First place at the faire!"
+    }),
+    "glitchy": constructPrefix({
         "name": "Glitchy",
         "multiplier": 76,
-        "desc": "Beep Bop Boop Bop Babop --- A Dooh Dat Da Dah!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Electronic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "frosty": {
+        "desc": "0b100 === 4 : true",
+        "elements": ["Electronic"]
+    }),
+    "frosty": constructPrefix({
         "name": "Frosty",
         "multiplier": 75,
-        "desc": "Stay frosty. Well, I mean technically it's rime...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Cold",
-            "Cold"
-        ],
-        "validSlatedPrefix": true
-    },
-    "freshened": {
+        "desc": "Oh he's chill.",
+        "elements": ["Cold", "Cold"]
+    }),
+    "freshened": constructPrefix({
         "name": "Freshened",
         "multiplier": 75,
-        "desc": "Smells... fresh.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fresh"
-        ],
-        "validSlatedPrefix": true
-    },
-    "electrified": {
+        "desc": "An olfactory experience.",
+        "elements": ["Fresh"]
+    }),
+    "electrified": constructPrefix({
         "name": "Electrified",
         "multiplier": 74,
         "desc": "Static charge, I think?",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "overcast": {
+        "elements": ["Light-Emitting"]
+    }),
+    "overcast": constructPrefix({
         "name": "Overcast",
         "multiplier": 73,
         "desc": "Days like this are great...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Wet"
-        ],
-        "validSlatedPrefix": true
-    },
-    "bladed": {
+        "elements": ["Wet"]
+    }),
+    "bladed": constructPrefix({
         "name": "Bladed",
         "multiplier": 72,
-        "desc": "Riddled and plagued by dreams of a terrible past and even worse future.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Heavy"
-        ],
-        "validSlatedPrefix": true
-    },
-    "jolly": {
+        "desc": "While you studied the cubepedia, I studied the blade.",
+        "elements": ["Heavy"]
+    }),
+    "jolly": constructPrefix({
         "name": "Jolly",
         "multiplier": 71,
         "desc": "Ho Ho Ho! Merry Cubesmas!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "December 1",
-            "December 30"
-        ],
-        "elements": [
-            "Fabric",
-            "Cold"
-        ],
-        "validSlatedPrefix": true
-    },
-    "partying": {
+        "elements": ["Fabric", "Cold"]
+    }),
+    "partying": constructPrefix({
         "name": "Partying",
         "multiplier": 70,
         "desc": "Party time, let's GO!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "May 15",
-            "May 30"
-        ],
-        "elements": [
-            "Makes-Noise"
-        ],
-        "validSlatedPrefix": true
-    },
-    "leeking": {
+        "elements": ["Makes-Noise"],
+    }),
+    "leeking": constructPrefix({
         "name": "Leeking",
         "multiplier": 60,
         "desc": "ievan polkka spins me 'round.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Edible"
-        ],
-        "validSlatedPrefix": true
-    },
-    "sophisticated": {
+        "elements": ["Edible"]
+    }),
+    "sophisticated": constructPrefix({
         "name": "Sophisticated",
         "multiplier": 69,
         "desc": "Hmm yes my good sir. A glass of your finest.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "culinary": {
+        "elements": ["Fabric"]
+    }),
+    "culinary": constructPrefix({
         "name": "Culinary",
         "multiplier": 68,
-        "desc": "This Cube! IT'S RAW!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Edible"
-        ],
-        "validSlatedPrefix": true
-    },
-    "eudaemonic": {
+        "desc": "Oh dear gorgeous.",
+        "elements": ["Edible", "Fabric"],
+        excludedFromCompletion: true
+    }),
+    "eudaemonic": constructPrefix({
         "name": "Eudaemonic",
         "multiplier": 67,
         "desc": "The cube is giving you the impression of it being friendly. DON'T BE FOOLED. CUBES ARE NOT TO BE TRUSTED.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Makes-Noise"
-        ],
-        "validSlatedPrefix": true
-    },
-    "magical": {
+        "elements": ["Makes-Noise"]
+    }),
+    "magical": constructPrefix({
         "name": "Magical",
         "multiplier": 66,
         "desc": "Evil Cube Wizard Gang. We love casting spells.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "demarcated": {
+        "elements": ["Light-Emitting"],
+        excludedFromCompletion: true
+    }),
+    "demarcated": constructPrefix({
         "name": "Demarcated",
         "multiplier": 65,
         "desc": "To ensure your safety, stay away from this cube.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Painted"
-        ],
-        "validSlatedPrefix": true
-    },
-    "blushing": {
+        "elements": ["Painted"]
+    }),
+    "blushing": constructPrefix({
         "name": "Blushing",
         "multiplier": 65,
         "desc": ">~< I'm so vewwy sowwy I don't add that much vawyou ;-; h-how can I make it up to you, baka?", // I'm sorry.
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Hot"
-        ],
-        "validSlatedPrefix": true
-    },
-    "defeatable": {
+        "elements": ["Hot"]
+    }),
+    "defeatable": constructPrefix({
         "name": "Defeatable",
         "multiplier": 65,
-        "desc": "The noise is coming!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": ["Makes-Noise"],
-        "validSlatedPrefix": true
-    },
-    "sweetened": {
+        "desc": "If it was unbeatable, why would you fight it?",
+        "elements": ["Makes-Noise"]
+    }),
+    "sweetened": constructPrefix({
         "name": "Sweetened",
         "multiplier": 64,
         "desc": "Pretty please with a cube on top?",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Poisonous"
-        ],
-        "validSlatedPrefix": true
-    },
-    "dovey": {
+        "elements": ["Poisonous"],
+        excludedFromCompletion: true
+    }),
+    "dovey": constructPrefix({
         "name": "Dovey",
         "multiplier": 63,
-        "desc": "They're in love!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "February 1",
-            "February 28"
-        ],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "batty": {
+        "desc": "The bird is perched."
+    }),
+    "batty": constructPrefix({
         "name": "Batty",
         "multiplier": 62,
-        "desc": "They're a little spooky.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "October 1",
-            "November 5"
-        ],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "streaming": {
+        "desc": "Just hangin' around."
+    }),
+    "streaming": constructPrefix({
         "name": "Streaming",
         "multiplier": 62,
         "desc": "A-Set, you bet!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Electronic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "clapping": {
+        "elements": ["Electronic", "Makes-Noise"]
+    }),
+    "clapping": constructPrefix({
         "name": "Clapping",
         "multiplier": 61,
         "desc": "WOW! Good job buddy!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Makes-Noise"
-        ],
-        "validSlatedPrefix": true
-    },
-    "puppeted": {
+        "elements": ["Makes-Noise"]
+    }),
+    "puppeted": constructPrefix({
         "name": "Puppeted",
         "multiplier": 60,
         "desc": "Master of Cubes is pulling your strings!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Haunted"
-        ],
-        "validSlatedPrefix": true
-    },
-    "musical": {
+        "elements": ["Haunted"]
+    }),
+    "musical": constructPrefix({
         "name": "Musical",
         "multiplier": 60,
         "desc": "I imagine this cube is listening to... something that's pretty groovy.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Makes-Noise"
-        ],
-        "validSlatedPrefix": true
-    },
-    "bushy": {
+        "elements": ["Makes-Noise"],
+    }),
+    "bushy": constructPrefix({
         "name": "Bushy",
         "multiplier": 59,
         "desc": "A man's stubble is a defining feature!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Organic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "stunned": {
+        "elements": ["Organic"]
+    }),
+    "stunned": constructPrefix({
         "name": "Stunned",
         "multiplier": 58,
-        "desc": "Tazed the cube. Stunned it. More Expensive? YES.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "marked": {
+        "desc": "The cube is in its damage phase, make sure to make the most of it."
+    }),
+    "marked": constructPrefix({
         "name": "Marked",
         "multiplier": 57,
-        "desc": "STILL HITTIN' HEADSHOTS!.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "lovey": {
+        "desc": "STILL HITTIN' HEADSHOTS!."
+    }),
+    "lovey": constructPrefix({
         "name": "Lovey",
         "multiplier": 57,
-        "desc": "For the romantic cube",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "February 1",
-            "February 28"
-        ],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "trouvaille": {
+        "desc": "For the romantic cube"
+    }),
+    "trouvaille": constructPrefix({
         "name": "Trouvaille",
         "multiplier": 56,
-        "desc": "Cubes that are exceptionally lucky get this prefix. Think of them as good luck charms, and the placebo effect will do the rest.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Organic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "googly": {
+        "desc": "The cube grows a funny hat.",
+        "elements": ["Organic"]
+    }),
+    "googly": constructPrefix({
         "name": "Googly",
         "multiplier": 55,
         "desc": "It's eyes cannot agree... most of the time.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Plastic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "stabbed": {
+        "elements": ["Plastic"],
+        excludedFromCompletion: true
+    }),
+    "stabbed": constructPrefix({
         "name": "Stabbed",
         "multiplier": 54,
         "desc": "It hort so bad.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Magnetic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "expressive": {
+        "elements": ["Magnetic"]
+    }),
+    "expressive": constructPrefix({
         "name": "Expressive",
         "multiplier": 54,
         "desc": "I don't use the internet often, but when I do...",
-        "universal": true,
-        "dropParties": false,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Haunted"
-        ],
-        "validSlatedPrefix": true
-    },
-    "talkative": {
+        "elements": ["Haunted"]
+    }),
+    "talkative": constructPrefix({
         "name": "Talkative",
         "multiplier": 54,
-        "desc": "If only we could understand the cube language. Wouldn't that be somethin!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Makes-Noise"
-        ],
-        "validSlatedPrefix": true
-    },
-    "muscular": {
+        "desc": "It better not be talkin' smack.",
+        "elements": ["Makes-Noise"]
+    }),
+    "muscular": constructPrefix({
         "name": "Muscular",
         "multiplier": 53,
         "desc": "💪",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "June 1",
-            "September 30"
-        ],
-        "elements": [
-            "Organic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "leggendary": {
+        "elements": ["Organic"]
+    }),
+    "leggendary": constructPrefix({
         "name": "Leggendary",
         "multiplier": 52,
         "desc": "🦵",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "June 1",
-            "September 30"
-        ],
-        "elements": [
-            "Organic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "thinking": {
+        elements: ["Organic"]
+    }),
+    "thinking": constructPrefix({
         "name": "Thinking",
         "multiplier": 51,
-        "desc": "You know I was thinking... why are there so many prefixes? There's so many lol",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Organic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "boiled": {
+        "desc": "You know I was thinking... Why are there so many prefixes?",
+        excludedFromCompletion: true
+    }),
+    "boiled": constructPrefix({
         "name": "Boiled",
         "multiplier": 50,
-        "desc": "Out of the frying pan, into the fire! Or, however you relate that to being boiled...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Hot",
-            "Wet"
-        ],
-        "validSlatedPrefix": true
-    },
-    "typing": {
+        "desc": "Steamed cubes.",
+        "elements": ["Hot", "Wet"],
+        excludedFromCompletion: true
+    }),
+    "typing": constructPrefix({
         "name": "Typing",
         "multiplier": 49,
-        "desc": "It's probably typing Shakespeare's Hamlet by hitting random keys. Kinda like a monkey.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "addicted": {
+        "desc": "It's probably writing Shakespeare like a monkey."
+    }),
+    "addicted": constructPrefix({
         "name": "Addicted",
         "multiplier": 49,
         "desc": "*sigh* just one more spin...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
         "elements": ["Poisonous"],
-        "validSlatedPrefix": true
-    },
-    "blind": {
+    }),
+    "blind": constructPrefix({
         "name": "Blind",
         "multiplier": 48,
         "desc": "I can't see! I can't see!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "cucurbitaphilic": {
+        "elements": ["Fabric"]
+    }),
+    "cucurbitaphilic": constructPrefix({
         "name": "Cucurbitaphilic",
         "multiplier": 47,
-        "desc": "Funny word for liking melons don't you think?",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "October 1",
-            "November 5"
-        ],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "radioactive": {
+        "desc": "It means to like or enjoy melons."
+    }),
+    "radioactive": constructPrefix({
         "name": "Radioactive",
         "multiplier": 46,
-        "desc": "Funny elephant's foot cube. (Original Prefix by Axleon)",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "read": {
+        "desc": "I can't get a good picture of it."
+    }),
+    "read": constructPrefix({
         "name": "Read",
         "multiplier": 45,
-        "desc": "A message from the stars!",
-        "universal": false,
-        "dropParties": false,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": false
-    },
-    "foggy": {
+        "desc": "A message from the stars!"
+    }),
+    "foggy": constructPrefix({
         "name": "Foggy",
         "multiplier": 44,
-        "desc": "*suspensful music plays* (Original Prefix by Axleon)",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Wet",
-            "Cold"
-        ],
-        "validSlatedPrefix": true
-    },
-    "fatherly": {
+        "desc": "I reach out to the cube!",
+        "elements": ["Wet", "Cold"]
+    }),
+    "fatherly": constructPrefix({
         "name": "Fatherly",
         "multiplier": 43,
-        "desc": "This cube has children! That's nuts! How do they reproduce... 0.0",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Haunted"
-        ],
-        "validSlatedPrefix": true
-    },
-    "pugilistic": {
+        "desc": "Don't speak to me or my cube ever again.",
+        "elements": ["Haunted"]
+    }),
+    "pugilistic": constructPrefix({
         "name": "Pugilistic",
         "multiplier": 42,
-        "desc": "Cubey Balboa, the greatest BOXer ever!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "censored": {
+        "desc": "The greatest BOXer ever!",
+        elements: ["Fabric"]
+    }),
+    "censored": constructPrefix({
         "name": "Censored",
         "multiplier": 41,
-        "desc": "[CENSORED]",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "buttered": {
+        "desc": "########## #### ## #########"
+    }),
+    "buttered": constructPrefix({
         "name": "Buttered",
         "multiplier": 40,
         "desc": "Cube wit da butta on em.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Edible"
-        ],
-        "validSlatedPrefix": true
-    },
-    "sick": {
+        "elements": ["Edible"]
+    }),
+    "sick": constructPrefix({
         "name": "Sick",
         "multiplier": 40,
-        "desc": "Protection from the blight that shall not be named.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "fearful": {
+        "desc": "It protects itself from the blight that shall not be named.",
+        "elements": ["Fabric"]
+    }),
+    "fearful": constructPrefix({
         "name": "Fearful",
         "multiplier": 39,
         "desc": "woah! hey now! wait just one second!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Wet"
-        ],
-        "validSlatedPrefix": true
-    },
-    "drunken": {
+        "elements": ["Wet"]
+    }),
+    "drunken": constructPrefix({
         "name": "Drunken",
         "multiplier": 38,
-        "desc": "Misato Cube. Bottom Text",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Poisonous"
-        ],
-        "validSlatedPrefix": true
-    },
-    "comfortable": {
+        "desc": "10% cube-alcohol content.",
+        "elements": ["Poisonous"]
+    }),
+    "comfortable": constructPrefix({
         "name": "Comfortable",
         "multiplier": 37,
         "desc": "That pillow does look mighty comfortable!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "swag": {
+        "elements": ["Fabric"]
+    }),
+    "swag": constructPrefix({
         "name": "Swag",
         "multiplier": 36,
-        "desc": "Mad? Watch this swag.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Ancient"
-        ],
-        "validSlatedPrefix": true
-    },
-    "stereoscopic": {
+        "desc": "Down with the swag.",
+        "elements": ["Ancient"]
+    }),
+    "stereoscopic": constructPrefix({
         "name": "Stereoscopic",
         "multiplier": 36,
-        "desc": "A whole new meaning of 'double vision'.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Ancient"
-        ],
-        "validSlatedPrefix": true
-    },
-    "scientific": {
+        "desc": "Woah dude... I can almost see a 3-D cube!",
+        "elements": ["Ancient"]
+    }),
+    "scientific": constructPrefix({
         "name": "Scientific",
         "multiplier": 35,
         "desc": "According to my research...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Glass"
-        ],
-        "validSlatedPrefix": true
-    },
-    "brainy": {
+        "elements": ["Glass"]
+    }),
+    "brainy": constructPrefix({
         "name": "Brainy",
         "multiplier": 34,
         "desc": "Smarter than you!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Organic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "roped": {
+        "elements": ["Organic"]
+    }),
+    "roped": constructPrefix({
         "name": "Roped",
         "multiplier": 33,
-        "desc": "Oh.. ok buddy.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "brilliant": {
+        "desc": "It been wrangled! Darn tootin!",
+        "elements": ["Fabric"]
+    }),
+    "brilliant": constructPrefix({
         "name": "Brilliant",
         "multiplier": 32,
         "desc": "This cube is smarter than you! You know how I can tell? Because it doesn't play this game!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "sparkly": {
+        "elements": ["Light-Emitting"]
+    }),
+    "sparkly": constructPrefix({
         "name": "Sparkly",
         "multiplier": 31,
-        "desc": "It's like being shiny, but like... not?",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "adorable": {
+        "desc": "It's like being shiny, but only a little bit at a time."
+    }),
+    "adorable": constructPrefix({
         "name": "Adorable",
         "multiplier": 30,
-        "desc": "It's too cute!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "hurt": {
+        "desc": "It's too cute! #adorbs",
+        "elements": ["Fabric"]
+    }),
+    "hurt": constructPrefix({
         "name": "Hurt",
         "multiplier": 29,
         "desc": "A bandaid for your booboo!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Slimy"
-        ],
-        "validSlatedPrefix": true
-    },
-    "ailurophilic": {
+        "elements": ["Slimy"]
+    }),
+    "ailurophilic": constructPrefix({
         "name": "Ailurophilic",
         "multiplier": 28,
-        "desc": "This cube likes cats so much, it brings one with it wherever it goes!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Organic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "fake": {
+        "desc": "meow :3",
+        "elements": ["Organic"]
+    }),
+    "fake": constructPrefix({
         "name": "Fake",
         "multiplier": 27,
-        "desc": "If you create fake PNGs there is a special place in hell for you.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "glinting": {
+        "desc": "If you upload fake PNGs there is a special place in hell for you."
+    }),
+    "glinting": constructPrefix({
         "name": "Glinting",
         "multiplier": 26,
-        "desc": "May not actually be enchanted.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Shiny"
-        ],
-        "validSlatedPrefix": true
-    },
-    "conspicuous": {
+        "desc": "Disclaimer: May not actually be enchanted.",
+        "elements": ["Shiny"]
+    }),
+    "conspicuous": constructPrefix({
         "name": "Conspicuous",
         "multiplier": 25,
         "desc": "You can tell from this piece of evidence that the suspect was... collecting cubes.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Plastic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "voodoo": {
+        "elements": ["Plastic"]
+    }),
+    "voodoo": constructPrefix({
         "name": "Voodoo",
         "multiplier": 24,
         "desc": "All I feel is pins and needles!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Haunted"
-        ],
-        "validSlatedPrefix": true
-    },
-    "annoyed": {
+        "elements": ["Haunted"]
+    }),
+    "annoyed": constructPrefix({
         "name": "Annoyed",
         "multiplier": 23,
-        "desc": "I think cubes that have this prefix are tired of dealing with your bullshit, and to be honest, I am too.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "zammin": {
+        "desc": "It's tired of dealing with YOU."
+    }),
+    "zammin": constructPrefix({
         "name": "Zammin'",
         "multiplier": 22,
-        "desc": "ZAMN!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Makes-Noise"
-        ],
-        "validSlatedPrefix": true
-    },
-    "rdming": {
+        "desc": "SHE'S COLLECTED?!",
+        "elements": ["Makes-Noise"]
+    }),
+    "rdming": constructPrefix({
         "name": "RDMing",
         "multiplier": 21,
         "desc": "ADMIN ADNIM! RDMRDMRDMRDMRDM",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "acquiescing": {
+        "elements": ["Light-Emitting"]
+    }),
+    "acquiescing": constructPrefix({
         "name": "Acquiescing",
         "multiplier": 20,
-        "desc": "Fine... I'll do it...",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "fuming": {
+        "desc": "Fine... I'll do it..."
+    }),
+    "fuming": constructPrefix({
         "name": "Fuming",
         "multiplier": 19,
-        "desc": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Hot"
-        ],
-        "validSlatedPrefix": true
-    },
-    "dlc": {
+        "desc": "Its rage boils over.",
+        "elements": ["Hot"],
+    }),
+    "dlc": constructPrefix({
         "name": "DLC",
         "multiplier": 18,
-        "desc": "That will be $4.99",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "feminine": {
+        "desc": "That will be $4.99"
+    }),
+    "feminine": constructPrefix({
         "name": "Feminine",
         "multiplier": 17,
-        "desc": "The most feminine cubes available!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "masculine": {
+        "desc": "The most stereotypically feminine cubes available! (But no makeup or clothes included.)"
+    }),
+    "masculine": constructPrefix({
         "name": "Masculine",
         "multiplier": 16,
-        "desc": "The manliest cubes available! (Warning: Facial hair and huge muscles not included.)",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "ornamentalized": {
+        "desc": "The most stereotypically masculine cubes available! (But no facial hair or huge muscles included.)",
+    }),
+    "ornamentalized": constructPrefix({
         "name": "Ornamentalized",
         "multiplier": 15,
         "desc": "Let's hope you don't drop any of these...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [
-            "December 1",
-            "December 30"
-        ],
-        "elements": [
-            "Glass",
-            "Shiny"
-        ],
-        "validSlatedPrefix": true
-    },
-    "raving": {
+        "elements": ["Glass", "Shiny"]
+    }),
+    "raving": constructPrefix({
         "name": "Raving",
         "multiplier": 14,
         "desc": "It's a party up in here! Now we just need shitty EDM music and we're set!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Shiny",
-            "Light-Emitting"
-        ],
-        "validSlatedPrefix": true
-    },
-    "expensive": {
+        "elements": ["Shiny", "Light-Emitting"]
+    }),
+    "expensive": constructPrefix({
         "name": "Expensive",
         "multiplier": 13,
-        "desc": "Muh-muh-muh-moneyshot!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "hyaline": {
+        "desc": "Muh-muh-muh-moneyshot!"
+    }),
+    "hyaline": constructPrefix({
         "name": "Hyaline",
         "multiplier": 12,
         "desc": "It's like a shiny cube, but far superior to the 'Sparkly' prefix",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Shiny"
-        ],
-        "validSlatedPrefix": true
-    },
-    "sussy": {
+        "elements": ["Shiny"]
+    }),
+    "sussy": constructPrefix({
         "name": "Sussy",
         "multiplier": 11,
-        "desc": "This server is CAC secured. Collecting will result in a permanent ban.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "sleepy": {
+        "desc": "This server is CAC secured. Collecting will result in a permanent ban."
+    }),
+    "sleepy": constructPrefix({
         "name": "Sleepy",
         "multiplier": 10,
-        "desc": "I would finish this description but I fell asl",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "disgusted": {
+        "desc": "I would finish this description but I fell asl-"
+    }),
+    "disgusted": constructPrefix({
         "name": "Disgusted",
         "multiplier": 9,
-        "desc": "ugh.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "hypnotic": {
+        "desc": "ugh."
+    }),
+    "hypnotic": constructPrefix({
         "name": "Hypnotic",
         "multiplier": 8,
-        "desc": "Look into my cubes...",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "idiotic": {
+        "desc": "Look into my cubes..."
+    }),
+    "idiotic": constructPrefix({
         "name": "Idiotic",
         "multiplier": 7,
         "desc": "To the corner with you! Dunce!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Fabric"
-        ],
-        "validSlatedPrefix": true
-    },
-    "dirtied": {
+        "elements": ["Fabric"]
+    }),
+    "dirtied": constructPrefix({
         "name": "Dirty",
         "multiplier": 7,
-        "desc": "Grody!",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": true
-    },
-    "nailed": {
+        "desc": "Grody!"
+    }),
+    "nailed": constructPrefix({
         "name": "Nailed",
         "multiplier": 6,
         "desc": "Nailed it!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Magnetic"
-        ],
-        "validSlatedPrefix": true
-    },
-    "farmboy": {
+        "elements": ["Magnetic"]
+    }),
+    "farmboy": constructPrefix({
         "name": "Farmboy",
         "multiplier": 0.9,
-        "desc": "Country boys make do.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": false
-    },
-    "blurry": {
+        "desc": "Cubes make do."
+    }),
+    "blurry": constructPrefix({
         "name": "Blurry",
         "multiplier": 0.8,
-        "desc": "Everything is fuzzy.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": false
-    },
-    "obfuscating": {
+        "desc": "Everything is fuzzy."
+    }),
+    "obfuscating": constructPrefix({
         "name": "Obfuscating",
         "multiplier": 0.7,
-        "desc": "A bit jumbled up.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": false
-    },
-    "inverted": {
+        "desc": "A bit jumbled up."
+    }),
+    "inverted": constructPrefix({
         "name": "Inverted",
         "multiplier": 0.6,
-        "desc": "Evil cube be like: \"don't collect me\"",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": false
-    },
-    "broken": {
+        "desc": "Evil cube be like: \"don't collect me\""
+    }),
+    "broken": constructPrefix({
         "name": "Broken",
         "multiplier": 0.5,
-        "desc": "ERROR 404: PREFIX NOT FOUND.",
-        "universal": true,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": false
-    },
-    "angery": {
+        "desc": "ERROR 404: PREFIX NOT FOUND."
+    }),
+    "angery": constructPrefix({
         "name": "Angery",
         "multiplier": 0.4,
-        "desc": "Not that finger! No!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": false
-    },
-    "despairing": {
+        "desc": "Not that finger! No! Bad cube!"
+    }),
+    "despairing": constructPrefix({
         "name": "Despairing",
         "multiplier": 0.3,
         "desc": "True despair is in the eye of the beholder!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Heavy"
-        ],
-        "validSlatedPrefix": false
-    },
-    "dookied": {
+        "elements": ["Heavy"]
+    }),
+    "dookied": constructPrefix({
         "name": "Dookied",
         "multiplier": 0.2,
         "desc": "heheheh poopie",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [
-            "Poisonous"
-        ],
-        "validSlatedPrefix": false
-    },
-    "grinning": {
+        "elements": ["Poisonous"]
+    }),
+    "grinning": constructPrefix({
         "name": "Grinning",
         "multiplier": 0.1,
-        "desc": "What an interesting set of teeth!",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": false
-    },
-    "worthless": {
+        "desc": "Look at that winning smile!"
+    }),
+    "worthless": constructPrefix({
         "name": "Worthless",
         "multiplier": 0,
         "desc": "It really does just make the cube worth 1 qubit.",
-        "universal": false,
-        "dropParties": true,
-        "dropPartyDateRange": [],
-        "elements": [],
-        "validSlatedPrefix": false
-    }
+        excludedFromCompletion: true
+    })
 };
 export const allPrefixes = Object.keys(prefixSchema);
 export const prefixApplicationOrderObject = {
@@ -1993,6 +1096,7 @@ export const prefixApplicationOrderObject = {
     "conspicuous": 1, // Adds crime scene markers to the cube
     "read": 1, // Adds a tarot reading to the cube (swords, wands, etc.)
     "leeking": 1, // Adds a leek to the cube
+    "boxed": 1, // Adds a box around the cube
     "marbleized": 1, // Turns the cube to marble, adds a marble pedestal to the cube
     "constructive": 1, // Adds a blueprint and blueprint filter to the cube
     // -------------- Prefixes That Add Accessories (Props that are bound to the cube's parts)

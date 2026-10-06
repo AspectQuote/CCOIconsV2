@@ -12,6 +12,8 @@ function constructCubeDefinition(data) {
     };
 }
 const characterCollectionCubePrice = 850;
+const characterCollectionPrimaryRarity = "common";
+const characterCollectionSecondaryRarity = "rare";
 export const cubeSchema = {
     "unrealgreen": {
         "author": "The Gods",
@@ -8516,6 +8518,7 @@ export const cubeSchema = {
         "rarity": "cubic",
         "gen": "2",
         "price": 142249,
+        qp: 12,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -8531,6 +8534,7 @@ export const cubeSchema = {
         "rarity": "cubic",
         "gen": "2",
         "price": 139283,
+        qp: 8,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -8546,7 +8550,7 @@ export const cubeSchema = {
         "rarity": "gold",
         "gen": "2",
         "price": 2492783,
-        "qp": 117,
+        "qp": 802,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -8562,7 +8566,7 @@ export const cubeSchema = {
         "rarity": "gold",
         "gen": "2",
         "price": 2258237,
-        "qp": 134,
+        "qp": 755,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -8575,7 +8579,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8590,7 +8594,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8605,7 +8609,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8620,7 +8624,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8635,7 +8639,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8650,7 +8654,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8665,7 +8669,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8680,7 +8684,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8695,7 +8699,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8710,7 +8714,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8725,7 +8729,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8740,7 +8744,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8755,7 +8759,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8770,7 +8774,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8785,7 +8789,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8800,7 +8804,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8815,7 +8819,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8830,7 +8834,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8845,7 +8849,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8860,7 +8864,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8875,7 +8879,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8890,7 +8894,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8905,7 +8909,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8920,7 +8924,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8935,7 +8939,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8950,7 +8954,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionPrimaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8965,7 +8969,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionSecondaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8980,7 +8984,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionSecondaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -8995,7 +8999,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionSecondaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -9010,7 +9014,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionSecondaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -9025,7 +9029,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionSecondaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -9040,7 +9044,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionSecondaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -9055,7 +9059,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionSecondaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -9070,7 +9074,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionSecondaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -9085,7 +9089,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionSecondaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -9100,7 +9104,7 @@ export const cubeSchema = {
             "Glass",
             "Plastic"
         ],
-        "rarity": "special",
+        "rarity": characterCollectionSecondaryRarity,
         "gen": "2",
         "price": characterCollectionCubePrice,
         "authorNames": [
@@ -12493,7 +12497,7 @@ export const cubeSchema = {
         "rarity": "crafted",
         "gen": "2",
         "price": 938532,
-        "qp": 879,
+        "qp": 9,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12509,7 +12513,7 @@ export const cubeSchema = {
         "rarity": "crafted",
         "gen": "2",
         "price": 4200069,
-        "qp": 1010,
+        "qp": 12,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -13371,7 +13375,7 @@ export const cubeSchema = {
         "rarity": "crafted",
         "gen": "2",
         "price": 9812,
-        "qp": 78,
+        "qp": 1,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -14033,7 +14037,7 @@ export const cubeSchema = {
         "rarity": "crafted",
         "gen": "2",
         "price": 2585297,
-        "qp": 2579,
+        "qp": 423,
         "authorNames": [
             "612652aa7d635b3526c85610"
         ],
@@ -14070,7 +14074,7 @@ export const cubeSchema = {
         "rarity": "crafted",
         "gen": "3",
         "price": 2750000,
-        "qp": 250,
+        "qp": 152,
         "authorNames": [
             "6172c9f90adecc7bfb84388f"
         ],
@@ -14088,7 +14092,7 @@ export const cubeSchema = {
         "rarity": "crafted",
         "gen": "3",
         "price": 2500000,
-        "qp": 250,
+        "qp": 139,
         "authorNames": [
             "6172c9f90adecc7bfb84388f"
         ],
@@ -14104,7 +14108,7 @@ export const cubeSchema = {
         "rarity": "crafted",
         "gen": "3",
         "price": 2250000,
-        "qp": 250,
+        "qp": 136,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -14122,7 +14126,7 @@ export const cubeSchema = {
         "rarity": "crafted",
         "gen": "3",
         "price": 2000000,
-        "qp": 250,
+        "qp": 142,
         "authorNames": [
             "6172c9f90adecc7bfb84388f"
         ],
@@ -14139,7 +14143,7 @@ export const cubeSchema = {
         "rarity": "crafted",
         "gen": "3",
         "price": 1750000,
-        "qp": 250,
+        "qp": 112,
         "authorNames": [
             "613148e7e1ea63344c64a2fd"
         ],
@@ -14412,7 +14416,7 @@ export const cubeSchema = {
         ],
         "rarity": "crafted",
         "gen": "3",
-        "qp": 500,
+        "qp": 122,
         "price": 2250000,
         "authorNames": [
             "616ef9144aa4f75a4ccc932b"
@@ -14429,7 +14433,7 @@ export const cubeSchema = {
         ],
         "rarity": "crafted",
         "gen": "3",
-        "qp": 500,
+        "qp": 122,
         "price": 2250000,
         "authorNames": [
             "616ef9144aa4f75a4ccc932b"
@@ -14446,7 +14450,7 @@ export const cubeSchema = {
         ],
         "rarity": "crafted",
         "gen": "3",
-        "qp": 500,
+        "qp": 180,
         "price": 2250000,
         "authorNames": [
             "616ef9144aa4f75a4ccc932b"
@@ -14460,7 +14464,7 @@ export const cubeSchema = {
         "tags": [],
         "rarity": "crafted",
         "gen": "3",
-        "qp": 500,
+        "qp": 44,
         "price": 2250000,
         "authorNames": [
             "616ef9144aa4f75a4ccc932b"
@@ -14477,7 +14481,7 @@ export const cubeSchema = {
         ],
         "rarity": "crafted",
         "gen": "3",
-        "qp": 500,
+        "qp": 144,
         "price": 2250000,
         "authorNames": [
             "616ef9144aa4f75a4ccc932b"
@@ -14494,7 +14498,7 @@ export const cubeSchema = {
         ],
         "rarity": "crafted",
         "gen": "3",
-        "qp": 500,
+        "qp": 129,
         "price": 2250000,
         "authorNames": [
             "616ef9144aa4f75a4ccc932b"
@@ -14511,7 +14515,7 @@ export const cubeSchema = {
         ],
         "rarity": "crafted",
         "gen": "3",
-        "qp": 500,
+        "qp": 151,
         "price": 2250000,
         "authorNames": [
             "61271c42ebbdd64538fb2b2e"
@@ -14528,7 +14532,7 @@ export const cubeSchema = {
         ],
         "rarity": "crafted",
         "gen": "3",
-        "qp": 500,
+        "qp": 149,
         "price": 2250000,
         "authorNames": [
             "613148e7e1ea63344c64a2fd"
@@ -14545,7 +14549,7 @@ export const cubeSchema = {
         ],
         "rarity": "crafted",
         "gen": "3",
-        "qp": 5000,
+        "qp": 629,
         "price": 261763436,
         "authorNames": [
             "612fe32ae1ea63344c64a27e"
@@ -16242,13 +16246,14 @@ export const cubeSchema = {
     },
     "pumpkinspicelatte": {
         "author": "AspectQuote",
-        "name": "White Girl Cube",
-        "desc": "THIS IS A JOKE. I AM NOT SEXIST. I THINK. (It's a pumpkin spice latte)",
+        "name": "Pumpkin Spice Cube",
+        "desc": "Dang that's tasty. And seasonal!",
         "tags": [
             "Edible",
             "Hot",
             "Light",
-            "Wet"
+            "Wet",
+            "Glass"
         ],
         "rarity": "gold",
         "gen": "4",
@@ -18053,7 +18058,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "common",
         gen: "5",
-        price: 12
+        price: 12,
+        tags: [
+            "Heavy",
+            "Stony"
+        ]
     }),
     "baled": constructCubeDefinition({
         name: "Bale Cube",
@@ -18061,7 +18070,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "common",
         gen: "5",
-        price: 15
+        price: 15,
+        tags: [
+            "Heavy",
+            "Painted"
+        ]
     }),
     "toothpaste": constructCubeDefinition({
         name: "Toothpaste Cube",
@@ -18069,7 +18082,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "common",
         gen: "5",
-        price: 9
+        price: 9,
+        tags: [
+            "Edible",
+            "Slimy"
+        ]
     }),
     "bullet": constructCubeDefinition({
         name: "Bullet Cube",
@@ -18077,7 +18094,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "common",
         gen: "5",
-        price: 20
+        price: 20,
+        tags: [
+            "Shiny",
+            "Magnetic"
+        ]
     }),
     "earthenware": constructCubeDefinition({
         name: "Earthenware Cube",
@@ -18086,7 +18107,11 @@ export const cubeSchema = {
         rarity: "common",
         gen: "5",
         seededIcon: true,
-        price: 27
+        price: 27,
+        tags: [
+            "Ancient",
+            "Heavy"
+        ]
     }),
     "tooth": constructCubeDefinition({
         name: "Tooth Cube",
@@ -18094,7 +18119,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "uncommon",
         gen: "5",
-        price: 39
+        price: 39,
+        tags: [
+            "Organic",
+            "Hard"
+        ]
     }),
     "moss": constructCubeDefinition({
         name: "Moss Cube",
@@ -18102,7 +18131,10 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "uncommon",
         gen: "5",
-        price: 44
+        price: 44,
+        tags: [
+            "Organic"
+        ]
     }),
     "silhouette": constructCubeDefinition({
         name: "Silhouette Cube",
@@ -18110,7 +18142,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "uncommon",
         gen: "5",
-        price: 29
+        price: 29,
+        tags: [
+            "Light-Emitting",
+            "Light"
+        ]
     }),
     "elecoutlet": constructCubeDefinition({
         name: "Electrical Outlet Cube",
@@ -18118,7 +18154,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "uncommon",
         gen: "5",
-        price: 40
+        price: 40,
+        tags: [
+            "Electronic",
+            "Plastic"
+        ]
     }),
     "etruscan": constructCubeDefinition({
         name: "Etruscan Cube",
@@ -18126,7 +18166,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "rare",
         gen: "5",
-        price: 124
+        price: 124,
+        tags: [
+            "Ancient",
+            "Ancient"
+        ]
     }),
     "coiledwire": constructCubeDefinition({
         name: "Coiled Wire Cube",
@@ -18134,7 +18178,12 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "rare",
         gen: "5",
-        price: 99
+        price: 99,
+        tags: [
+            "Heavy",
+            "Plastic",
+            "Magnetic"
+        ]
     }),
     "loud": constructCubeDefinition({
         name: "Loud Cube",
@@ -18142,7 +18191,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "rare",
         gen: "5",
-        price: 130
+        price: 130,
+        tags: [
+            "Haunted",
+            "Makes-Noise"
+        ]
     }),
     "mitoch": constructCubeDefinition({
         name: "Mitochondria Cube",
@@ -18150,7 +18203,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "rare",
         gen: "5",
-        price: 139
+        price: 139,
+        tags: [
+            "Organic",
+            "Slimy"
+        ]
     }),
     "marsrock": constructCubeDefinition({
         name: "Mars Rock Cube",
@@ -18158,7 +18215,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "epic",
         gen: "5",
-        price: 230
+        price: 230,
+        tags: [
+            "Heavy",
+            "Stony"
+        ]
     }),
     "staccups": constructCubeDefinition({
         name: "Stacked Cups Cube",
@@ -18166,7 +18227,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "epic",
         gen: "5",
-        price: 248
+        price: 248,
+        tags: [
+            "Plastic",
+            "Painted"
+        ]
     }),
     "meascup": constructCubeDefinition({
         name: "Measuring Cup Cube",
@@ -18174,7 +18239,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "epic",
         gen: "5",
-        price: 256
+        price: 256,
+        tags: [
+            "Plastic",
+            "Light"
+        ]
     }),
     "deepfried": constructCubeDefinition({
         name: "Deep-Fried Cube",
@@ -18182,7 +18251,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "epic",
         gen: "5",
-        price: 285
+        price: 285,
+        tags: [
+            "Plastic",
+            "Edible"
+        ]
     }),
     "lime": constructCubeDefinition({
         name: "Lime Cube",
@@ -18190,7 +18263,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "legendary",
         gen: "5",
-        price: 1802
+        price: 1802,
+        tags: [
+            "Edible",
+            "Organic"
+        ]
     }),
     "sofa": constructCubeDefinition({
         name: "Sofa Cube",
@@ -18198,7 +18275,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "legendary",
         gen: "5",
-        price: 1444
+        price: 1444,
+        tags: [
+            "Fabric",
+            "Heavy"
+        ]
     }),
     "half": constructCubeDefinition({
         name: "Half-Cube",
@@ -18206,7 +18287,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "legendary",
         gen: "5",
-        price: 1722
+        price: 1722,
+        tags: [
+            "Pure",
+            "Plastic"
+        ]
     }),
     "open": constructCubeDefinition({
         name: "OPEN Cube",
@@ -18214,7 +18299,12 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "legendary",
         gen: "5",
-        price: 1899
+        price: 1899,
+        tags: [
+            "Electronic",
+            "Light-Emitting",
+            "Magnetic"
+        ]
     }),
     "cultist": constructCubeDefinition({
         name: "Cultist Cube",
@@ -18222,7 +18312,12 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "relic",
         gen: "5",
-        price: 17552
+        price: 17552,
+        tags: [
+            "Haunted",
+            "Organic",
+            "Fabric"
+        ]
     }),
     "geiger": constructCubeDefinition({
         name: "Geiger Counter Cube",
@@ -18230,7 +18325,13 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "relic",
         gen: "5",
-        price: 18128
+        price: 18128,
+        tags: [
+            "Magnetic",
+            "Painted",
+            "Electronic",
+            "Makes-Noise"
+        ]
     }),
     "ethernet": constructCubeDefinition({
         name: "Ethernet Cube",
@@ -18238,15 +18339,25 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "relic",
         gen: "5",
-        price: 18507
+        price: 18507,
+        tags: [
+            "Plastic",
+            "Electronic",
+            "Light-Emitting"
+        ]
     }),
     "shrimp": constructCubeDefinition({
         name: "Shrimp Cube",
-        desc: "You're telling me a shrimp fried this?",
+        desc: "You're telling me a shrimp cubed this?",
         author: "AspectQuote",
         rarity: "relic",
         gen: "5",
-        price: 18950
+        price: 18950,
+        tags: [
+            "Edible",
+            "Edible",
+            "Organic"
+        ]
     }),
     "flashbang": constructCubeDefinition({
         name: "Flashbang Cube",
@@ -18254,7 +18365,14 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "cubic",
         gen: "5",
-        price: 189060
+        price: 189060,
+        tags: [
+            "Heavy",
+            "Magnetic",
+            "Light-Emitting",
+            "Light-Emitting",
+            "Light-Emitting"
+        ]
     }),
     "manual": constructCubeDefinition({
         name: "Manual Cube",
@@ -18262,7 +18380,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "cubic",
         gen: "5",
-        price: 151920
+        price: 151920,
+        tags: [
+            "Heavy",
+            "Ancient"
+        ]
     }),
     "unimpressed": constructCubeDefinition({
         name: "Unimpressed Cube",
@@ -18270,7 +18392,11 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "cubic",
         gen: "5",
-        price: 162545
+        price: 162545,
+        tags: [
+            "Haunted",
+            "Plastic"
+        ]
     }),
     "thief": constructCubeDefinition({
         name: "Thief Cube",
@@ -18278,7 +18404,12 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "gold",
         gen: "5",
-        price: 2_524_121
+        price: 2_524_121,
+        tags: [
+            "Makes-Noise",
+            "Fabric",
+            "Organic"
+        ]
     }),
     "phone": constructCubeDefinition({
         name: "Phone Cube",
@@ -18286,7 +18417,12 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "gold",
         gen: "5",
-        price: 2_455_881
+        price: 2_455_881,
+        tags: [
+            "Makes-Noise",
+            "Electronic",
+            "Plastic"
+        ]
     }),
     "goldthief": constructCubeDefinition({
         name: "Golden Thief Cube",

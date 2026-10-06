@@ -12,6 +12,7 @@ import { raritySchema } from "./importedschematics/rarities";
 import { applyLinearMatrix, dotMatrix, fillHollowRect, gaussianBlur, LinearMatrix } from "../imageeffects";
 import { turnFlagsFieldIntoFlagsArray } from "./importedschematics/cubeflagsshared";
 import { flagRendererSchema } from "./flagrenderers";
+import { get } from "https";
 
 function compositeHeadsToAllFrames(targetFrames: JimpImage[], cubeIconFrame: JimpImage, heads: cubeHead[][], animation: JimpImage[], expectedHeadData: cubeHead) {
     const usingHeads = heads.map(heads => {
@@ -800,13 +801,21 @@ const prefixRendererConsts = {
         baseOutlineColor: 0x16d0c6ff,
         applicationToOtherLayers: constructPrefixRendererStep({
             tags: [
-                prefixRendererTags.isSeeded
+                prefixRendererTags.isSeeded,
+                prefixRendererTags.needsIcon
             ],
-            render: async function(parts, input, seed) {
+            predefinedRNG: {
+                runicColor: {
+                    RNGString: 'runic',
+                    get(RNG) {
+                        return prefixRendererConsts.runic.hueShifts[Math.floor(RNG() * prefixRendererConsts.runic.hueShifts.length)];
+                    },
+                }  
+            },
+            flatCanvasPadding: 1,
+            render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
                 const outlinePixel = new Jimp({ width: 1, height: 1, color: prefixRendererConsts.runic.baseOutlineColor });
-                let seedGen = seedrandom(`runic${seed}`);
-                const colorShift = prefixRendererConsts.runic.hueShifts[Math.floor(seedGen() * prefixRendererConsts.runic.hueShifts.length)];
-                outlinePixel.color(colorShift);
+                outlinePixel.color(parsedRNG.runicColor);
                 const outlineColor = outlinePixel.getPixelColor(0, 0);
                 
                 for (let inputImageIndex = 0; inputImageIndex < input.length; inputImageIndex++) {
@@ -1366,13 +1375,13 @@ export const prefixRenderers = {
                     beardType: {
                         RNGString: `beard`,
                         get(RNG) {
-                            return Math.floor(RNG() * 6);
+                            return Math.floor(RNG() * 5);
                         },
                     }
                 },
                 render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
-                    let seededBeardImage = await Jimp.read(`${prefixSourceDirectory}/bushy/${parsedRNG.beardType}.png`);
-                    compositeMouthsToAllFrames(input, parts.icon[0], parts.mouths, [seededBeardImage], { x: 16, y: 27, width: 4 });
+                    let seededBeardImage = parseHorizontalSpriteSheet(await Jimp.read(`${prefixSourceDirectory}/bushy/moustaches.png`), 5);
+                    compositeMouthsToAllFrames(input, parts.icon[0], parts.mouths, [seededBeardImage[parsedRNG.beardType]], { x: 8, y: 28, width: 4 });
                     
                     return true;
                 },
@@ -2329,6 +2338,7 @@ export const prefixRenderers = {
                 },
             }),
             [prefixRenderSteps.applyToCube]: constructPrefixRendererStep({
+                flatCanvasPadding: 1,
                 render: async function(parts, input, seed) {
                     for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
                         const inputFrame = input[inputFrameIndex];
@@ -2442,6 +2452,7 @@ export const prefixRenderers = {
             }),
             [prefixRenderSteps.background]: constructBasicHatPrefixRendererStep(`${prefixSourceDirectory}/phosphorescent/glow.png`, { x: 16, y: 24, width: 32 }, 2)[prefixRenderSteps.foreground],
             [prefixRenderSteps.applyToCube]: constructPrefixRendererStep({
+                flatCanvasPadding: 1,
                 render: async function(parts, input, seed) {
                     for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
                         const inputFrame = input[inputFrameIndex];
@@ -4032,9 +4043,11 @@ export const prefixRenderers = {
                     const targetSize = parts.icon[0].bitmap.width / 48;
                     pumpkinImage.resize({ w: Math.ceil(pumpkinImage.bitmap.width * targetSize), h: Math.ceil(pumpkinImage.bitmap.width * targetSize), mode: ResizeStrategy.NEAREST_NEIGHBOR });
 
-                    const compositingFrame = input[0];
+                    for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
+                        const compositingFrame = input[inputFrameIndex];
+                        compositingFrame.composite(pumpkinImage, compositingFrame.bitmap.width - (pumpkinImage.bitmap.width + 5), compositingFrame.bitmap.height - (pumpkinImage.bitmap.height + 3));
+                    }
 
-                    compositingFrame.composite(pumpkinImage, compositingFrame.bitmap.width - (pumpkinImage.bitmap.width + 5), compositingFrame.bitmap.height - (pumpkinImage.bitmap.height + 3));
 
                     return true;
                 },
@@ -6019,6 +6032,64 @@ export const prefixRenderers = {
                         
                         input[inputFrameIndex] = applyLinearMatrix(inputFrame, linearMatrix);
                     }
+
+                    return true;
+                },
+            })
+        }
+    }),
+    "boxed": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.background]: constructPrefixRendererStep({
+                tags: [
+                    prefixRendererTags.needsHeads
+                ],
+                canvasScale: 2,
+                predefinedRNG: {
+                    peanuts: {
+                        RNGString: 'peanuts',
+                        get(RNG) {
+                            return RNG() > 0.95;
+                        },
+                    }
+                },
+                render: async function(parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const boxImage = await Jimp.read(`${prefixSourceDirectory}/boxed/back.png`);
+
+                    if (parsedRNG.peanuts) boxImage.composite(await Jimp.read(`${prefixSourceDirectory}/boxed/peanutsback.png`));
+
+                    compositeHeadsToAllFrames(input, parts.icon[0], parts.heads, [boxImage], { x: 13, y: 11, width: 32 });
+
+                    return true;
+                },
+            }),
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                tags: [
+                    prefixRendererTags.needsHeads
+                ],
+                canvasScale: 2,
+                predefinedRNG: {
+                    peanuts: {
+                        RNGString: 'peanuts',
+                        get(RNG) {
+                            return RNG() > 0.95;
+                        },
+                    },
+                    updown: {
+                        RNGString: 'boxedupdown',
+                        get(RNG) {
+                            return RNG() > 0.5 ? 'up' : 'down';
+                        }
+                    }
+                },
+                render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const boxImage = await Jimp.read(`${prefixSourceDirectory}/boxed/front.png`);
+
+                    boxImage.composite(await Jimp.read(`${prefixSourceDirectory}/boxed/${parsedRNG.updown}.png`));
+
+                    if (parsedRNG.peanuts) boxImage.composite(await Jimp.read(`${prefixSourceDirectory}/boxed/peanutsfront.png`));
+
+                    compositeHeadsToAllFrames(input, parts.icon[0], parts.heads, [boxImage], { x: 13, y: 11, width: 32 });
 
                     return true;
                 },

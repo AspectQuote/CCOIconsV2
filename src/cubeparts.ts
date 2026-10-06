@@ -161,7 +161,7 @@ export function getDirectoryForPatternedCube(cube: CubeID, patternIndex: number)
 
 export async function generatePatternedCubeParts(cubeID: CubeID, patternIndex: number): Promise<string> {
     const patternAtlasDirectory = ensureFolderExists(getDirectoryForPatternedCube(cubeID, patternIndex));
-    if (!fs.existsSync(`${patternAtlasDirectory}/cube.png`)) {
+    if (!fs.existsSync(`${patternAtlasDirectory}/cube.png`) || config.devmode) {
         if (config.devmode) console.log("Regenerating Pattern: " + patternIndex);
         fs.mkdirSync(patternAtlasDirectory, { recursive: true });
         if (cubeID in customSeededCubes) {
@@ -208,8 +208,6 @@ export async function generatePatternedCubeParts(cubeID: CubeID, patternIndex: n
             let patternImages: typeof staticPatternImages[] = []
             const overallPatternSeedRNG = seedrandom(`${cubeID}[${patternIndex}[`);
             for (let patternImageIndex = 0; patternImageIndex < patternInfo.patternimages.length; patternImageIndex++) {
-                const colorRNG = seedrandom(`${cubeID}]${patternIndex}]${patternImageIndex}`);
-                const transformRNG = seedrandom(`${cubeID}_${patternIndex}_${patternImageIndex}`)
                 const patternImageData = patternInfo.patternimages[patternImageIndex];
 
                 let patternImageLayers: typeof staticPatternImages = {
@@ -226,9 +224,9 @@ export async function generatePatternedCubeParts(cubeID: CubeID, patternIndex: n
                     if (!patternImageLayers[key] && fs.existsSync(imageFilePath)) {
                         let newSeededImage = await Jimp.read(imageFilePath);
                         if (patternImageLayers[key] !== undefined) {
-                            // I love typedefs!!!
                             let imageManipulations: JimpImgMod[] = [];
                             if (key === "cube") {
+                                const colorRNG = seedrandom(`${cubeID}]${patternIndex}`);
                                 // Brighten the pattern image
                                 if (patternImageData.seedbrightness && patternImageData.seedbrightnessrange) {
                                     const brightness = randomNumberBetween(patternImageData.seedbrightnessrange[0], patternImageData.seedbrightnessrange[1], colorRNG);
@@ -247,6 +245,7 @@ export async function generatePatternedCubeParts(cubeID: CubeID, patternIndex: n
                                     imageManipulations.push({ apply: "hue", params: [Math.round(colorRNG() * 360)] });
                                 }
                             }
+                            const transformRNG = seedrandom(`${cubeID}_${patternIndex}`);
                             // Scale the pattern image
                             if (patternImageData.seedscale && patternImageData.seedscalerange) {
                                 const scale = randomNumberBetween(patternImageData.seedscalerange[0], patternImageData.seedscalerange[1], transformRNG);
@@ -256,7 +255,6 @@ export async function generatePatternedCubeParts(cubeID: CubeID, patternIndex: n
                                     mode: ResizeStrategy.NEAREST_NEIGHBOR
                                 });
                             }
-
                             // Rotate pattern image
                             if (patternImageData.seedrotate) {
                                 let degrees = Math.floor(transformRNG() * 360);

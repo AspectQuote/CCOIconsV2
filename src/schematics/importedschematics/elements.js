@@ -207,22 +207,6 @@ export const elementSchema = {
             "Cubes that are at least (visibly) older than 500 years."
         ]
     },
-    "Divine": {
-        "name": "Divine",
-        "icon": "materials/divineshard.png",
-        "flavors": [
-            "Pure cubes",
-            "Holy cubes"
-        ]
-    },
-    "Slated": {
-        "name": "Slated",
-        "icon": "materials/slatedchip.png",
-        "flavors": [
-            "Nasty cubes",
-            "Dirty cubes"
-        ]
-    },
     "Exotic": {
         name: "Exotic",
         icon: "",

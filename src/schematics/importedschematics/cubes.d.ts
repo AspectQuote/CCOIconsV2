@@ -5606,6 +5606,7 @@ export declare const cubeSchema: {
         readonly rarity: "cubic";
         readonly gen: "2";
         readonly price: 142249;
+        readonly qp: 12;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot20: {
@@ -5616,6 +5617,7 @@ export declare const cubeSchema: {
         readonly rarity: "cubic";
         readonly gen: "2";
         readonly price: 139283;
+        readonly qp: 8;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot21: {
@@ -5626,7 +5628,7 @@ export declare const cubeSchema: {
         readonly rarity: "gold";
         readonly gen: "2";
         readonly price: 2492783;
-        readonly qp: 117;
+        readonly qp: 802;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly tarot22: {
@@ -5637,7 +5639,7 @@ export declare const cubeSchema: {
         readonly rarity: "gold";
         readonly gen: "2";
         readonly price: 2258237;
-        readonly qp: 134;
+        readonly qp: 755;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly keya: {
@@ -5645,7 +5647,7 @@ export declare const cubeSchema: {
         readonly name: "Letter A Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5655,7 +5657,7 @@ export declare const cubeSchema: {
         readonly name: "Letter B Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5665,7 +5667,7 @@ export declare const cubeSchema: {
         readonly name: "Letter C Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5675,7 +5677,7 @@ export declare const cubeSchema: {
         readonly name: "Letter D Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5685,7 +5687,7 @@ export declare const cubeSchema: {
         readonly name: "Letter E Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5695,7 +5697,7 @@ export declare const cubeSchema: {
         readonly name: "Letter F Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5705,7 +5707,7 @@ export declare const cubeSchema: {
         readonly name: "Letter G Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5715,7 +5717,7 @@ export declare const cubeSchema: {
         readonly name: "Letter H Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5725,7 +5727,7 @@ export declare const cubeSchema: {
         readonly name: "Letter I Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5735,7 +5737,7 @@ export declare const cubeSchema: {
         readonly name: "Letter J Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5745,7 +5747,7 @@ export declare const cubeSchema: {
         readonly name: "Letter K Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5755,7 +5757,7 @@ export declare const cubeSchema: {
         readonly name: "Letter L Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5765,7 +5767,7 @@ export declare const cubeSchema: {
         readonly name: "Letter M Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5775,7 +5777,7 @@ export declare const cubeSchema: {
         readonly name: "Letter N Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5785,7 +5787,7 @@ export declare const cubeSchema: {
         readonly name: "Letter O Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5795,7 +5797,7 @@ export declare const cubeSchema: {
         readonly name: "Letter P Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5805,7 +5807,7 @@ export declare const cubeSchema: {
         readonly name: "Letter Q Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5815,7 +5817,7 @@ export declare const cubeSchema: {
         readonly name: "Letter R Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5825,7 +5827,7 @@ export declare const cubeSchema: {
         readonly name: "Letter S Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5835,7 +5837,7 @@ export declare const cubeSchema: {
         readonly name: "Letter T Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5845,7 +5847,7 @@ export declare const cubeSchema: {
         readonly name: "Letter U Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5855,7 +5857,7 @@ export declare const cubeSchema: {
         readonly name: "Letter V Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5865,7 +5867,7 @@ export declare const cubeSchema: {
         readonly name: "Letter W Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5875,7 +5877,7 @@ export declare const cubeSchema: {
         readonly name: "Letter X Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5885,7 +5887,7 @@ export declare const cubeSchema: {
         readonly name: "Letter Y Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5895,7 +5897,7 @@ export declare const cubeSchema: {
         readonly name: "Letter Z Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "common";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5905,7 +5907,7 @@ export declare const cubeSchema: {
         readonly name: "Number 1 Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "rare";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5915,7 +5917,7 @@ export declare const cubeSchema: {
         readonly name: "Number 2 Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "rare";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5925,7 +5927,7 @@ export declare const cubeSchema: {
         readonly name: "Number 3 Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "rare";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5935,7 +5937,7 @@ export declare const cubeSchema: {
         readonly name: "Number 4 Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "rare";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5945,7 +5947,7 @@ export declare const cubeSchema: {
         readonly name: "Number 5 Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "rare";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5955,7 +5957,7 @@ export declare const cubeSchema: {
         readonly name: "Number 6 Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "rare";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5965,7 +5967,7 @@ export declare const cubeSchema: {
         readonly name: "Number 7 Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "rare";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5975,7 +5977,7 @@ export declare const cubeSchema: {
         readonly name: "Number 8 Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "rare";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5985,7 +5987,7 @@ export declare const cubeSchema: {
         readonly name: "Number 9 Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "rare";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -5995,7 +5997,7 @@ export declare const cubeSchema: {
         readonly name: "Number 0 Cube";
         readonly desc: "";
         readonly tags: ["Glass", "Plastic"];
-        readonly rarity: "special";
+        readonly rarity: "rare";
         readonly gen: "2";
         readonly price: 850;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
@@ -8229,7 +8231,7 @@ export declare const cubeSchema: {
         readonly rarity: "crafted";
         readonly gen: "2";
         readonly price: 938532;
-        readonly qp: 879;
+        readonly qp: 9;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly gara2: {
@@ -8240,7 +8242,7 @@ export declare const cubeSchema: {
         readonly rarity: "crafted";
         readonly gen: "2";
         readonly price: 4200069;
-        readonly qp: 1010;
+        readonly qp: 12;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
     };
     readonly oracle: {
@@ -8779,7 +8781,7 @@ export declare const cubeSchema: {
         readonly rarity: "crafted";
         readonly gen: "2";
         readonly price: 9812;
-        readonly qp: 78;
+        readonly qp: 1;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
         readonly specialOrigin: "purchase";
     };
@@ -9111,7 +9113,7 @@ export declare const cubeSchema: {
         readonly rarity: "crafted";
         readonly gen: "2";
         readonly price: 2585297;
-        readonly qp: 2579;
+        readonly qp: 423;
         readonly authorNames: ["612652aa7d635b3526c85610"];
         readonly specialOrigin: "purchase";
     };
@@ -9135,7 +9137,7 @@ export declare const cubeSchema: {
         readonly rarity: "crafted";
         readonly gen: "3";
         readonly price: 2750000;
-        readonly qp: 250;
+        readonly qp: 152;
         readonly authorNames: ["6172c9f90adecc7bfb84388f"];
         readonly specialOrigin: "purchase";
     };
@@ -9147,7 +9149,7 @@ export declare const cubeSchema: {
         readonly rarity: "crafted";
         readonly gen: "3";
         readonly price: 2500000;
-        readonly qp: 250;
+        readonly qp: 139;
         readonly authorNames: ["6172c9f90adecc7bfb84388f"];
         readonly specialOrigin: "purchase";
     };
@@ -9159,7 +9161,7 @@ export declare const cubeSchema: {
         readonly rarity: "crafted";
         readonly gen: "3";
         readonly price: 2250000;
-        readonly qp: 250;
+        readonly qp: 136;
         readonly authorNames: ["6108f09abc4b812a386c5c84"];
         readonly specialOrigin: "purchase";
     };
@@ -9171,7 +9173,7 @@ export declare const cubeSchema: {
         readonly rarity: "crafted";
         readonly gen: "3";
         readonly price: 2000000;
-        readonly qp: 250;
+        readonly qp: 142;
         readonly authorNames: ["6172c9f90adecc7bfb84388f"];
         readonly specialOrigin: "purchase";
     };
@@ -9183,7 +9185,7 @@ export declare const cubeSchema: {
         readonly rarity: "crafted";
         readonly gen: "3";
         readonly price: 1750000;
-        readonly qp: 250;
+        readonly qp: 112;
         readonly authorNames: ["613148e7e1ea63344c64a2fd"];
         readonly specialOrigin: "purchase";
     };
@@ -9364,7 +9366,7 @@ export declare const cubeSchema: {
         readonly tags: ["Shiny", "Stony"];
         readonly rarity: "crafted";
         readonly gen: "3";
-        readonly qp: 500;
+        readonly qp: 122;
         readonly price: 2250000;
         readonly authorNames: ["616ef9144aa4f75a4ccc932b"];
         readonly specialOrigin: "purchase";
@@ -9376,7 +9378,7 @@ export declare const cubeSchema: {
         readonly tags: ["Shiny", "Stony"];
         readonly rarity: "crafted";
         readonly gen: "3";
-        readonly qp: 500;
+        readonly qp: 122;
         readonly price: 2250000;
         readonly authorNames: ["616ef9144aa4f75a4ccc932b"];
         readonly specialOrigin: "purchase";
@@ -9388,7 +9390,7 @@ export declare const cubeSchema: {
         readonly tags: ["Edible", "Organic"];
         readonly rarity: "crafted";
         readonly gen: "3";
-        readonly qp: 500;
+        readonly qp: 180;
         readonly price: 2250000;
         readonly authorNames: ["616ef9144aa4f75a4ccc932b"];
         readonly specialOrigin: "purchase";
@@ -9400,7 +9402,7 @@ export declare const cubeSchema: {
         readonly tags: [];
         readonly rarity: "crafted";
         readonly gen: "3";
-        readonly qp: 500;
+        readonly qp: 44;
         readonly price: 2250000;
         readonly authorNames: ["616ef9144aa4f75a4ccc932b"];
         readonly specialOrigin: "purchase";
@@ -9412,7 +9414,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Slimy"];
         readonly rarity: "crafted";
         readonly gen: "3";
-        readonly qp: 500;
+        readonly qp: 144;
         readonly price: 2250000;
         readonly authorNames: ["616ef9144aa4f75a4ccc932b"];
         readonly specialOrigin: "purchase";
@@ -9424,7 +9426,7 @@ export declare const cubeSchema: {
         readonly tags: ["Heavy", "Wet"];
         readonly rarity: "crafted";
         readonly gen: "3";
-        readonly qp: 500;
+        readonly qp: 129;
         readonly price: 2250000;
         readonly authorNames: ["616ef9144aa4f75a4ccc932b"];
         readonly specialOrigin: "purchase";
@@ -9436,7 +9438,7 @@ export declare const cubeSchema: {
         readonly tags: ["Light-Emitting", "Electronic"];
         readonly rarity: "crafted";
         readonly gen: "3";
-        readonly qp: 500;
+        readonly qp: 151;
         readonly price: 2250000;
         readonly authorNames: ["61271c42ebbdd64538fb2b2e"];
         readonly specialOrigin: "purchase";
@@ -9448,7 +9450,7 @@ export declare const cubeSchema: {
         readonly tags: ["Shiny", "Plastic"];
         readonly rarity: "crafted";
         readonly gen: "3";
-        readonly qp: 500;
+        readonly qp: 149;
         readonly price: 2250000;
         readonly authorNames: ["613148e7e1ea63344c64a2fd"];
         readonly specialOrigin: "purchase";
@@ -9460,7 +9462,7 @@ export declare const cubeSchema: {
         readonly tags: ["Organic", "Shiny"];
         readonly rarity: "crafted";
         readonly gen: "3";
-        readonly qp: 5000;
+        readonly qp: 629;
         readonly price: 261763436;
         readonly authorNames: ["612fe32ae1ea63344c64a27e"];
         readonly specialOrigin: "purchase";
@@ -10552,9 +10554,9 @@ export declare const cubeSchema: {
     };
     readonly pumpkinspicelatte: {
         readonly author: "AspectQuote";
-        readonly name: "White Girl Cube";
-        readonly desc: "THIS IS A JOKE. I AM NOT SEXIST. I THINK. (It's a pumpkin spice latte)";
-        readonly tags: ["Edible", "Hot", "Light", "Wet"];
+        readonly name: "Pumpkin Spice Cube";
+        readonly desc: "Dang that's tasty. And seasonal!";
+        readonly tags: ["Edible", "Hot", "Light", "Wet", "Glass"];
         readonly rarity: "gold";
         readonly gen: "4";
         readonly price: 2591349;
