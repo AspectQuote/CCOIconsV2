@@ -728,7 +728,7 @@ const prefixRendererConsts = {
         }
     },
     phasing: {
-        maskColor: 0xaaaaaaff,
+        maskColor: 0x999999ff,
         layerRenderer: function(input: JimpImage[]) {
             const maskImage = new Jimp({ width: input[0].bitmap.width, height: input[0].bitmap.height, color: prefixRendererConsts.phasing.maskColor });
             for (let inputFrameIndex = 0; inputFrameIndex < input.length; inputFrameIndex++) {
@@ -738,7 +738,7 @@ const prefixRendererConsts = {
         }
     },
     evanescent: {
-        maskColor: 0x777777ff,
+        maskColor: 0x555555ff,
         layerRenderer: function(input: JimpImage[]) {
             const maskImage = new Jimp({ width: input[0].bitmap.width, height: input[0].bitmap.height, color: prefixRendererConsts.phasing.maskColor });
             maskImage.scan(function(x, y, idx) {

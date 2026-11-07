@@ -82,7 +82,7 @@ app.listen(config.serverPort, async () => {
         const givenParams = parseCubeIconRouteParams(req.params as Record<string, string>);
         const givenOutputDirectory = `${config.outputDirectory}/cubeicons/`;
         const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, givenParams.cubeSeed);
-        const hashableStringData = turnPrefixRenderInputsIntoHashableString('sacred', prefixRenderStepSchema.cube.mainPrefix, givenParams.prefixList, prefixRenderStepSchema.cube.otherPrefixes, givenParams.prefixSeed, cubeParts, givenParams.cubeID, givenParams.flags, cubeIconDataSchema, true);
+        const hashableStringData = turnPrefixRenderInputsIntoHashableString('sacred', prefixRenderStepSchema.cube.mainPrefix, givenParams.prefixList, prefixRenderStepSchema.cube.otherPrefixes, givenParams.prefixSeed, cubeParts, givenParams.cubeID, givenParams.cubeSeed, givenParams.flags, cubeIconDataSchema, true);
         if (config.devmode) console.log(`Cube Icon Hashable: `, hashableStringData.string);
         const givenOutputFileName = `${givenParams.cubeID in patternedCubeSchema ? `${givenParams.cubeSeed}` : ``}${givenParams.cubeID}${hash('md5', hashableStringData.string)}`;
         const givenOutputFile = `${givenOutputDirectory}/${givenOutputFileName}.png` as const;
@@ -103,7 +103,7 @@ app.listen(config.serverPort, async () => {
 
         sortPrefixesByApplicationOrder(givenParams.otherPrefixes, applicationSortDirection);
         const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, givenParams.cubeSeed);
-        const hashableStringData = turnPrefixRenderInputsIntoHashableString(givenParams.prefixID, mainStep, givenParams.otherPrefixes, otherSteps, givenParams.prefixSeed, cubeParts, givenParams.cubeID, givenParams.flags, cubeIconDataSchema);
+        const hashableStringData = turnPrefixRenderInputsIntoHashableString(givenParams.prefixID, mainStep, givenParams.otherPrefixes, otherSteps, givenParams.prefixSeed, cubeParts, givenParams.cubeID, givenParams.cubeSeed, givenParams.flags, cubeIconDataSchema);
         if (config.devmode) console.log(`Prefix Icon Hashable String: `, hashableStringData.string);
         const givenOutputFileName = `${givenParams.prefixID}${hash('md5', hashableStringData.string)}`;
         const givenOutputDirectory = `${config.outputDirectory}/prefixicons/${pathAddition}/`;

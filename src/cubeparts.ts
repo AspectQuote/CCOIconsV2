@@ -354,7 +354,7 @@ export async function loadStaticCubeParts(cubeID: CubeID, cubeSeed: number): Pro
     return await parseCubePartImagesIntoCubeParts(iconFrames, headFrames, mouthFrames, eyesFrames, accentFrames, 'seededIcon' in cubeSchema[cubeID]);
 }
 
-export function turnPrefixRenderInputsIntoHashableString(mainPrefix: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherPrefixSteps: prefixRenderSteps[], prefixSeed: number, cubeParts: cubePartDefinition, cubeID: CubeID, iconFlags: number, shorthandSchema: shorthandIconDataSchema, ignoreMain: boolean = false) {
+export function turnPrefixRenderInputsIntoHashableString(mainPrefix: PrefixID, mainPrefixStep: prefixRenderSteps, otherPrefixes: PrefixID[], otherPrefixSteps: prefixRenderSteps[], prefixSeed: number, cubeParts: cubePartDefinition, cubeID: CubeID, cubeSeed: number, iconFlags: number, shorthandSchema: shorthandIconDataSchema, ignoreMain: boolean = false) {
     const usingOtherPrefixes = filterOtherPrefixesForNeeded(mainPrefix, mainPrefixStep, otherPrefixes, otherPrefixSteps, shorthandSchema, ignoreMain).sort();
     const usingOtherFlags = filterOtherFlagsForNeeded(turnFlagsFieldIntoFlagsArray(iconFlags), otherPrefixSteps);
     const allPrefixTags = aggregatePrefixTags(mainPrefix, usingOtherPrefixes, mainPrefixStep, otherPrefixSteps, shorthandSchema, ignoreMain);
@@ -397,6 +397,9 @@ export function turnPrefixRenderInputsIntoHashableString(mainPrefix: PrefixID, m
     }
     if (allPrefixTags.includes(prefixRendererTags.needsIcon)) {
         partString = `${partString},Cube:${cubeID}`;
+    }
+    if ('seededIcon' in cubeSchema[cubeID] && [prefixRendererTags.needsIcon, prefixRendererTags.needsAccents, prefixRendererTags.needsHeads, prefixRendererTags.needsEyes, prefixRendererTags.needsMouths].some(tag => allPrefixTags.includes(tag))) {
+        partString = `${partString},CubeSeed:${cubeSeed}`
     }
     if (usingOtherFlags.length > 0) {
         partString = `${partString},Flags:${usingOtherFlags.sort().join(',')}`

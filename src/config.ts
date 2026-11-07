@@ -37,5 +37,5 @@ export const config = {
     /**
      * The B-Side iteration count
      */
-    cubeIconBSideIterations: 2
+    cubeIconBSideIterations: 1
 }
