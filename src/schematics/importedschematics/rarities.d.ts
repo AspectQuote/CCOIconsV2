@@ -25,8 +25,6 @@ declare const raritySchema: {
     readonly unreal: RarityDefinition;
     readonly divine: RarityDefinition;
     readonly slated: RarityDefinition;
-    readonly coldiv: RarityDefinition;
-    readonly colslat: RarityDefinition;
     readonly collectors: RarityDefinition;
     readonly exotic: RarityDefinition;
     readonly crafted: RarityDefinition;
@@ -36,4 +34,5 @@ declare const raritySchema: {
 };
 type RarityID = keyof typeof raritySchema;
 declare const allRarities: RarityID[];
+export declare function validateRarityID(str: string): str is RarityID;
 export { raritySchema, allRarities, type RarityID };

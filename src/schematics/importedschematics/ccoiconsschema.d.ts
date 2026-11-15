@@ -96,4 +96,5 @@ export declare const flagIconRendererConstSchema: {
     readonly 3: {
         readonly 0: flagIconRendererLayerConsts;
     };
+    readonly 5: {};
 };

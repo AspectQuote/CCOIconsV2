@@ -214,5 +214,6 @@ export const flagIconRendererConstSchema = {
             flatPadding: 16,
             frames: 15
         })
-    }
+    },
+    [cubeFlags.infused]: {}
 };

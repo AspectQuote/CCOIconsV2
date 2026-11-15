@@ -4,14 +4,15 @@ function constructPrefix(data) {
         multiplier: data.multiplier ?? 1,
         desc: data.desc ?? "Prefix Description",
         excludedFromCompletion: data.excludedFromCompletion ?? false,
-        elements: data.elements ?? []
+        elements: data.elements ?? [],
+        author: data.author ?? "AspectQuote"
     };
 }
 export const prefixSchema = {
     "bugged": constructPrefix({
         name: "Bugged",
         multiplier: 200,
-        desc: "DOES NOT COMPUTE. Can only be seen by obtaining a cube with a broken prefix.",
+        desc: "DOES NOT COMPUTE. Can only be seen by obtaining a cube with a broken prefix... or obtaining a cube with two of the same prefix.",
         excludedFromCompletion: true
     }),
     "leafy": constructPrefix({
@@ -152,8 +153,7 @@ export const prefixSchema = {
         "name": "Oriental",
         "multiplier": 114,
         "desc": "It's raising the roof!",
-        "elements": ["Heavy"],
-        excludedFromCompletion: true
+        "elements": ["Heavy"]
     }),
     "insignificant": constructPrefix({
         "name": "Insignificant",
@@ -470,8 +470,7 @@ export const prefixSchema = {
         "name": "Meleagris",
         "multiplier": 77,
         "desc": "You can faintly hear 'Gobble Gobble'.",
-        "elements": ["Organic", "Makes-Noise"],
-        excludedFromCompletion: true
+        "elements": ["Organic", "Makes-Noise"]
     }),
     "awardwin": constructPrefix({
         "name": "Award-Winning",
@@ -542,8 +541,7 @@ export const prefixSchema = {
         "name": "Culinary",
         "multiplier": 68,
         "desc": "Oh dear gorgeous.",
-        "elements": ["Edible", "Fabric"],
-        excludedFromCompletion: true
+        "elements": ["Edible", "Fabric"]
     }),
     "eudaemonic": constructPrefix({
         "name": "Eudaemonic",
@@ -555,8 +553,7 @@ export const prefixSchema = {
         "name": "Magical",
         "multiplier": 66,
         "desc": "Evil Cube Wizard Gang. We love casting spells.",
-        "elements": ["Light-Emitting"],
-        excludedFromCompletion: true
+        "elements": ["Light-Emitting"]
     }),
     "demarcated": constructPrefix({
         "name": "Demarcated",
@@ -685,14 +682,12 @@ export const prefixSchema = {
         "name": "Thinking",
         "multiplier": 51,
         "desc": "You know I was thinking... Why are there so many prefixes?",
-        excludedFromCompletion: true
     }),
     "boiled": constructPrefix({
         "name": "Boiled",
         "multiplier": 50,
         "desc": "Steamed cubes.",
-        "elements": ["Hot", "Wet"],
-        excludedFromCompletion: true
+        "elements": ["Hot", "Wet"]
     }),
     "typing": constructPrefix({
         "name": "Typing",
@@ -1014,8 +1009,7 @@ export const prefixSchema = {
     "worthless": constructPrefix({
         "name": "Worthless",
         "multiplier": 0,
-        "desc": "It really does just make the cube worth 1 qubit.",
-        excludedFromCompletion: true
+        "desc": "It really does just make the cube worth 1 qubit."
     })
 };
 export const allPrefixes = Object.keys(prefixSchema);
@@ -1198,9 +1192,12 @@ export const prefixApplicationOrderObject = {
 };
 export const prefixApplicationOrder = Object.keys(prefixApplicationOrderObject);
 export function sortPrefixesByApplicationOrder(prefixes, direction = 1) {
-    prefixes.sort((prefA, prefB) => {
+    return prefixes.sort((prefA, prefB) => {
         if (prefixApplicationOrder.indexOf(prefA) < prefixApplicationOrder.indexOf(prefB))
             return direction * -1;
         return direction;
     });
+}
+export function validatePrefixID(str) {
+    return str in prefixSchema;
 }

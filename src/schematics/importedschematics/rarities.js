@@ -20,7 +20,7 @@ function constructRarityDefinition(data) {
 }
 const raritySchema = {
     "common": constructRarityDefinition({
-        unboxingWeight: 40000000,
+        unboxingWeight: 45_500_000,
         rarityUpgradeTier: 0,
         smashDropMultiplier: 1,
         baseTallyCap: 500,
@@ -35,7 +35,7 @@ const raritySchema = {
         minimumEnchantmentsAppliedWhenEnchanting: 3
     }),
     "uncommon": constructRarityDefinition({
-        unboxingWeight: 35000000,
+        unboxingWeight: 30000000,
         rarityUpgradeTier: 0,
         smashDropMultiplier: 1.4,
         baseTallyCap: 1000,
@@ -75,7 +75,7 @@ const raritySchema = {
     "legendary": constructRarityDefinition({
         unboxingWeight: 5000000,
         rarityUpgradeTier: 1,
-        smashDropMultiplier: 2.5,
+        smashDropMultiplier: 4,
         baseTallyCap: 5000,
         collectorsRequirement: 80,
         color: "#ee39bb",
@@ -85,9 +85,9 @@ const raritySchema = {
         baseEnchantChance: 1 / 5
     }),
     "relic": constructRarityDefinition({
-        unboxingWeight: 3000000,
+        unboxingWeight: 2500000,
         rarityUpgradeTier: 2,
-        smashDropMultiplier: 2.7,
+        smashDropMultiplier: 5,
         baseTallyCap: 15000,
         collectorsRequirement: 75,
         color: "#cc0000",
@@ -99,7 +99,7 @@ const raritySchema = {
     "cubic": constructRarityDefinition({
         unboxingWeight: 400000,
         rarityUpgradeTier: 3,
-        smashDropMultiplier: 4.3,
+        smashDropMultiplier: 6.5,
         baseTallyCap: 50000,
         collectorsRequirement: 50,
         color: "#2e2e2e",
@@ -123,8 +123,8 @@ const raritySchema = {
     "gold": constructRarityDefinition({
         unboxingWeight: 10000,
         rarityUpgradeTier: 4,
-        smashDropMultiplier: 6,
-        baseTallyCap: 250000,
+        smashDropMultiplier: 8.5,
+        baseTallyCap: 2_000_000,
         collectorsRequirement: 10,
         color: "#ebc634",
         prefixAccentuation: 2.2,
@@ -137,7 +137,7 @@ const raritySchema = {
         unboxingWeight: 100,
         rarityUpgradeTier: 5,
         smashDropMultiplier: 100,
-        baseTallyCap: 1250000,
+        baseTallyCap: 5_000_000,
         collectorsRequirement: 3,
         color: "#240e0e",
         prefixAccentuation: 3.2,
@@ -171,30 +171,6 @@ const raritySchema = {
         name: "Slated",
         baseEnchantChance: 1 / 8
     }),
-    "coldiv": constructRarityDefinition({
-        unboxingWeight: 0,
-        rarityUpgradeTier: 0,
-        smashDropMultiplier: 40,
-        baseTallyCap: 750000,
-        collectorsRequirement: 999,
-        color: "#660808",
-        prefixAccentuation: rarityConfig.collectorsPrefixAccentuation,
-        tallyMaxFlavors: ["Gleefully Gapped"],
-        name: "Collector's Divine",
-        baseEnchantChance: 1 / 8
-    }),
-    "colslat": constructRarityDefinition({
-        unboxingWeight: 0,
-        rarityUpgradeTier: 0,
-        smashDropMultiplier: 40,
-        baseTallyCap: 750000,
-        collectorsRequirement: 999,
-        color: "#660808",
-        prefixAccentuation: rarityConfig.collectorsPrefixAccentuation,
-        tallyMaxFlavors: ["Nastily Noticeable"],
-        name: "Collector's Slated",
-        baseEnchantChance: 1 / 8
-    }),
     "collectors": constructRarityDefinition({
         unboxingWeight: 0,
         rarityUpgradeTier: 0,
@@ -204,7 +180,7 @@ const raritySchema = {
         color: "#660808",
         prefixAccentuation: rarityConfig.collectorsPrefixAccentuation,
         tallyMaxFlavors: ["Completely Comprised"],
-        name: "Collector's",
+        name: "Collected",
         baseEnchantChance: 1 / 8
     }),
     "exotic": constructRarityDefinition({
@@ -223,8 +199,8 @@ const raritySchema = {
     "crafted": constructRarityDefinition({
         unboxingWeight: 0,
         rarityUpgradeTier: 0,
-        smashDropMultiplier: 20,
-        baseTallyCap: 999999999,
+        smashDropMultiplier: 5,
+        baseTallyCap: 1_500_000,
         collectorsRequirement: 15,
         color: "#4a2c1c",
         prefixAccentuation: 1.5,
@@ -270,4 +246,7 @@ const raritySchema = {
     })
 };
 const allRarities = Object.keys(raritySchema);
+export function validateRarityID(str) {
+    return str in raritySchema;
+}
 export { raritySchema, allRarities };

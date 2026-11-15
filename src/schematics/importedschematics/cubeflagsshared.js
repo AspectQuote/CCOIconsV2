@@ -6,6 +6,7 @@ export var cubeFlags;
     cubeFlags[cubeFlags["divine"] = 2] = "divine";
     cubeFlags[cubeFlags["slated"] = 3] = "slated";
     cubeFlags[cubeFlags["contraband"] = 4] = "contraband";
+    cubeFlags[cubeFlags["infused"] = 5] = "infused";
 })(cubeFlags || (cubeFlags = {}));
 export const maxFlag = (Object.keys(cubeFlags).length / 2) - 1;
 export const maxFlagFieldValue = (2 ** (maxFlag + 1));

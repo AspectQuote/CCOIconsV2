@@ -3,7 +3,8 @@ export declare enum cubeFlags {
     collectors = 1,
     divine = 2,
     slated = 3,
-    contraband = 4
+    contraband = 4,
+    infused = 5
 }
 export declare const maxFlag: number;
 export declare const maxFlagFieldValue: number;

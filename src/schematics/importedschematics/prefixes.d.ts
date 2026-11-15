@@ -5,6 +5,7 @@ export type PrefixDefinition = {
     desc: string;
     excludedFromCompletion: boolean;
     elements: CubeElementID[];
+    author: string;
 };
 export declare const prefixSchema: {
     readonly bugged: PrefixDefinition;
@@ -343,4 +344,5 @@ export declare const prefixApplicationOrderObject: {
     worthless: 1;
 };
 export declare const prefixApplicationOrder: PrefixID[];
-export declare function sortPrefixesByApplicationOrder(prefixes: PrefixID[], direction?: 1 | -1): void;
+export declare function sortPrefixesByApplicationOrder(prefixes: PrefixID[], direction?: 1 | -1): ("scientific" | "broken" | "angry" | "bugged" | "leafy" | "cruel" | "based" | "orbital" | "sacred" | "flaming" | "cursed" | "emburdening" | "cuffed" | "endangered" | "marvelous" | "phasing" | "tentacular" | "dotted" | "evanescent" | "royal" | "captain" | "oriental" | "insignificant" | "95in" | "marbleized" | "snowy" | "roaring" | "summoning" | "misprinted" | "swarming" | "conjoined" | "kramped" | "constructive" | "dandy" | "scrumptious" | "incarcerated" | "boxed" | "runic" | "rippling" | "emphasized" | "chained" | "tumbling" | "angelic" | "menacing" | "serving" | "holy" | "unholy" | "contaminated" | "phosphorescent" | "neko" | "mathematical" | "wanted" | "onomatopoeiacal" | "foolish" | "smoked" | "basking" | "omniscient" | "sniping" | "beboppin" | "skewed" | "hardboiled" | "gruesome" | "outlawed" | "wranglin" | "canoodled" | "saiyan" | "amorous" | "palletized" | "collectible" | "dazed" | "adduced" | "meleagris" | "awardwin" | "glitchy" | "frosty" | "freshened" | "electrified" | "overcast" | "bladed" | "jolly" | "partying" | "leeking" | "sophisticated" | "culinary" | "eudaemonic" | "magical" | "demarcated" | "blushing" | "defeatable" | "sweetened" | "dovey" | "batty" | "streaming" | "clapping" | "puppeted" | "musical" | "bushy" | "stunned" | "marked" | "lovey" | "trouvaille" | "googly" | "stabbed" | "expressive" | "talkative" | "muscular" | "leggendary" | "thinking" | "boiled" | "typing" | "addicted" | "blind" | "cucurbitaphilic" | "radioactive" | "read" | "foggy" | "fatherly" | "pugilistic" | "censored" | "buttered" | "sick" | "fearful" | "drunken" | "comfortable" | "swag" | "stereoscopic" | "brainy" | "roped" | "brilliant" | "sparkly" | "adorable" | "hurt" | "ailurophilic" | "fake" | "glinting" | "conspicuous" | "voodoo" | "annoyed" | "zammin" | "rdming" | "acquiescing" | "fuming" | "dlc" | "feminine" | "masculine" | "ornamentalized" | "raving" | "expensive" | "hyaline" | "sussy" | "sleepy" | "disgusted" | "hypnotic" | "idiotic" | "dirtied" | "nailed" | "farmboy" | "blurry" | "obfuscating" | "inverted" | "angery" | "despairing" | "dookied" | "grinning" | "worthless")[];
+export declare function validatePrefixID(str: string): str is PrefixID;
