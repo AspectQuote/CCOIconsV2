@@ -6124,7 +6124,7 @@ export const prefixRenderers = {
                     prefixRendererTags.needsEyes
                 ],
                 render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
-                    let eyeAnimation = await loadAnimatedCubeIcon(`${prefixSourceDirectory}/starstruck/star.png`);
+                    const eyeAnimation = await loadAnimatedCubeIcon(`${prefixSourceDirectory}/starstruck/star.png`);
                     compositeEyesToAllFrames(input, parts.icon[0], parts.eyes, eyeAnimation);
                     return true;
                 },
@@ -6140,7 +6140,7 @@ export const prefixRenderers = {
                     prefixRendererTags.needsMouths
                 ],
                 render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
-                    let whiskerImage = await Jimp.read(`${prefixSourceDirectory}/bristled/whiskers.png`);
+                    const whiskerImage = await Jimp.read(`${prefixSourceDirectory}/bristled/whiskers.png`);
                     const heightOffset = -Math.floor(whiskerImage.height / 2);
                     compositeMouthsToAllFramesWithoutScaling(input, parts.icon[0], parts.mouths, [whiskerImage], { x: -(1 + whiskerImage.bitmap.width), y: heightOffset - 1 }, false);
                     whiskerImage.flip({ horizontal: true });
