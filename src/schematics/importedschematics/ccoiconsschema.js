@@ -2,8 +2,9 @@ import { cubeFlagInBitfield, cubeFlags, turnFlagsFieldIntoFlagsArray } from "./c
 import { cubeSchema } from "./cubes";
 import { prefixSchema } from "./prefixes";
 import { raritySchema } from "./rarities";
+import { seriesSchema } from "./seriespools";
 const sharedSchema = {
-    cubeSchema, prefixSchema, raritySchema, cubeFlags
+    cubeSchema, prefixSchema, raritySchema, cubeFlags, seriesSchema
 };
 const sharedFunctionality = {
     cubeFlagInBitfield, turnFlagsFieldIntoFlagsArray

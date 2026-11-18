@@ -13,11 +13,12 @@ import { filterOtherFlagsForNeeded, prefixRenderSteps, prefixRenderStepSchema, s
 import path from 'path';
 import { Jimp } from 'jimp';
 import { applyImageEffect, createBSideV2Image } from './imageeffects';
-import { cubeIconRouteParams, customBackgroundImageRouteParams, flagIconRouteParams, parseCubeIconRouteParams, parseCustomBackgroundRouteParams, parseFlagIconRouteParams, parsePrefixIconRouteParams, prefixIconRouteParams } from './cubeiconroutehelpers';
+import { cubeIconRouteParams, customBackgroundImageRouteParams, flagIconRouteParams, parseCubeIconRouteParams, parseCustomBackgroundRouteParams, parseFlagIconRouteParams, parsePrefixIconRouteParams, parseSeriesCollageParams, prefixIconRouteParams, seriesCollageParams } from './cubeiconroutehelpers';
 import { hash } from 'crypto';
 import { saveAnimatedCubeIcon } from './imageutils';
 import { renderFlag } from './schematics/flagrenderers';
 import { turnFlagsFieldIntoFlagsArray } from './schematics/importedschematics/cubeflagsshared';
+import { generateSeriesCollage } from './schematics/seriesrenderers';
 
 const app = express();
 
@@ -152,7 +153,6 @@ app.listen(config.serverPort, async () => {
         const usingFlags = filterOtherFlagsForNeeded(turnFlagsFieldIntoFlagsArray(givenParams.allFlags), prefixRenderStepSchema.background.otherPrefixes);
         const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, 0);
         const hashableString = `MainFlag:${givenParams.mainFlag},Dimensions:${cubeParts.icon[0].bitmap.width}x${cubeParts.icon[0].bitmap.height},OtherFlags:${usingFlags.join('|')}`;
-        console.log(hashableString);
         const outputFileName = `${hash('md5', hashableString)}`;
         const givenOutputFile = `${givenOutputDirectory}/${outputFileName}.png`;
 
@@ -162,5 +162,17 @@ app.listen(config.serverPort, async () => {
         }
         
         return res.sendFile(givenOutputFile);
+    })
+
+    app.get(`/seriescollage/${seriesCollageParams}`, defaultHeadersMiddleWare, async (req, res) => {
+        const givenParams = parseSeriesCollageParams(req.params as Record<string, string>);
+        const collageOutputDirectory = `${config.outputDirectory}/seriescollages/`;
+        const iconName = `${givenParams.seriesID}collage`;
+        const outputFile = `${collageOutputDirectory}/${iconName}.png`;
+        if (!fs.existsSync(outputFile) || config.devmode) {
+            const renderedCollage = await generateSeriesCollage(givenParams.seriesID);
+            await saveAnimatedCubeIcon([renderedCollage], iconName, collageOutputDirectory);
+        }
+        return res.sendFile(outputFile);
     })
 });

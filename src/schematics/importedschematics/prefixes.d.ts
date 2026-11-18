@@ -97,16 +97,19 @@ export declare const prefixSchema: {
     readonly defeatable: PrefixDefinition;
     readonly sweetened: PrefixDefinition;
     readonly dovey: PrefixDefinition;
+    readonly overgrown: PrefixDefinition;
     readonly batty: PrefixDefinition;
     readonly streaming: PrefixDefinition;
     readonly clapping: PrefixDefinition;
     readonly puppeted: PrefixDefinition;
     readonly musical: PrefixDefinition;
+    readonly bristled: PrefixDefinition;
     readonly bushy: PrefixDefinition;
     readonly stunned: PrefixDefinition;
     readonly marked: PrefixDefinition;
     readonly lovey: PrefixDefinition;
     readonly trouvaille: PrefixDefinition;
+    readonly starstruck: PrefixDefinition;
     readonly googly: PrefixDefinition;
     readonly stabbed: PrefixDefinition;
     readonly expressive: PrefixDefinition;
@@ -223,6 +226,7 @@ export declare const prefixApplicationOrderObject: {
     expensive: 1;
     lovey: 1;
     googly: 1;
+    starstruck: 1;
     hypnotic: 1;
     expressive: 1;
     blushing: 1;
@@ -310,10 +314,12 @@ export declare const prefixApplicationOrderObject: {
     chained: 1;
     adduced: 1;
     roped: 1;
+    overgrown: 1;
     awardwin: 1;
     buttered: 1;
     addicted: 1;
     farmboy: 1;
+    bristled: 1;
     bushy: 1;
     grinning: 1;
     emphasized: 1;
@@ -344,5 +350,5 @@ export declare const prefixApplicationOrderObject: {
     worthless: 1;
 };
 export declare const prefixApplicationOrder: PrefixID[];
-export declare function sortPrefixesByApplicationOrder(prefixes: PrefixID[], direction?: 1 | -1): ("scientific" | "broken" | "angry" | "bugged" | "leafy" | "cruel" | "based" | "orbital" | "sacred" | "flaming" | "cursed" | "emburdening" | "cuffed" | "endangered" | "marvelous" | "phasing" | "tentacular" | "dotted" | "evanescent" | "royal" | "captain" | "oriental" | "insignificant" | "95in" | "marbleized" | "snowy" | "roaring" | "summoning" | "misprinted" | "swarming" | "conjoined" | "kramped" | "constructive" | "dandy" | "scrumptious" | "incarcerated" | "boxed" | "runic" | "rippling" | "emphasized" | "chained" | "tumbling" | "angelic" | "menacing" | "serving" | "holy" | "unholy" | "contaminated" | "phosphorescent" | "neko" | "mathematical" | "wanted" | "onomatopoeiacal" | "foolish" | "smoked" | "basking" | "omniscient" | "sniping" | "beboppin" | "skewed" | "hardboiled" | "gruesome" | "outlawed" | "wranglin" | "canoodled" | "saiyan" | "amorous" | "palletized" | "collectible" | "dazed" | "adduced" | "meleagris" | "awardwin" | "glitchy" | "frosty" | "freshened" | "electrified" | "overcast" | "bladed" | "jolly" | "partying" | "leeking" | "sophisticated" | "culinary" | "eudaemonic" | "magical" | "demarcated" | "blushing" | "defeatable" | "sweetened" | "dovey" | "batty" | "streaming" | "clapping" | "puppeted" | "musical" | "bushy" | "stunned" | "marked" | "lovey" | "trouvaille" | "googly" | "stabbed" | "expressive" | "talkative" | "muscular" | "leggendary" | "thinking" | "boiled" | "typing" | "addicted" | "blind" | "cucurbitaphilic" | "radioactive" | "read" | "foggy" | "fatherly" | "pugilistic" | "censored" | "buttered" | "sick" | "fearful" | "drunken" | "comfortable" | "swag" | "stereoscopic" | "brainy" | "roped" | "brilliant" | "sparkly" | "adorable" | "hurt" | "ailurophilic" | "fake" | "glinting" | "conspicuous" | "voodoo" | "annoyed" | "zammin" | "rdming" | "acquiescing" | "fuming" | "dlc" | "feminine" | "masculine" | "ornamentalized" | "raving" | "expensive" | "hyaline" | "sussy" | "sleepy" | "disgusted" | "hypnotic" | "idiotic" | "dirtied" | "nailed" | "farmboy" | "blurry" | "obfuscating" | "inverted" | "angery" | "despairing" | "dookied" | "grinning" | "worthless")[];
+export declare function sortPrefixesByApplicationOrder(prefixes: PrefixID[], direction?: 1 | -1): ("scientific" | "broken" | "angry" | "bugged" | "leafy" | "cruel" | "based" | "orbital" | "sacred" | "flaming" | "cursed" | "emburdening" | "cuffed" | "endangered" | "marvelous" | "phasing" | "tentacular" | "dotted" | "evanescent" | "royal" | "captain" | "oriental" | "insignificant" | "95in" | "marbleized" | "snowy" | "roaring" | "summoning" | "misprinted" | "swarming" | "conjoined" | "kramped" | "constructive" | "dandy" | "scrumptious" | "incarcerated" | "boxed" | "runic" | "rippling" | "emphasized" | "chained" | "tumbling" | "angelic" | "menacing" | "serving" | "holy" | "unholy" | "contaminated" | "phosphorescent" | "neko" | "mathematical" | "wanted" | "onomatopoeiacal" | "foolish" | "smoked" | "basking" | "omniscient" | "sniping" | "beboppin" | "skewed" | "hardboiled" | "gruesome" | "outlawed" | "wranglin" | "canoodled" | "saiyan" | "amorous" | "palletized" | "collectible" | "dazed" | "adduced" | "meleagris" | "awardwin" | "glitchy" | "frosty" | "freshened" | "electrified" | "overcast" | "bladed" | "jolly" | "partying" | "leeking" | "sophisticated" | "culinary" | "eudaemonic" | "magical" | "demarcated" | "blushing" | "defeatable" | "sweetened" | "dovey" | "overgrown" | "batty" | "streaming" | "clapping" | "puppeted" | "musical" | "bristled" | "bushy" | "stunned" | "marked" | "lovey" | "trouvaille" | "starstruck" | "googly" | "stabbed" | "expressive" | "talkative" | "muscular" | "leggendary" | "thinking" | "boiled" | "typing" | "addicted" | "blind" | "cucurbitaphilic" | "radioactive" | "read" | "foggy" | "fatherly" | "pugilistic" | "censored" | "buttered" | "sick" | "fearful" | "drunken" | "comfortable" | "swag" | "stereoscopic" | "brainy" | "roped" | "brilliant" | "sparkly" | "adorable" | "hurt" | "ailurophilic" | "fake" | "glinting" | "conspicuous" | "voodoo" | "annoyed" | "zammin" | "rdming" | "acquiescing" | "fuming" | "dlc" | "feminine" | "masculine" | "ornamentalized" | "raving" | "expensive" | "hyaline" | "sussy" | "sleepy" | "disgusted" | "hypnotic" | "idiotic" | "dirtied" | "nailed" | "farmboy" | "blurry" | "obfuscating" | "inverted" | "angery" | "despairing" | "dookied" | "grinning" | "worthless")[];
 export declare function validatePrefixID(str: string): str is PrefixID;

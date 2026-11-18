@@ -23,6 +23,7 @@ const characterCollectionPrimaryRarity = "common";
 const characterCollectionSecondaryRarity = "rare";
 const cubicSmallQuarkValue = 4;
 const ultMatQuarkValue = 76;
+const ultMatRarity = "exotic";
 export const cubeSchema = {
     "unrealgreen": {
         "author": "The Gods",
@@ -13426,10 +13427,10 @@ export const cubeSchema = {
             "Hot",
             "Hot"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 9764174,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13452,10 +13453,10 @@ export const cubeSchema = {
             "Makes-Noise",
             "Makes-Noise"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 23978167,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13478,10 +13479,10 @@ export const cubeSchema = {
             "Ancient",
             "Ancient"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 1551647,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13504,10 +13505,10 @@ export const cubeSchema = {
             "Organic",
             "Organic"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 2196150,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13530,10 +13531,10 @@ export const cubeSchema = {
             "Bouncy",
             "Bouncy"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 37055040,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13556,10 +13557,10 @@ export const cubeSchema = {
             "Glass",
             "Glass"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 3905177,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13582,10 +13583,10 @@ export const cubeSchema = {
             "Electronic",
             "Electronic"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 8535405,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13608,10 +13609,10 @@ export const cubeSchema = {
             "Haunted",
             "Haunted"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 11930600,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13634,10 +13635,10 @@ export const cubeSchema = {
             "Heavy",
             "Heavy"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 2824317,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13660,10 +13661,10 @@ export const cubeSchema = {
             "Plastic",
             "Plastic"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 2555688,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13686,10 +13687,10 @@ export const cubeSchema = {
             "Stony",
             "Stony"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 10527000,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13712,10 +13713,10 @@ export const cubeSchema = {
             "Shiny",
             "Shiny"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 4423109,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13738,10 +13739,10 @@ export const cubeSchema = {
             "Slimy",
             "Slimy"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 34820077,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13764,10 +13765,10 @@ export const cubeSchema = {
             "Magnetic",
             "Magnetic"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 9192591,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13790,10 +13791,10 @@ export const cubeSchema = {
             "Edible",
             "Edible"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 7099605,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13816,10 +13817,10 @@ export const cubeSchema = {
             "Fabric",
             "Fabric"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 21054000,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13842,10 +13843,10 @@ export const cubeSchema = {
             "Cold",
             "Cold"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 34010307,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13868,10 +13869,10 @@ export const cubeSchema = {
             "Light-Emitting",
             "Light-Emitting"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 16327593,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13894,10 +13895,10 @@ export const cubeSchema = {
             "Wet",
             "Wet"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 4108097,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -13920,10 +13921,10 @@ export const cubeSchema = {
             "Poisonous",
             "Poisonous"
         ],
-        "rarity": "crafted",
         "gen": "2",
         "price": 41192609,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -15848,10 +15849,10 @@ export const cubeSchema = {
             "Painted",
             "Painted"
         ],
-        "rarity": "crafted",
         "gen": "4",
         "price": 4812766,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -15874,10 +15875,10 @@ export const cubeSchema = {
             "Hard",
             "Hard"
         ],
-        "rarity": "crafted",
         "gen": "4",
         "price": 11941176,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -15900,10 +15901,10 @@ export const cubeSchema = {
             "Light",
             "Light"
         ],
-        "rarity": "crafted",
         "gen": "4",
         "price": 5338636,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -15926,10 +15927,10 @@ export const cubeSchema = {
             "Dull",
             "Dull"
         ],
-        "rarity": "crafted",
         "gen": "4",
         "price": 5536364,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -15952,10 +15953,10 @@ export const cubeSchema = {
             "Pure",
             "Pure"
         ],
-        "rarity": "crafted",
         "gen": "4",
         "price": 12876000,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -15978,10 +15979,10 @@ export const cubeSchema = {
             "Fresh",
             "Fresh"
         ],
-        "rarity": "crafted",
         "gen": "4",
         "price": 19333333,
         "qp": ultMatQuarkValue,
+        rarity: ultMatRarity,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],

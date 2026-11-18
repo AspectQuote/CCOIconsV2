@@ -503,7 +503,7 @@ function compositeRopeSlidingAnimation(inputFrames: JimpImage[], cubeIcon: JimpI
         const startPos = Math.floor((inputFrames[0].bitmap.width - cubeIcon[0].bitmap.width) / 2) + Math.floor(RNG() * cubeIcon[0].bitmap.height);
         generatingRopes.push({
             start: startPos,
-            end: startPos + Math.floor(RNG() * endPositionVariance),
+            end: startPos + Math.floor((RNG() * endPositionVariance) - (endPositionVariance/2)),
             animationOffset: RNG(),
             direction: RNG() > 0.5 ? 1 : -1
         })
@@ -1897,7 +1897,7 @@ export const prefixRenderers = {
                 frames: 15,
                 flatCanvasPadding: 4,
                 render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
-                    const seedGen = seedrandom(`adduced${seed}`);
+                    const seedGen = seedrandom(`roped${seed}`);
                     compositeRopeSlidingAnimation(input, parts.icon, seedGen, { image: await Jimp.read(`${prefixSourceDirectory}/roped/rope.png`), minRopeCount: 1, maxRopeCount: 3 });
 
                     return true;
@@ -6095,5 +6095,59 @@ export const prefixRenderers = {
                 },
             })
         }
-    })
+    }),
+    "overgrown": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                tags: [
+                    prefixRendererTags.needsIcon,
+                    prefixRendererTags.isSeeded,
+                    prefixRendererTags.granularSeed
+                ],
+                frames: 15,
+                flatCanvasPadding: 4,
+                render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    const seedGen = seedrandom(`overgrown${seed}`);
+                    compositeRopeSlidingAnimation(input, parts.icon, seedGen, { image: await Jimp.read(`${prefixSourceDirectory}/overgrown/vine.png`), minRopeCount: 1, maxRopeCount: 3 });
+
+                    return true;
+                },
+            })
+        }
+    }),
+    "starstruck": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                canvasScale: 1,
+                flatCanvasPadding: 3,
+                tags: [
+                    prefixRendererTags.needsEyes
+                ],
+                render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    let eyeAnimation = await loadAnimatedCubeIcon(`${prefixSourceDirectory}/starstruck/star.png`);
+                    compositeEyesToAllFrames(input, parts.icon[0], parts.eyes, eyeAnimation);
+                    return true;
+                },
+            })
+        }
+    }),
+    "bristled": constructPrefixRenderer({
+        renderSteps: {
+            [prefixRenderSteps.foreground]: constructPrefixRendererStep({
+                canvasScale: 1,
+                flatCanvasPadding: 5,
+                tags: [
+                    prefixRendererTags.needsMouths
+                ],
+                render: async function (parts, input, seed, cubeData, otherPrefixes, parsedRNG) {
+                    let whiskerImage = await Jimp.read(`${prefixSourceDirectory}/bristled/whiskers.png`);
+                    const heightOffset = -Math.floor(whiskerImage.height / 2);
+                    compositeMouthsToAllFramesWithoutScaling(input, parts.icon[0], parts.mouths, [whiskerImage], { x: -(1 + whiskerImage.bitmap.width), y: heightOffset - 1 }, false);
+                    whiskerImage.flip({ horizontal: true });
+                    compositeMouthsToAllFramesWithoutScaling(input, parts.icon[0], parts.mouths, [whiskerImage], { x: 1, y: heightOffset + 1 }, true);
+                    return true;
+                },
+            })
+        }
+    }),
 } as {[key in PrefixID]?: prefixRendererDefinition};

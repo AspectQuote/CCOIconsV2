@@ -3,6 +3,7 @@ import { allFilterIDs, filterID } from "./imageeffects";
 import { cubeFlagInBitfield, cubeFlags, maxFlag, maxFlagFieldValue } from "./schematics/importedschematics/cubeflagsshared";
 import { CubeID, cubeSchema } from "./schematics/importedschematics/cubes";
 import { PrefixID, prefixSchema } from "./schematics/importedschematics/prefixes";
+import { seriesID, seriesSchema } from "./schematics/importedschematics/seriespools";
 
 export const customBackgroundImageRouteParams = `:image/:filter`;
 
@@ -65,6 +66,14 @@ function parseGivenParamAsBoolean(param: string) {
     return `${param}` === '1';
 }
 
+function parseGivenParamAsSeriesID(param: string) {
+    let seriesID = `${param}` as seriesID;
+    if (!(seriesID in seriesSchema)) {
+        seriesID = 'series1';
+    }
+    return seriesID;
+}
+
 export const cubeIconRouteParams = `:prefixes/:flags/:iconseed/:prefixseed/:cubeid`;
 
 export function parseCubeIconRouteParams(givenParams: Record<string, string>) {
@@ -111,5 +120,13 @@ export function parseFlagIconRouteParams(givenParams: Record<string, string>) {
         allFlags: parseGivenParamAsNumber(givenParams?.otherflags, maxFlagFieldValue, 0, true),
         cubeID: parseGivenParamAsCubeID(givenParams?.cubeid),
         mainFlag: parseGivenParamAsNumber(givenParams?.mainflag, maxFlag, 0, true)
+    }
+}
+
+export const seriesCollageParams = `:seriesid`;
+
+export function parseSeriesCollageParams(givenParams: Record<string, string>) {
+    return {
+        seriesID: parseGivenParamAsSeriesID(givenParams?.seriesid)
     }
 }

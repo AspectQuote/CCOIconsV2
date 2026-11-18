@@ -185,6 +185,7 @@ export const flagRendererSchema = {
             })
         }
     }),
+    [cubeFlags.infused]: constructPrefixRenderer({}),
     [cubeFlags.contraband]: constructPrefixRenderer({
         renderSteps: {}
     })

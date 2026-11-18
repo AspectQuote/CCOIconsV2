@@ -585,6 +585,12 @@ export const prefixSchema = {
         "multiplier": 63,
         "desc": "The bird is perched."
     }),
+    "overgrown": constructPrefix({
+        name: "Overgrown",
+        multiplier: 63,
+        desc: "RIP Vine.",
+        elements: ["Organic"]
+    }),
     "batty": constructPrefix({
         "name": "Batty",
         "multiplier": 62,
@@ -614,6 +620,11 @@ export const prefixSchema = {
         "desc": "I imagine this cube is listening to... something that's pretty groovy.",
         "elements": ["Makes-Noise"],
     }),
+    "bristled": constructPrefix({
+        name: "Bristled",
+        multiplier: 59,
+        desc: "Whiskin' my whiskers away!"
+    }),
     "bushy": constructPrefix({
         "name": "Bushy",
         "multiplier": 59,
@@ -640,6 +651,12 @@ export const prefixSchema = {
         "multiplier": 56,
         "desc": "The cube grows a funny hat.",
         "elements": ["Organic"]
+    }),
+    "starstruck": constructPrefix({
+        name: "Star-Struck",
+        multiplier: 55,
+        desc: "It's in awe!",
+        elements: ["Light-Emitting"]
     }),
     "googly": constructPrefix({
         "name": "Googly",
@@ -1065,6 +1082,7 @@ export const prefixApplicationOrderObject = {
     "expensive": 1, // Adds dollar signs to the eyes of the cube
     "lovey": 1, // Adds Heart Eyes to the Cube
     "googly": 1, // Adds Googly Eyes to the Cube
+    "starstruck": 1, // Adds stars to the cube's eyes
     "hypnotic": 1, // Adds 'hypnotized' eyes to the cube
     "expressive": 1, // Adds sassy eyebrows to the Cube
     "blushing": 1, // Adds blush to the cube
@@ -1154,10 +1172,12 @@ export const prefixApplicationOrderObject = {
     "chained": 1, // Adds moving chains to the Cube
     "adduced": 1, // Adds moving caution tape to the Cube
     "roped": 1, // Adds moving ropes to the Cube
+    "overgrown": 1, // Adds moving vines to the Cube
     "awardwin": 1, // Adds a medal/ribbon to the Cube
     "buttered": 1, // Adds a small slab of butter to the Cube
     "addicted": 1, // Adds a cigarette to the Cube
     "farmboy": 1, // Adds a wheat stalk to the Cube
+    "bristled": 1, // Adds whiskers to the Cube
     "bushy": 1, // Adds a Random Beard to the Cube
     "grinning": 1, // Adds a mouth to the cube
     "emphasized": 1, // Adds a random amount of red arrows to the cube
