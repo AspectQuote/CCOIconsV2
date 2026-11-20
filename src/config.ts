@@ -1,7 +1,7 @@
 import path from "path";
 
 export const config = {
-    serverPort: 80,
+    serverPort: 443,
     devmode: process.argv.findIndex(arg => arg === "--dev") !== -1,
     
     /**
