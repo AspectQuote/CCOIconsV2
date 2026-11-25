@@ -2036,8 +2036,8 @@ export const prefixRenderers = {
     "rippling": constructPrefixRenderer({
         renderSteps: {
             [prefixRenderSteps.applyToCube]: prefixRendererConsts.rippling.renderStep,
-            [prefixRenderSteps.applyToBackground]: prefixRendererConsts.rippling.renderStep,
-            [prefixRenderSteps.applyToForeground]: prefixRendererConsts.rippling.renderStep
+            // [prefixRenderSteps.applyToBackground]: prefixRendererConsts.rippling.renderStep,
+            // [prefixRenderSteps.applyToForeground]: prefixRendererConsts.rippling.renderStep
         }
     }),
     "runic": constructPrefixRenderer({
@@ -5227,8 +5227,8 @@ export const prefixRenderers = {
     "dotted": constructPrefixRenderer({
         renderSteps: {
             [prefixRenderSteps.applyToCube]: prefixRendererConsts.dotted.applicationStep,
-            [prefixRenderSteps.applyToBackground]: prefixRendererConsts.dotted.applicationStep,
-            [prefixRenderSteps.applyToForeground]: prefixRendererConsts.dotted.applicationStep
+            // [prefixRenderSteps.applyToBackground]: prefixRendererConsts.dotted.applicationStep,
+            // [prefixRenderSteps.applyToForeground]: prefixRendererConsts.dotted.applicationStep
         }
     }),
     "idiotic": constructPrefixRenderer({
