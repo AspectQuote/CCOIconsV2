@@ -7,7 +7,7 @@ import { seriesID, seriesSchema } from "./schematics/importedschematics/seriespo
 
 export const customBackgroundImageRouteParams = `:image/:filter`;
 
-const blacklistedBGFilters: filterID[] = ["twotone", "pixelsort"];
+const blacklistedBGFilters: filterID[] = ["twotone", "pixelsort", "reversesharpness"];
 export function parseCustomBackgroundRouteParams(givenParams: Record<string, string>, validImages: string[]) {
     let image = `${givenParams?.image}`;
     if (!validImages.includes(image)) {
