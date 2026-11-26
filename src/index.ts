@@ -96,7 +96,7 @@ app.listen(config.serverPort, async () => {
             }
             return res.sendFile(givenOutputFile);
         } catch (error) {
-            console.log(error);
+            console.log(error, req.url);
             return res.sendFile(fallbackFile);
         }
     });
@@ -141,7 +141,7 @@ app.listen(config.serverPort, async () => {
             // }
             return res.sendFile(outputPath);
         } catch (error) {
-            console.log(error);
+            console.log(error, req.url);
             return res.sendFile(fallbackFile);
         }
     })
@@ -152,7 +152,7 @@ app.listen(config.serverPort, async () => {
             const outputFile = await renderPrefix(givenParams, "foregrounds", prefixRenderStepSchema.foreground.mainPrefix, prefixRenderStepSchema.foreground.otherPrefixes, 1);
             return res.sendFile(outputFile);
         } catch (error) {
-            console.log(error);
+            console.log(error, req.url);
             return res.sendFile(fallbackFile);
         }
     });
@@ -163,7 +163,7 @@ app.listen(config.serverPort, async () => {
             const outputFile = await renderPrefix(givenParams, "backgrounds", prefixRenderStepSchema.background.mainPrefix, prefixRenderStepSchema.background.otherPrefixes, -1);
             return res.sendFile(outputFile);
         } catch (error) {
-            console.log(error);
+            console.log(error, req.url);
             return res.sendFile(fallbackFile);
         }
     });
@@ -185,7 +185,7 @@ app.listen(config.serverPort, async () => {
             
             return res.sendFile(givenOutputFile);
         } catch (error) {
-            console.log(error);
+            console.log(error, req.url);
             return res.sendFile(fallbackFile);
         }
     })
@@ -202,7 +202,7 @@ app.listen(config.serverPort, async () => {
             }
             return res.sendFile(outputFile);
         } catch (error) {
-            console.log(error);
+            console.log(error, req.url);
             return res.sendFile(fallbackFile);
         }
     })
