@@ -317,7 +317,7 @@ export async function createBSideV2Image(originalImage: JimpImage, similarTheres
     })
 
 
-    console.log(`B-Side V2: Finished Iteration #${iteration} in ${performance.now() - before}ms.`);
+    // console.log(`B-Side V2: Finished Iteration #${iteration} in ${performance.now() - before}ms.`);
     if (iteration === maxIteration) {
         return newImage;
         // return newImage.resize(newImage.bitmap.width * 6, newImage.bitmap.height * 6, Jimp.RESIZE_NEAREST_NEIGHBOR);
@@ -1028,7 +1028,7 @@ export async function applyImageEffect(inputImage: JimpImage, filterName: filter
     const maxPixels = 1100 ** 2;
     if ((inputImage.bitmap.width * inputImage.bitmap.height) > maxPixels) {
         const scaleChange = Math.sqrt(maxPixels / (inputImage.bitmap.width * inputImage.bitmap.height));
-        console.log(`\n[Filters] Scale Change Applied. Original Pixel Count: ${inputImage.bitmap.width * inputImage.bitmap.height}\nNew Pixel Count: ${inputImage.bitmap.width * scaleChange * inputImage.bitmap.height * scaleChange}`);
+        // console.log(`\n[Filters] Scale Change Applied. Original Pixel Count: ${inputImage.bitmap.width * inputImage.bitmap.height}\nNew Pixel Count: ${inputImage.bitmap.width * scaleChange * inputImage.bitmap.height * scaleChange}`);
         inputImage.resize({
             w: Math.ceil(inputImage.bitmap.width * scaleChange),
             h: Math.ceil(inputImage.bitmap.height * scaleChange),

@@ -217,7 +217,7 @@ export async function renderPrefixSteps(mainPrefix: PrefixID, otherPrefixes: Pre
         for (let otherStepIndex = 0; otherStepIndex < otherSteps.length; otherStepIndex++) {
             const otherStep = otherSteps[otherStepIndex];
             const renderStep = flagRendererSchema[otherFlag].renderSteps[otherStep];
-            console.log("Rendered Flag", otherFlag);
+            // console.log("Rendered Flag", otherFlag);
             if (renderStep) await renderStep.render(cubeParts, prefixFrames, 0, cubeData, [], {});
         }
     }
@@ -353,11 +353,11 @@ function generateSparsePositions(maxPositions: number, minDistance: number, seed
         }
     }
 
-    if (failsafe == failsafeMax) {
-        console.log("---- Failsafe hit :(")
-    }
+    // if (failsafe == failsafeMax) {
+    //     console.log("---- Failsafe hit :(")
+    // }
 
-    console.log(coordArray)
+    // console.log(coordArray)
     return coordArray;
 }
 
@@ -4870,7 +4870,7 @@ export const prefixRenderers = {
                                 if (0 < pixelAngle && pixelAngle < maxReferenceAngle / 2) {
                                     newFrame.setPixelColor(parsedRNG.gravGunColor, x + animationPadding, y + animationPadding)
                                 }
-                                if (pixelAngle < 0) console.log(pixelAngle * (180 / Math.PI), x, y);
+                                // if (pixelAngle < 0) console.log(pixelAngle * (180 / Math.PI), x, y);
                             }
                         });
                     }

@@ -178,7 +178,7 @@ export function strokeImage(image: JimpImage, color: number, thickness: number, 
         color: 0x00000000
     });
     if (matrix.length !== 3 || matrix[0]?.length !== 3) {
-        console.log("stroke Image: bad matrix supplied.", matrix)
+        // console.log("stroke Image: bad matrix supplied.", matrix)
         return process.exit(1)
     }
     if (!strokeOnly && !modifyOriginal) newImage.composite(image);
@@ -259,7 +259,7 @@ export function strokeImageWithResize(image: JimpImage, strokes: { color: number
 export async function loadAnimatedCubeIcon(iconPath: string): Promise<JimpImage[]> {
     let cubeFrames: JimpImage[] = [];
     if (!fs.existsSync(iconPath)) {
-        console.log(`Cube Icon Path not found!\n${path.resolve(iconPath)}`);
+        // console.log(`Cube Icon Path not found!\n${path.resolve(iconPath)}`);
         return cubeFrames;
     }
     let rawImageFile: JimpImage = await Jimp.read(iconPath);

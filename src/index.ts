@@ -22,6 +22,7 @@ import { generateSeriesCollage } from './schematics/seriesrenderers';
 
 const app = express();
 
+const fallbackFile = `${config.sourceImagesDirectory}/cubes/green/cube.png`;
 const requestCacheLength = 3600 * 24;
 function applyDefaultHeaders(res: Response) {
     if (config.devmode) return;
@@ -80,19 +81,24 @@ app.listen(config.serverPort, async () => {
     })
 
     app.get(`/cubeicon/${cubeIconRouteParams}`, defaultHeadersMiddleWare, async (req, res) => {
-        const givenParams = parseCubeIconRouteParams(req.params as Record<string, string>);
-        const givenOutputDirectory = `${config.outputDirectory}/cubeicons/`;
-        const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, givenParams.cubeSeed);
-        const hashableStringData = turnPrefixRenderInputsIntoHashableString('sacred', prefixRenderStepSchema.cube.mainPrefix, givenParams.prefixList, prefixRenderStepSchema.cube.otherPrefixes, givenParams.prefixSeed, cubeParts, givenParams.cubeID, givenParams.cubeSeed, givenParams.flags, cubeIconDataSchema, true);
-        if (config.devmode) console.log(`Cube Icon Hashable: `, hashableStringData.string);
-        const givenOutputFileName = `${givenParams.cubeID in patternedCubeSchema ? `${givenParams.cubeSeed}` : ``}${givenParams.cubeID}${hash('md5', hashableStringData.string)}`;
-        const givenOutputFile = `${givenOutputDirectory}/${givenOutputFileName}.png` as const;
-
-        if (!fs.existsSync(givenOutputFile) || config.devmode) {
-            const renderedCube = await renderPrefixSteps('sacred', givenParams.prefixList, prefixRenderStepSchema.cube.mainPrefix, prefixRenderStepSchema.cube.otherPrefixes, givenParams.cubeID, cubeParts, givenParams.prefixSeed, cubeIconDataSchema, cubeSchema[givenParams.cubeID], givenParams.flags, cubeParts.icon);
-            await saveAnimatedCubeIcon(renderedCube, givenOutputFileName, givenOutputDirectory);
+        try {
+            const givenParams = parseCubeIconRouteParams(req.params as Record<string, string>);
+            const givenOutputDirectory = `${config.outputDirectory}/cubeicons/`;
+            const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, givenParams.cubeSeed);
+            const hashableStringData = turnPrefixRenderInputsIntoHashableString('sacred', prefixRenderStepSchema.cube.mainPrefix, givenParams.prefixList, prefixRenderStepSchema.cube.otherPrefixes, givenParams.prefixSeed, cubeParts, givenParams.cubeID, givenParams.cubeSeed, givenParams.flags, cubeIconDataSchema, true);
+            if (config.devmode) console.log(`Cube Icon Hashable: `, hashableStringData.string);
+            const givenOutputFileName = `${givenParams.cubeID in patternedCubeSchema ? `${givenParams.cubeSeed}` : ``}${givenParams.cubeID}${hash('md5', hashableStringData.string)}`;
+            const givenOutputFile = `${givenOutputDirectory}/${givenOutputFileName}.png` as const;
+    
+            if (!fs.existsSync(givenOutputFile) || config.devmode) {
+                const renderedCube = await renderPrefixSteps('sacred', givenParams.prefixList, prefixRenderStepSchema.cube.mainPrefix, prefixRenderStepSchema.cube.otherPrefixes, givenParams.cubeID, cubeParts, givenParams.prefixSeed, cubeIconDataSchema, cubeSchema[givenParams.cubeID], givenParams.flags, cubeParts.icon);
+                await saveAnimatedCubeIcon(renderedCube, givenOutputFileName, givenOutputDirectory);
+            }
+            return res.sendFile(givenOutputFile);
+        } catch (error) {
+            console.log(error);
+            return res.sendFile(fallbackFile);
         }
-        return res.sendFile(givenOutputFile);
     });
 
     async function renderPrefix(givenParams: ReturnType<typeof parsePrefixIconRouteParams>, pathAddition: string, mainStep: prefixRenderSteps, otherSteps: prefixRenderSteps[], applicationSortDirection: 1 | -1): Promise<string> {
@@ -121,58 +127,83 @@ app.listen(config.serverPort, async () => {
     }
 
     app.get(`/custombackgroundimage/${customBackgroundImageRouteParams}`, defaultHeadersMiddleWare, async (req, res) => {
-        const givenParams = parseCustomBackgroundRouteParams(req.params as Record<string, string>, allBackgroundImages);
-        const outputDirectory = path.resolve(`${config.outputDirectory}/custombackgrounds/${givenParams.filter}/`);
-        fs.mkdirSync(`${outputDirectory}`, { recursive: true });
-        const outputFile = `${givenParams.image}.jpg`;
-        const outputPath = `${outputDirectory}/${outputFile}`;
-        // if (!fs.existsSync(outputPath)) {
-        //     const inputImage = await Jimp.read(`${config.sourceImagesDirectory}/images/${givenParams.image}.jpg`);
-        //     const outputImage = await applyImageEffect(inputImage, givenParams.filter, {});
-        //     // @ts-ignore
-        //     await outputImage.write(outputPath, { quality: 60 });
-        // }
-        return res.sendFile(outputPath);
+        try {
+            const givenParams = parseCustomBackgroundRouteParams(req.params as Record<string, string>, allBackgroundImages);
+            const outputDirectory = path.resolve(`${config.outputDirectory}/custombackgrounds/${givenParams.filter}/`);
+            fs.mkdirSync(`${outputDirectory}`, { recursive: true });
+            const outputFile = `${givenParams.image}.jpg`;
+            const outputPath = `${outputDirectory}/${outputFile}`;
+            // if (!fs.existsSync(outputPath)) {
+            //     const inputImage = await Jimp.read(`${config.sourceImagesDirectory}/images/${givenParams.image}.jpg`);
+            //     const outputImage = await applyImageEffect(inputImage, givenParams.filter, {});
+            //     // @ts-ignore
+            //     await outputImage.write(outputPath, { quality: 60 });
+            // }
+            return res.sendFile(outputPath);
+        } catch (error) {
+            console.log(error);
+            return res.sendFile(fallbackFile);
+        }
     })
 
     app.get(`/prefixforeground/${prefixIconRouteParams}`, defaultHeadersMiddleWare, async (req, res) => {
-        const givenParams = parsePrefixIconRouteParams(req.params as Record<string, string>);
-        const outputFile = await renderPrefix(givenParams, "foregrounds", prefixRenderStepSchema.foreground.mainPrefix, prefixRenderStepSchema.foreground.otherPrefixes, 1);
-        return res.sendFile(outputFile);
+        try {
+            const givenParams = parsePrefixIconRouteParams(req.params as Record<string, string>);
+            const outputFile = await renderPrefix(givenParams, "foregrounds", prefixRenderStepSchema.foreground.mainPrefix, prefixRenderStepSchema.foreground.otherPrefixes, 1);
+            return res.sendFile(outputFile);
+        } catch (error) {
+            console.log(error);
+            return res.sendFile(fallbackFile);
+        }
     });
 
     app.get(`/prefixbackground/${prefixIconRouteParams}`, defaultHeadersMiddleWare, async (req, res) => {
-        const givenParams = parsePrefixIconRouteParams(req.params as Record<string, string>);
-        const outputFile = await renderPrefix(givenParams, "backgrounds", prefixRenderStepSchema.background.mainPrefix, prefixRenderStepSchema.background.otherPrefixes, -1);
-        return res.sendFile(outputFile);
+        try {
+            const givenParams = parsePrefixIconRouteParams(req.params as Record<string, string>);
+            const outputFile = await renderPrefix(givenParams, "backgrounds", prefixRenderStepSchema.background.mainPrefix, prefixRenderStepSchema.background.otherPrefixes, -1);
+            return res.sendFile(outputFile);
+        } catch (error) {
+            console.log(error);
+            return res.sendFile(fallbackFile);
+        }
     });
 
     app.get(`/flagbackground/${flagIconRouteParams}`, defaultHeadersMiddleWare, async (req, res) => {
-        const givenParams = parseFlagIconRouteParams(req.params as Record<string, string>);
-        const givenOutputDirectory = `${config.outputDirectory}/flagicons/`;
-        const usingFlags = filterOtherFlagsForNeeded(turnFlagsFieldIntoFlagsArray(givenParams.allFlags), prefixRenderStepSchema.background.otherPrefixes);
-        const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, 0);
-        const hashableString = `MainFlag:${givenParams.mainFlag},Dimensions:${cubeParts.icon[0].bitmap.width}x${cubeParts.icon[0].bitmap.height},OtherFlags:${usingFlags.join('|')}`;
-        const outputFileName = `${hash('md5', hashableString)}`;
-        const givenOutputFile = `${givenOutputDirectory}/${outputFileName}.png`;
-
-        if (!fs.existsSync(givenOutputFile) || config.devmode) {
-            const renderedFlag = await renderFlag(givenParams.mainFlag, prefixRenderStepSchema.background.mainPrefix, cubeParts, turnFlagsFieldIntoFlagsArray(givenParams.allFlags), prefixRenderStepSchema.background.otherPrefixes, cubeSchema[givenParams.cubeID], cubeIconDataSchema);
-            await saveAnimatedCubeIcon(renderedFlag, outputFileName, givenOutputDirectory);
+        try {
+            const givenParams = parseFlagIconRouteParams(req.params as Record<string, string>);
+            const givenOutputDirectory = `${config.outputDirectory}/flagicons/`;
+            const usingFlags = filterOtherFlagsForNeeded(turnFlagsFieldIntoFlagsArray(givenParams.allFlags), prefixRenderStepSchema.background.otherPrefixes);
+            const cubeParts = await tryToHitCubePartCache(givenParams.cubeID, 0);
+            const hashableString = `MainFlag:${givenParams.mainFlag},Dimensions:${cubeParts.icon[0].bitmap.width}x${cubeParts.icon[0].bitmap.height},OtherFlags:${usingFlags.join('|')}`;
+            const outputFileName = `${hash('md5', hashableString)}`;
+            const givenOutputFile = `${givenOutputDirectory}/${outputFileName}.png`;
+    
+            if (!fs.existsSync(givenOutputFile) || config.devmode) {
+                const renderedFlag = await renderFlag(givenParams.mainFlag, prefixRenderStepSchema.background.mainPrefix, cubeParts, turnFlagsFieldIntoFlagsArray(givenParams.allFlags), prefixRenderStepSchema.background.otherPrefixes, cubeSchema[givenParams.cubeID], cubeIconDataSchema);
+                await saveAnimatedCubeIcon(renderedFlag, outputFileName, givenOutputDirectory);
+            }
+            
+            return res.sendFile(givenOutputFile);
+        } catch (error) {
+            console.log(error);
+            return res.sendFile(fallbackFile);
         }
-        
-        return res.sendFile(givenOutputFile);
     })
 
     app.get(`/seriescollage/${seriesCollageParams}`, defaultHeadersMiddleWare, async (req, res) => {
-        const givenParams = parseSeriesCollageParams(req.params as Record<string, string>);
-        const collageOutputDirectory = `${config.outputDirectory}/seriescollages/`;
-        const iconName = `${givenParams.seriesID}collage`;
-        const outputFile = `${collageOutputDirectory}/${iconName}.png`;
-        if (!fs.existsSync(outputFile) || config.devmode) {
-            const renderedCollage = await generateSeriesCollage(givenParams.seriesID);
-            await saveAnimatedCubeIcon([renderedCollage], iconName, collageOutputDirectory);
+        try {
+            const givenParams = parseSeriesCollageParams(req.params as Record<string, string>);
+            const collageOutputDirectory = `${config.outputDirectory}/seriescollages/`;
+            const iconName = `${givenParams.seriesID}collage`;
+            const outputFile = `${collageOutputDirectory}/${iconName}.png`;
+            if (!fs.existsSync(outputFile) || config.devmode) {
+                const renderedCollage = await generateSeriesCollage(givenParams.seriesID);
+                await saveAnimatedCubeIcon([renderedCollage], iconName, collageOutputDirectory);
+            }
+            return res.sendFile(outputFile);
+        } catch (error) {
+            console.log(error);
+            return res.sendFile(fallbackFile);
         }
-        return res.sendFile(outputFile);
     })
 });
