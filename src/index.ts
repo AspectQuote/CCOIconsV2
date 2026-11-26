@@ -126,12 +126,12 @@ app.listen(config.serverPort, async () => {
         fs.mkdirSync(`${outputDirectory}`, { recursive: true });
         const outputFile = `${givenParams.image}.jpg`;
         const outputPath = `${outputDirectory}/${outputFile}`;
-        if (!fs.existsSync(outputPath)) {
-            const inputImage = await Jimp.read(`${config.sourceImagesDirectory}/images/${givenParams.image}.jpg`);
-            const outputImage = await applyImageEffect(inputImage, givenParams.filter, {});
-            // @ts-ignore
-            await outputImage.write(outputPath, { quality: 60 });
-        }
+        // if (!fs.existsSync(outputPath)) {
+        //     const inputImage = await Jimp.read(`${config.sourceImagesDirectory}/images/${givenParams.image}.jpg`);
+        //     const outputImage = await applyImageEffect(inputImage, givenParams.filter, {});
+        //     // @ts-ignore
+        //     await outputImage.write(outputPath, { quality: 60 });
+        // }
         return res.sendFile(outputPath);
     })
 

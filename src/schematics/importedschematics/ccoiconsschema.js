@@ -86,7 +86,7 @@ export function filterOtherPrefixesForNeeded(mainPrefix, mainPrefixStep, otherPr
         return otherRenderer && prefixID !== mainPrefix && otherSteps.some(otherStep => {
             return otherRenderer.renderSteps[otherStep];
         });
-    });
+    }).slice(0, 3);
 }
 export function filterOtherFlagsForNeeded(flags, otherSteps) {
     return flags.filter(flag => {

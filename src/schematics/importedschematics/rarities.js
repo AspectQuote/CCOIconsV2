@@ -124,8 +124,8 @@ const raritySchema = {
         unboxingWeight: 10000,
         rarityUpgradeTier: 4,
         smashDropMultiplier: 8.5,
-        baseTallyCap: 2_000_000,
-        collectorsRequirement: 10,
+        baseTallyCap: 1_000_000,
+        collectorsRequirement: 6,
         color: "#ebc634",
         prefixAccentuation: 2.2,
         tallyMaxFlavors: ["Expensively Encompassed"],
@@ -186,15 +186,15 @@ const raritySchema = {
     "exotic": constructRarityDefinition({
         unboxingWeight: 0,
         rarityUpgradeTier: 4000,
-        smashDropMultiplier: 1,
+        smashDropMultiplier: 8,
         baseTallyCap: 500000,
-        collectorsRequirement: 10,
+        collectorsRequirement: 12,
         color: "#84b512",
-        prefixAccentuation: 2.6,
+        prefixAccentuation: 1.5,
         tallyMaxFlavors: ["Foreignly Figured"],
         name: "Exotic",
         baseEnchantChance: 1 / 9,
-        minimumEnchantmentsAppliedWhenEnchanting: 3
+        minimumEnchantmentsAppliedWhenEnchanting: 2
     }),
     "crafted": constructRarityDefinition({
         unboxingWeight: 0,
@@ -235,11 +235,11 @@ const raritySchema = {
     "mythic": constructRarityDefinition({
         unboxingWeight: 50,
         rarityUpgradeTier: 0,
-        smashDropMultiplier: 1,
+        smashDropMultiplier: 20,
         baseTallyCap: 1000000,
         collectorsRequirement: 101,
         color: "#f2b3f2",
-        prefixAccentuation: 7,
+        prefixAccentuation: 5,
         tallyMaxFlavors: ["Splendidly Specified"],
         name: "Mythical",
         baseEnchantChance: 1 / 10

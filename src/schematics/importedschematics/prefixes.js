@@ -96,7 +96,7 @@ export const prefixSchema = {
     "marvelous": constructPrefix({
         "name": "Marvelous",
         "multiplier": 119,
-        "desc": "A hand-holding cube! How scandalous!ddd",
+        "desc": "A hand-holding cube! How scandalous!",
         "elements": [
             "Heavy"
         ]
@@ -423,8 +423,7 @@ export const prefixSchema = {
         "name": "Wranglin'",
         "multiplier": 81,
         "desc": "18 naked cubes",
-        "elements": ["Fabric"],
-        excludedFromCompletion: true
+        "elements": ["Fabric"]
     }),
     "canoodled": constructPrefix({
         "name": "Canoodled",
@@ -433,7 +432,7 @@ export const prefixSchema = {
         "elements": ["Painted"]
     }),
     "saiyan": constructPrefix({
-        "name": "Saiyan",
+        "name": "Powering Up",
         "multiplier": 80,
         "desc": "[Joke about the number 9000 here]",
         "elements": ["Light-Emitting"]

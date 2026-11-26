@@ -24,6 +24,8 @@ const characterCollectionSecondaryRarity = "rare";
 const cubicSmallQuarkValue = 4;
 const ultMatQuarkValue = 76;
 const ultMatRarity = "exotic";
+const infusionExoticQuarkPrice = 1000;
+const halloweenCubePrice = 500_000;
 export const cubeSchema = {
     "unrealgreen": {
         "author": "The Gods",
@@ -228,8 +230,8 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "1",
-        "price": 3123495,
-        "qp": 847,
+        "price": 2623495,
+        "qp": 247,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -6716,8 +6718,8 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "2",
-        "price": 4780362,
-        "qp": 772,
+        "price": 2280362,
+        "qp": 272,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -7020,7 +7022,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "2",
-        "price": 1300009,
+        "price": 2100009,
         "qp": 208,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
@@ -7099,7 +7101,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "2",
-        "price": 1804927,
+        "price": 2104927,
         "qp": 1922,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
@@ -7146,7 +7148,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "2",
-        "price": 1692893,
+        "price": 1892893,
         "qp": 2003,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
@@ -7177,7 +7179,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "2",
-        "price": 1658823,
+        "price": 2058823,
         "qp": 403,
         "authorNames": [
             "612652aa7d635b3526c85610"
@@ -7409,7 +7411,7 @@ export const cubeSchema = {
         ],
         "rarity": "cubic",
         "gen": "2",
-        "price": 150089,
+        "price": 190089,
         qp: cubicSmallQuarkValue,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
@@ -9520,7 +9522,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "2",
-        "price": 2582574,
+        "price": 1882574,
         "qp": 712,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
@@ -10687,7 +10689,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "2",
-        "price": 1401273,
+        "price": 1901273,
         "qp": 441,
         "authorNames": [
             "61989990ac937d1d02d47cae"
@@ -10703,7 +10705,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "2",
-        "price": 1482907,
+        "price": 1882907,
         "qp": 427,
         "authorNames": [
             "61989990ac937d1d02d47cae"
@@ -11536,7 +11538,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "3",
-        "price": 2508140,
+        "price": 1908140,
         "qp": 281,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
@@ -11842,8 +11844,8 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "3",
-        "price": 2989422,
-        "qp": 1001,
+        "price": 2489422,
+        "qp": 245,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -11859,8 +11861,8 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "3",
-        "price": 2520913,
-        "qp": 1522,
+        "price": 1920913,
+        "qp": 195,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12148,7 +12150,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "3",
-        "price": 2598619,
+        "price": 2198619,
         "qp": 191,
         "authorNames": [
             "612652aa7d635b3526c85610"
@@ -12164,8 +12166,8 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "3",
-        "price": 2924122,
-        "qp": 2477,
+        "price": 2224122,
+        "qp": 277,
         "authorNames": [
             "612652aa7d635b3526c85610"
         ]
@@ -12610,8 +12612,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2413127783,
-        "qp": 2500,
+        "price": 113_127_783,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12627,8 +12629,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2198626274,
-        "qp": 2500,
+        "price": 118_626_274,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12645,8 +12647,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 1984126267,
-        "qp": 2500,
+        "price": 124_126_267,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12663,8 +12665,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2520377251,
-        "qp": 2500,
+        "price": 172_037_721,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12682,8 +12684,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2145001273,
-        "qp": 2500,
+        "price": 114_500_123,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12700,8 +12702,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2252251319,
-        "qp": 2500,
+        "price": 125_225_139,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12718,8 +12720,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2252251318,
-        "qp": 2500,
+        "price": 112_251_318,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12735,8 +12737,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2520377460,
-        "qp": 2500,
+        "price": 152_377_460,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12752,8 +12754,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 1984126269,
-        "qp": 2500,
+        "price": 124_126_269,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12769,8 +12771,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 3968251749,
-        "qp": 2500,
+        "price": 120_251_749,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12787,8 +12789,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2037752782,
-        "qp": 2500,
+        "price": 107_752_782,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12805,8 +12807,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2305876855,
-        "qp": 2500,
+        "price": 121_876_855,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12823,8 +12825,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2466751271,
-        "qp": 2500,
+        "price": 140_751_271,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12840,8 +12842,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2627626729,
-        "qp": 2500,
+        "price": 127_626_729,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12857,8 +12859,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2145001266,
-        "qp": 2500,
+        "price": 115_001_266,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12874,8 +12876,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 1984126268,
-        "qp": 2500,
+        "price": 124_126_268,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12892,8 +12894,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2145001609,
-        "qp": 2500,
+        "price": 119_001_609,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12909,8 +12911,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 1700189352,
-        "qp": 2500,
+        "price": 90_189_352,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12926,8 +12928,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2305876265,
-        "qp": 2500,
+        "price": 121_876_265,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12944,8 +12946,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "2",
-        "price": 2305876272,
-        "qp": 2500,
+        "price": 117_876_272,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -12962,14 +12964,15 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "3",
-        "price": 2359501736,
+        "price": 107_501_736,
+        qp: infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
     },
     "goldmonoone": {
-        "author": "Zeta",
-        "name": "Gold Cuba",
+        "author": "AspectQuote",
+        "name": "Gold Cuba I",
         "desc": "...",
         "tags": [
             "Shiny",
@@ -12979,14 +12982,15 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "3",
-        "price": 2198626752,
+        "price": 114_626_752,
+        qp: infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
     },
     "goldmonotwo": {
-        "author": "Zeta",
-        "name": "Gold Cuba",
+        "author": "AspectQuote",
+        "name": "Gold Cuba II",
         "desc": "...",
         "tags": [
             "Shiny",
@@ -12996,7 +13000,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "3",
-        "price": 2398501912,
+        "price": 118_501_912,
+        qp: infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -13013,7 +13018,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "3",
-        "price": 2788501382,
+        "price": 110_501_382,
+        qp: infusionExoticQuarkPrice,
         "authorNames": [
             "61271c42ebbdd64538fb2b2e"
         ]
@@ -13030,7 +13036,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "3",
-        "price": 2574001894,
+        "price": 108_001_894,
+        qp: infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -13047,7 +13054,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "3",
-        "price": 9384376749,
+        "price": 84_376_749,
+        qp: infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -13092,7 +13100,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "3",
-        "price": 1529092,
+        "price": 2029092,
         "qp": 201,
         "authorNames": [
             "61989990ac937d1d02d47cae"
@@ -13188,8 +13196,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "3",
-        "price": 3110251499,
-        "qp": 1622,
+        "price": 110_251_499,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -13205,8 +13213,8 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "3",
-        "price": 5891184,
-        "qp": 129,
+        "price": 2191184,
+        "qp": 229,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -14681,7 +14689,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "3",
-        "price": 2986009,
+        "price": 2586009,
         "qp": 185,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
@@ -14811,8 +14819,8 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "3",
-        "price": 4518722,
-        "qp": 931,
+        "price": 2018722,
+        "qp": 231,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -14827,7 +14835,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "3",
-        "price": 2519762,
+        "price": 1919762,
         "qp": 305,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
@@ -15258,7 +15266,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "3",
-        "price": 2570355,
+        "price": 2170355,
         "qp": 276,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
@@ -15486,8 +15494,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "3",
-        "price": 188046069,
-        "qp": 2500,
+        "price": 138_046_069,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -15535,7 +15543,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "3",
-        "price": 2681252373,
+        "price": 121_252_373,
+        qp: infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -15727,8 +15736,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "3",
-        "price": 158_001_740,
-        "qp": 1572,
+        "price": 138_001_740,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -15826,8 +15835,8 @@ export const cubeSchema = {
         ],
         "rarity": "mythic",
         "gen": "4",
-        "price": 777_777_777,
-        "qp": 777_777,
+        "price": 500_777_777,
+        "qp": 50_777,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -16371,8 +16380,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "4",
-        "price": 3646502784,
-        "qp": 1,
+        "price": 116_502_784,
+        "qp": infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ]
@@ -16600,7 +16609,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "4",
-        "price": 3002833,
+        "price": 1902833,
         "qp": 304,
         "authorNames": [
             "620a83d48230fd7b88289acf"
@@ -16616,8 +16625,8 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "4",
-        "price": 3345820,
-        "qp": 103,
+        "price": 2045820,
+        "qp": 123,
         "authorNames": [
             "618a90899350123869b79b26"
         ]
@@ -16633,8 +16642,8 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "4",
-        "price": 2921672,
-        "qp": 348,
+        "price": 2421672,
+        "qp": 248,
         "authorNames": [
             "620a83d48230fd7b88289acf"
         ]
@@ -16917,7 +16926,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "4",
-        "price": 4172855,
+        "price": 2172855,
         "qp": 159,
         "specialseeds": [
             {
@@ -16944,7 +16953,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "4",
-        "price": 4400795,
+        "price": 2400795,
         "qp": 212,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
@@ -16962,8 +16971,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "4",
-        "price": 4450876544,
-        "qp": 1945,
+        "price": 120_876_544,
+        "qp": infusionExoticQuarkPrice,
         "specialseeds": [
             {
                 "idx": [
@@ -17561,11 +17570,12 @@ export const cubeSchema = {
         "tags": [
             "Wet",
             "Slimy",
-            "Plastic"
+            "Plastic",
+            "Eerie"
         ],
         "rarity": "crafted",
         "gen": "4",
-        "price": 333000,
+        "price": halloweenCubePrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -17578,11 +17588,12 @@ export const cubeSchema = {
         "tags": [
             "Heavy",
             "Hot",
-            "Magnetic"
+            "Magnetic",
+            "Eerie"
         ],
         "rarity": "crafted",
         "gen": "4",
-        "price": 500000,
+        "price": halloweenCubePrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -17595,11 +17606,12 @@ export const cubeSchema = {
         "tags": [
             "Edible",
             "Slimy",
-            "Dull"
+            "Dull",
+            "Eerie"
         ],
         "rarity": "crafted",
         "gen": "4",
-        "price": 1500000,
+        "price": halloweenCubePrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -17611,11 +17623,12 @@ export const cubeSchema = {
         "desc": "Cube for the Cube god!",
         "tags": [
             "Slimy",
-            "Organic"
+            "Organic",
+            "Eerie"
         ],
         "rarity": "crafted",
         "gen": "4",
-        "price": 2000000,
+        "price": halloweenCubePrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84"
         ],
@@ -17791,7 +17804,7 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "4",
-        "price": 4258912,
+        "price": 2258912,
         "qp": 192,
         "authorNames": [
             "65bd51b73e72f6b51a88f58d"
@@ -17824,8 +17837,8 @@ export const cubeSchema = {
         ],
         "rarity": "gold",
         "gen": "4",
-        "price": 4357523,
-        "qp": 130,
+        "price": 2357523,
+        "qp": 230,
         "authorNames": [
             "65bd51b73e72f6b51a88f58d"
         ]
@@ -17996,7 +18009,8 @@ export const cubeSchema = {
         ],
         "rarity": "exotic",
         "gen": "4",
-        "price": 4566918295,
+        "price": 121_918_295,
+        qp: infusionExoticQuarkPrice,
         "authorNames": [
             "6108f09abc4b812a386c5c84",
             "65bd51b73e72f6b51a88f58d"
@@ -18383,8 +18397,8 @@ export const cubeSchema = {
         author: "AspectQuote",
         rarity: "exotic",
         gen: "5",
-        "price": 2_018_000_169,
-        "qp": 2500,
+        "price": 148_000_169,
+        "qp": infusionExoticQuarkPrice,
         tags: [
             "Makes-Noise",
             "Fabric",

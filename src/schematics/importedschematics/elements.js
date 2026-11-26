@@ -306,3 +306,6 @@ export function getElementSpriteSheetPosition(elementID) {
         };
     }
 }
+export function validateElementID(elementID) {
+    return elementID in elementSchema;
+}
