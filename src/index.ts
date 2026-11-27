@@ -30,6 +30,7 @@ function applyDefaultHeaders(res: Response) {
 }
 
 function defaultHeadersMiddleWare(req: Request, res: Response, next: NextFunction) {
+    console.log(`${req.url}`);
     applyDefaultHeaders(res);
     next();
 }
