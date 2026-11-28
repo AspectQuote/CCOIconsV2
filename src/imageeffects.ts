@@ -268,7 +268,6 @@ export async function sharpenImage(image: JimpImage, magnitude: number, edgeRadi
 export type bSideBlendType = "random" | "gradient" | "dithered" | "streaked";
 
 export async function createBSideV2Image(originalImage: JimpImage, similarThereshold: number = 5, maxIteration: number = 3, blendType: bSideBlendType = "dithered", iteration: number = 1, resizeMode: ResizeStrategy = ResizeStrategy.BILINEAR): Promise<JimpImage> {
-    return originalImage.clone();
     const before = performance.now();
 
     if (iteration === 1) {

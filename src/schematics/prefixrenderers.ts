@@ -413,7 +413,9 @@ function generateProtrudingLines(inputFrames: JimpImage[], iconFrames: JimpImage
             x: Math.cos(constructedLine.angle),
             y: Math.sin(constructedLine.angle)
         }
-        while ((referenceFrame.getPixelColor(currentLinePoint.x, currentLinePoint.y) & 255) !== 0) {
+        let iterations = 0;
+        while ((referenceFrame.getPixelColor(currentLinePoint.x, currentLinePoint.y) & 255) !== 0 && iterations < 5000) {
+            iterations++;
             currentLinePoint.x += additions.x;
             currentLinePoint.y += additions.y;
 
@@ -5473,13 +5475,15 @@ export const prefixRenderers = {
                     let minDoodleDistance = doodles[0].bitmap.width * 2;
 
                     let iterationsSinceLastPositionFound = 0;
+                    let totalIterations = 0;
                     const doodlePositionEdgeDeadzone = Math.ceil(doodles[0].bitmap.width / 2) + 1;
                     const centerPosition = {
                         x: blueprintImage.bitmap.width / 2,
                         y: blueprintImage.bitmap.height / 2
                     }
                     const centerDeadzoneRadius = parts.icon[0].bitmap.width / 2;
-                    while (doodlePositions.length < doodleCount) {
+                    while (doodlePositions.length < doodleCount && totalIterations < 500) {
+                        totalIterations++;
                         const newPosition = {
                             x: Math.floor(seedGen() * (blueprintImage.bitmap.width - (doodlePositionEdgeDeadzone * 2))) + doodlePositionEdgeDeadzone,
                             y: Math.floor(seedGen() * (blueprintImage.bitmap.height - (doodlePositionEdgeDeadzone * 2))) + doodlePositionEdgeDeadzone

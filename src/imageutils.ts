@@ -418,7 +418,9 @@ export function drawLine(image: JimpImage, color: number, startPoint: { x: numbe
     const currentCoordinate = structuredClone(startPoint);
     let coordinateError = deltaX + deltaY;
 
-    while (true) {
+    let iterations = 0;
+    while (true || iterations > 5000) {
+        iterations++;
         image.setPixelColor(color, currentCoordinate.x, currentCoordinate.y);
         const doubleError = 2 * coordinateError;
         if (doubleError > deltaY) {
